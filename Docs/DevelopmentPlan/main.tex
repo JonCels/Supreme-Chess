@@ -1,0 +1,82 @@
+\documentclass{article}
+
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{tabularx}
+
+\title{SE 3XA3: Development Plan\\Supreme Chess}
+
+\author{Team 2, The Triple Grobs
+        \\ Pesara Amarasekera (amarasep)
+        \\ Jonathan Cels (celsj)
+        \\ Rupinder Nagra (nagrar5)
+}
+
+\date{}
+
+%%\input{../Comments}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=blue,
+}
+
+\urlstyle{same}
+
+\begin{document}
+
+\begin{table}[hp]
+\caption{Revision History} \label{TblRevisionHistory}
+\begin{tabularx}{\textwidth}{llX}
+\toprule
+\textbf{Date} & \textbf{Developer(s)} & \textbf{Change}\\
+\midrule
+Feb 3rd, 2020 & All team members & Wrote initial draft and reviewed\\
+
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\newpage
+
+\maketitle
+
+The following document will provide a timeline of the project, and aims to plan the future phases of our project by scheduling when tasks are expected to begin and end, and the steps we must take to complete each phase of work.
+
+\section{Team Meeting Plan}
+The team will meet twice a week for two hours at a time. The first meeting each week will begin during lab time on Tuesdays once the individual lab components are complete, usually around 8:00 PM. The date and time for the second meeting will vary, but will always run for at least two hours.
+\\
+\\ Meetings will take place on Microsoft Teams in the ``Lab3Groups3XA3'' team, specifically in the Group 3-2 channel. All team members are expected to show up and join the meeting at or before the designated meeting time. Team members are expected to start the meeting themselves if no other team members have done so.
+\\
+\\ Team member roles are detailed below, with each team member fulfilling the duties of whatever role they are currently in.
+\\
+\\ Whoever is in the team leader role at the time of the meeting will chair the meeting and shall have an agenda set for all meetings in advance. All decisions will be documented in the Microsoft Teams channel meeting chat, available at any time to all team members.
+
+\section{Team Communication Plan}
+The team will communicate through Microsoft Teams. We decide on the times we are to meet each other to complete tasks during the Tuesday meetings. If a matter is urgent, such as if a member is not at a meeting, we may choose to contact that group member on Facebook. We are choosing to use Microsoft Teams as our primary means of communication as we are all already enrolled in our Lab Group Team by the TA's. It is also easy to message the TA's for assistance and find useful resources regarding the tasks on Microsoft Teams.
+
+\section{Team Member Roles}
+The following roles are subject to change as our project develops, but we will be continuing based on the following team role structure. Our group has assigned Jonathan as our leader, as he is good at guiding a team towards an efficient workflow and ensuring all necessary tasks are complete. However, we will all aim to equally contribute our ideas for tasks as it is important for each person to voice their concerns regarding the project. However, each group member has expertise in certain areas, which is why we will allocate tasks accordingly. Rupinder will lead the software development of the project, being proficient at web development in JavaScript libraries. Regardless, Jonathan and Pesara will also contribute greatly to the software development of the project. Pesara will be the scribe, as he is capable of writing thorough documentation and research on subjects in past projects. 
+
+\section{Git Workflow Plan}
+We will use a Decentralized and Centralized Git Workflow Plan. This means that we will be maintaining a "Central" (master repository) which will contain the the work done by all members and there will be forks of this master repository that the members can use to make modifications of their own. There will be two main branches in the repository called \texttt{master} and \texttt{develop}. The \texttt{master} branch will contain the finalized and completed features (the features that pass integration tests), and the \texttt{develop} branch will contain features that are still in development.
+
+\section{Proof of Concept Demonstration Plan}
+The Proof of concept demonstration would be done by the use of a mock-up made by using the prototyping platform \texttt{\href{https://www.figma.com/files/recent}{Figma}}. For demonstrating the functionality a presentation (on Google Slides) will be given with specific use-case scenarios.
+
+\section{Technology}
+We will use JavaScript as our primary programming language, as we will be using the JavaScript framework 'React' to complete this project. We will all be using the Visual Studio IDE for this project, although everyone using the same IDE is not important, since we will be using version control to maintain our code-base. We will be using \texttt{\href{https://testing-library.com/docs/react-testing-library/intro/}{React Testing Library}} as our testing framework, as it provides a very light-weight solution for testing React components. We have decided to use the github repository \texttt{\href{https://github.com/reactjs/react-docgen}{reactjs/react-docgen}} as our source for document generation. It is a command line interface and toolbox to help extract information from React components, and generate documentation from it.
+
+\section{Coding Style}
+We will use the the \href{https://github.com/airbnb/javascript}{\texttt{Airbnb}} style guide. We will be taking advantage of linting software to allow for easier formatting
+
+\section{Project Schedule}
+
+The Gantt chart for the project can be found at the \href{https://gitlab.cas.mcmaster.ca/celsj/3xa3-group2-chess/-/blob/master/Docs/DevelopmentPlan/3XA3ChessProject.gan}{\texttt{following link}}.
+
+\section{Project Review}
+
+\end{document}
