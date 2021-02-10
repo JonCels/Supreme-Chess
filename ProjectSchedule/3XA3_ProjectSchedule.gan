@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?><project name="3XA3ChessProject" company="" webLink="http://" view-date="2021-02-06" view-index="0" gantt-divider-location="300" resource-divider-location="300" version="3.0.3001" locale="en_CA">
+    <description>
+        <![CDATA[Product development schedule for the 3XA3 term project - a chess game refactored in JavaScript using Node.js and React.]]>
+    </description>
+    <view zooming-state="default:2" id="gantt-chart">
+        <field id="tpd3" name="Name" width="158" order="0"/>
+        <field id="tpd4" name="Begin date" width="62" order="1"/>
+        <field id="tpd5" name="End date" width="61" order="2"/>
+        <timeline>
+            <![CDATA[18]]>
+        </timeline>
+    </view>
+    <view id="resource-table">
+        <field id="0" name="Name" width="210" order="0"/>
+        <field id="1" name="Default role" width="86" order="1"/>
+    </view>
+    <!-- -->
+    <calendars>
+        <day-types>
+            <day-type id="0"/>
+            <day-type id="1"/>
+            <default-week id="1" name="default" sun="0" mon="0" tue="0" wed="0" thu="0" fri="0" sat="0"/>
+            <only-show-weekends value="false"/>
+            <overriden-day-types/>
+            <days/>
+        </day-types>
+    </calendars>
+    <tasks empty-milestones="true">
+        <taskproperties>
+            <taskproperty id="tpd0" name="type" type="default" valuetype="icon"/>
+            <taskproperty id="tpd1" name="priority" type="default" valuetype="icon"/>
+            <taskproperty id="tpd2" name="info" type="default" valuetype="icon"/>
+            <taskproperty id="tpd3" name="name" type="default" valuetype="text"/>
+            <taskproperty id="tpd4" name="begindate" type="default" valuetype="date"/>
+            <taskproperty id="tpd5" name="enddate" type="default" valuetype="date"/>
+            <taskproperty id="tpd6" name="duration" type="default" valuetype="int"/>
+            <taskproperty id="tpd7" name="completion" type="default" valuetype="int"/>
+            <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
+            <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
+        </taskproperties>
+        <task id="0" name="Problem Statement" color="#8cb6ce" meeting="false" start="2021-01-25" duration="5" complete="0" thirdDate="2021-02-02" thirdDate-constraint="0" expand="true">
+            <depend id="18" type="2" difference="0" hardness="Strong"/>
+            <task id="25" name="Problem Definition" color="#8cb6ce" meeting="false" start="2021-01-25" duration="5" complete="0" thirdDate="2021-01-18" thirdDate-constraint="0" expand="true"/>
+            <task id="26" name="Problem Importance" color="#8cb6ce" meeting="false" start="2021-01-25" duration="5" complete="0" thirdDate="2021-01-18" thirdDate-constraint="0" expand="true"/>
+            <task id="27" name="Problem Context" color="#8cb6ce" meeting="false" start="2021-01-25" duration="5" complete="0" thirdDate="2021-01-18" thirdDate-constraint="0" expand="true"/>
+        </task>
+        <task id="18" name="Problem Statement Deadline" color="#8cb6ce" meeting="true" start="2021-01-30" duration="0" complete="0" thirdDate="2021-01-19" thirdDate-constraint="0" expand="true"/>
+        <task id="28" name="DevelopmentPlan" color="#8cb6ce" meeting="false" start="2021-01-30" duration="7" complete="0" thirdDate="2021-01-18" thirdDate-constraint="0" expand="true">
+            <depend id="67" type="2" difference="0" hardness="Strong"/>
+            <task id="30" name="Meeting Plan" color="#8cb6ce" meeting="false" start="2021-01-30" duration="5" complete="0" thirdDate="2021-01-18" thirdDate-constraint="0" expand="true"/>
+            <task id="31" name="Communication Plan" color="#8cb6ce" meeting="false" start="2021-01-30" duration="5" complete="0" thirdDate="2021-01-18" thirdDate-constraint="0" expand="true"/>
+            <task id="32" name="Member Roles" color="#8cb6ce" meeting="false" start="2021-01-30" duration="5" complete="0" thirdDate="2021-01-18" thirdDate-constraint="0" expand="true"/>
+            <task id="33" name="Git Workflow Plan" color="#8cb6ce" meeting="false" start="2021-02-01" duration="3" complete="0" thirdDate="2021-01-18" thirdDate-constraint="0" expand="true"/>
+            <task id="34" name="Proof of Concept Demo" color="#8cb6ce" meeting="false" start="2021-02-02" duration="3" complete="0" thirdDate="2021-01-18" thirdDate-constraint="0" expand="true"/>
+            <task id="35" name="Technology Description" color="#8cb6ce" meeting="false" start="2021-02-02" duration="3" complete="0" thirdDate="2021-01-18" thirdDate-constraint="0" expand="true"/>
+            <task id="36" name="Coding Style" color="#8cb6ce" meeting="false" start="2021-02-04" duration="2" complete="0" thirdDate="2021-01-18" thirdDate-constraint="0" expand="true"/>
+            <task id="37" name="Project Schedule Gantt Chart" color="#8cb6ce" meeting="false" start="2021-02-04" duration="2" complete="0" thirdDate="2021-01-18" thirdDate-constraint="0" expand="true"/>
+        </task>
+        <task id="67" name="Development Plan Deadline" color="#8cb6ce" meeting="true" start="2021-02-06" duration="0" complete="0" thirdDate="2021-01-18" thirdDate-constraint="0" expand="true"/>
+        <task id="100" name="SRS Revision 0" color="#8cb6ce" meeting="false" start="2021-02-06" duration="7" complete="0" thirdDate="2021-02-02" thirdDate-constraint="0" expand="true">
+            <depend id="112" type="2" difference="0" hardness="Strong"/>
+            <task id="105" name="Introduction and Project Drivers" color="#8cb6ce" meeting="false" start="2021-02-06" duration="4" complete="0" thirdDate="2021-02-02" thirdDate-constraint="0" expand="true"/>
+            <task id="102" name="Functional Requirements" color="#8cb6ce" meeting="false" start="2021-02-09" duration="4" complete="0" thirdDate="2021-01-22" thirdDate-constraint="0" expand="true"/>
+            <task id="103" name="Non-functional Requirements" color="#8cb6ce" meeting="false" start="2021-02-10" duration="3" complete="0" thirdDate="2021-01-22" thirdDate-constraint="0" expand="true"/>
+        </task>
+        <task id="112" name="SRS Deadline" color="#8cb6ce" meeting="true" start="2021-02-13" duration="0" complete="0" thirdDate="2021-02-02" thirdDate-constraint="0" expand="true"/>
+        <task id="160" name="Implement Proof of Concept" color="#8cb6ce" meeting="false" start="2021-02-13" duration="14" complete="0" thirdDate="2021-01-25" thirdDate-constraint="0" expand="true">
+            <task id="114" name="Implement Game Logic" color="#8cb6ce" meeting="false" start="2021-02-13" duration="7" complete="0" thirdDate="2021-02-02" thirdDate-constraint="0" expand="true"/>
+            <task id="165" name="Implement Server Hosting" color="#8cb6ce" meeting="false" start="2021-02-19" duration="5" complete="0" thirdDate="2021-01-25" thirdDate-constraint="0" expand="true"/>
+            <task id="166" name="Implement GUI" color="#8cb6ce" meeting="false" start="2021-02-22" duration="5" complete="0" thirdDate="2021-01-25" thirdDate-constraint="0" expand="true"/>
+            <task id="167" name="Implement Back-End Data Transfer" color="#8cb6ce" meeting="false" start="2021-02-24" duration="3" complete="0" thirdDate="2021-01-25" thirdDate-constraint="0" expand="true"/>
+            <task id="117" name="Demo Timeslot 1" color="#8cb6ce" meeting="true" start="2021-02-22" duration="0" complete="0" thirdDate="2021-02-02" thirdDate-constraint="0" expand="true"/>
+            <task id="118" name="Demo Timeslot 2" color="#8cb6ce" meeting="true" start="2021-02-23" duration="0" complete="0" thirdDate="2021-02-02" thirdDate-constraint="0" expand="true"/>
+        </task>
+        <task id="121" name="Test Plan Revision 0" color="#8cb6ce" meeting="false" start="2021-02-24" duration="10" complete="0" thirdDate="2021-02-01" thirdDate-constraint="0" expand="true">
+            <depend id="158" type="2" difference="0" hardness="Strong"/>
+            <task id="131" name="Introduction and Plan" color="#8cb6ce" meeting="false" start="2021-02-24" duration="3" complete="0" thirdDate="2021-02-09" thirdDate-constraint="0" expand="true"/>
+            <task id="140" name="System Test Description" color="#8cb6ce" meeting="false" start="2021-02-24" duration="3" complete="0" thirdDate="2021-02-24" thirdDate-constraint="0" expand="true"/>
+            <task id="141" name="Tests for Proof of Concept" color="#8cb6ce" meeting="false" start="2021-02-26" duration="4" complete="0" thirdDate="2021-02-24" thirdDate-constraint="0" expand="true"/>
+            <task id="155" name="Unit Testing Plan" color="#8cb6ce" meeting="false" start="2021-03-01" duration="5" complete="0" thirdDate="2021-03-01" thirdDate-constraint="0" expand="true"/>
+        </task>
+        <task id="158" name="Test Plan Deadline" color="#8cb6ce" meeting="true" start="2021-03-06" duration="0" complete="0" thirdDate="2021-02-18" thirdDate-constraint="0" expand="true"/>
+        <task id="168" name="Design &amp; Document Revision 0" color="#8cb6ce" meeting="false" start="2021-03-06" duration="13" complete="0" thirdDate="2021-03-08" thirdDate-constraint="0" expand="true">
+            <depend id="171" type="2" difference="0" hardness="Strong"/>
+            <task id="169" name="MIS" color="#8cb6ce" meeting="false" start="2021-03-06" duration="8" complete="0" thirdDate="2021-01-22" thirdDate-constraint="0" expand="true"/>
+            <task id="170" name="MG" color="#8cb6ce" meeting="false" start="2021-03-13" duration="6" complete="0" thirdDate="2021-01-22" thirdDate-constraint="0" expand="true"/>
+        </task>
+        <task id="171" name="Design &amp; Document Deadline" color="#8cb6ce" meeting="true" start="2021-03-19" duration="0" complete="0" thirdDate="2021-01-22" thirdDate-constraint="0" expand="true"/>
+        <task id="185" name="Revision 0 Demonstration (Revision 1)" color="#8cb6ce" meeting="false" start="2021-03-19" duration="8" complete="0" thirdDate="2021-03-19" thirdDate-constraint="0" expand="true">
+            <task id="186" name="Demo Timeslot 1" color="#8cb6ce" meeting="true" start="2021-03-22" duration="0" complete="0" thirdDate="2021-03-19" thirdDate-constraint="0" expand="true"/>
+            <task id="187" name="Demo Timeslot 2" color="#8cb6ce" meeting="true" start="2021-03-23" duration="0" complete="0" thirdDate="2021-03-19" thirdDate-constraint="0" expand="true"/>
+            <task id="193" name="Revise Documentation" color="#8cb6ce" meeting="false" start="2021-03-19" duration="8" complete="0" thirdDate="2021-02-24" thirdDate-constraint="0" expand="true"/>
+        </task>
+        <task id="196" name="Final Demonstration (Revision 1)" color="#8cb6ce" meeting="false" start="2021-03-27" duration="14" complete="0" thirdDate="2021-03-02" thirdDate-constraint="0" expand="true">
+            <depend id="236" type="2" difference="0" hardness="Strong"/>
+            <task id="199" name="Expand and Compete Implementation" color="#8cb6ce" meeting="false" start="2021-03-27" duration="7" complete="0" thirdDate="2021-03-02" thirdDate-constraint="0" expand="true">
+                <depend id="202" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="202" name="Implement Chat Feature" color="#8cb6ce" meeting="false" start="2021-04-03" duration="4" complete="0" thirdDate="2021-03-02" thirdDate-constraint="0" expand="true">
+                <depend id="200" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="200" name="Implement AI Player" color="#8cb6ce" meeting="false" start="2021-04-07" duration="3" complete="0" thirdDate="2021-03-02" thirdDate-constraint="0" expand="true"/>
+            <task id="241" name="Peer Evaluation" color="#8cb6ce" meeting="false" start="2021-04-05" duration="5" complete="0" thirdDate="2021-03-19" thirdDate-constraint="0" expand="true"/>
+            <task id="276" name="Implement Testing Plan" color="#8cb6ce" meeting="false" start="2021-04-05" duration="5" complete="0" thirdDate="2021-03-15" thirdDate-constraint="0" expand="true"/>
+        </task>
+        <task id="236" name="Final Implementation Deadline" color="#8cb6ce" meeting="true" start="2021-04-10" duration="0" complete="0" thirdDate="2021-03-18" thirdDate-constraint="0" expand="true"/>
+        <task id="243" name="Final Documentation (Revision 1)" color="#8cb6ce" meeting="false" start="2021-03-23" duration="21" complete="0" thirdDate="2021-03-19" thirdDate-constraint="0" expand="true">
+            <depend id="272" type="2" difference="0" hardness="Strong"/>
+            <task id="251" name="Problem Statement Revision" color="#8cb6ce" meeting="false" start="2021-03-23" duration="5" complete="0" thirdDate="2021-03-15" thirdDate-constraint="0" expand="true"/>
+            <task id="250" name="Development Plan Revision" color="#8cb6ce" meeting="false" start="2021-03-28" duration="5" complete="0" thirdDate="2021-03-15" thirdDate-constraint="0" expand="true"/>
+            <task id="249" name="Design Document Revision" color="#8cb6ce" meeting="false" start="2021-04-02" duration="5" complete="0" thirdDate="2021-03-15" thirdDate-constraint="0" expand="true"/>
+            <task id="248" name="Test Plan Revision" color="#8cb6ce" meeting="false" start="2021-04-07" duration="5" complete="0" thirdDate="2021-03-15" thirdDate-constraint="0" expand="true"/>
+            <task id="247" name="Source Code" color="#8cb6ce" meeting="false" start="2021-03-23" duration="21" complete="0" thirdDate="2021-03-15" thirdDate-constraint="0" expand="true"/>
+        </task>
+        <task id="272" name="Final Documentation Deadline" color="#8cb6ce" meeting="true" start="2021-04-13" duration="0" complete="0" thirdDate="2021-03-15" thirdDate-constraint="0" expand="true"/>
+    </tasks>
+    <resources>
+        <resource id="0" name="Jonathan Cels" function="Default:1" contacts="celsj@mcmaster.ca" phone="289-981-2109"/>
+        <resource id="1" name="Rupinder Nagra" function="SoftwareDevelopment:2" contacts="nagrar5@mcmaster.ca" phone=""/>
+        <resource id="2" name="Pesera Amarasekera" function="SoftwareDevelopment:3" contacts="amarasep@mcmaster.ca " phone=""/>
+    </resources>
+    <allocations>
+        <allocation task-id="25" resource-id="0" function="SoftwareDevelopment:4" responsible="false" load="50.0"/>
+        <allocation task-id="27" resource-id="0" function="SoftwareDevelopment:4" responsible="false" load="40.0"/>
+        <allocation task-id="28" resource-id="0" function="SoftwareDevelopment:4" responsible="false" load="100.0"/>
+        <allocation task-id="100" resource-id="0" function="SoftwareDevelopment:4" responsible="false" load="70.0"/>
+        <allocation task-id="26" resource-id="1" function="Default:1" responsible="false" load="100.0"/>
+        <allocation task-id="28" resource-id="1" function="Default:1" responsible="false" load="70.0"/>
+        <allocation task-id="100" resource-id="1" function="Default:1" responsible="false" load="100.0"/>
+        <allocation task-id="28" resource-id="2" function="SoftwareDevelopment:2" responsible="false" load="70.0"/>
+        <allocation task-id="100" resource-id="2" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+    </allocations>
+    <vacations/>
+    <previous/>
+    <roles roleset-name="Default"/>
+    <roles roleset-name="SoftwareDevelopment"/>
+</project>
