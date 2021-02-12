@@ -1,2 +1,4 @@
 nodemodules/
 *.aux
+*.log
+.DS_Store
