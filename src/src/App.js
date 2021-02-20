@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import './App.css';
 import {gameSubject} from './Game'
-import Board from './Board'
+import Board from './Components/Board'
 
 function App() {
   const [board, setBoard] = useState([])
