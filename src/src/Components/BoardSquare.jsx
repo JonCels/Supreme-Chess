@@ -5,7 +5,7 @@ import { useDrop } from 'react-dnd'
 import { PieceTypes } from '../PieceTypes'
 
 export default function BoardSquare({ piece, black, pos }) {
-    function test(x, y) {
+    function emitCoords(x, y) {
         console.log("Moving to square at coordinates: " + x, + " " + y);
     }
     const [, drop] = useDrop({
@@ -17,7 +17,7 @@ export default function BoardSquare({ piece, black, pos }) {
             PieceTypes.QUEEN,
             PieceTypes.KING
         ],
-        drop: () => test([pos.x, pos.y])
+        drop: () => emitCoords([pos.x, pos.y])
     })
     return (
         <div className="board-square" ref={drop}>
