@@ -11,10 +11,10 @@ export default function Board({board}) {
         return (x + y) % 2 === 1
     }
     return (
-        <div class="board">
+        <div className="board">
             {board.flat().map((piece, i) => (
             <div key={i} className="square">
-                <BoardSquare piece={piece} black={isBlack(i)} />
+                <BoardSquare piece={piece} black={isBlack(i)} pos={getXYPosition(i)} />
             </div>
             ))}
         </div>
