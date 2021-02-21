@@ -3,7 +3,6 @@ import { useDrag } from 'react-dnd';
 
 export default function Piece({ piece: { type, color } }) {
     const pieceImg = `./assets/${type}_${color}.png`
-    const altText = `${color} ${type}`
     const [{isDragging}, drag] = useDrag({
         item: {type: type},
         collect: monitor => ({
@@ -12,7 +11,7 @@ export default function Piece({ piece: { type, color } }) {
     })
     return (
         <div className="piece-container">
-            <img src={pieceImg} alt={altText} className="piece" ref={drag} style={{opacity: isDragging ? 0.5 : 1}}/>
+            <img src={pieceImg} className="piece" ref={drag} style={{opacity: isDragging ? 0.5 : 1}}/>
         </div>
     )
 }
