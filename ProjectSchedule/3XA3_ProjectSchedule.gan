@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><project name="3XA3ChessProject" company="" webLink="http://" view-date="2021-02-06" view-index="0" gantt-divider-location="300" resource-divider-location="300" version="3.0.3001" locale="en_CA">
+<?xml version="1.0" encoding="UTF-8"?><project name="3XA3ChessProject" company="" webLink="http://" view-date="2021-03-13" view-index="0" gantt-divider-location="300" resource-divider-location="300" version="3.0.3001" locale="en_CA">
     <description>
         <![CDATA[Product development schedule for the 3XA3 term project - a chess game refactored in JavaScript using Node.js and React.]]>
     </description>
@@ -104,6 +104,13 @@
             <task id="276" name="Implement Testing Plan" color="#8cb6ce" meeting="false" start="2021-04-05" duration="5" complete="0" thirdDate="2021-03-15" thirdDate-constraint="0" expand="true"/>
         </task>
         <task id="236" name="Final Implementation Deadline" color="#8cb6ce" meeting="true" start="2021-04-10" duration="0" complete="0" thirdDate="2021-03-18" thirdDate-constraint="0" expand="true"/>
+        <task id="280" name="System Testing" color="#8cb6ce" meeting="false" start="2021-03-27" duration="8" complete="0" thirdDate="2021-03-27" thirdDate-constraint="0" expand="true">
+            <task id="281" name="Requirement Testing" color="#8cb6ce" meeting="false" start="2021-03-29" duration="4" complete="0" thirdDate="2021-02-06" thirdDate-constraint="0" expand="true"/>
+            <task id="282" name="Automated Unit Testing" color="#8cb6ce" meeting="false" start="2021-03-27" duration="3" complete="0" thirdDate="2021-02-06" thirdDate-constraint="0" expand="true"/>
+            <task id="283" name="Manual Testing" color="#8cb6ce" meeting="false" start="2021-03-27" duration="6" complete="0" thirdDate="2021-02-06" thirdDate-constraint="0" expand="true"/>
+            <task id="284" name="POC Testing" color="#8cb6ce" meeting="false" start="2021-04-02" duration="2" complete="0" thirdDate="2021-02-06" thirdDate-constraint="0" expand="true"/>
+            <task id="285" name="Comparison Testing" color="#8cb6ce" meeting="false" start="2021-04-02" duration="2" complete="0" thirdDate="2021-02-06" thirdDate-constraint="0" expand="true"/>
+        </task>
         <task id="243" name="Final Documentation (Revision 1)" color="#8cb6ce" meeting="false" start="2021-03-23" duration="21" complete="0" thirdDate="2021-03-19" thirdDate-constraint="0" expand="true">
             <depend id="272" type="2" difference="0" hardness="Strong"/>
             <task id="251" name="Problem Statement Revision" color="#8cb6ce" meeting="false" start="2021-03-23" duration="5" complete="0" thirdDate="2021-03-15" thirdDate-constraint="0" expand="true"/>
@@ -124,11 +131,21 @@
         <allocation task-id="27" resource-id="0" function="SoftwareDevelopment:4" responsible="false" load="40.0"/>
         <allocation task-id="28" resource-id="0" function="SoftwareDevelopment:4" responsible="false" load="100.0"/>
         <allocation task-id="100" resource-id="0" function="SoftwareDevelopment:4" responsible="false" load="70.0"/>
+        <allocation task-id="281" resource-id="0" function="Default:1" responsible="true" load="50.0"/>
+        <allocation task-id="285" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="282" resource-id="0" function="Default:1" responsible="true" load="20.0"/>
+        <allocation task-id="283" resource-id="0" function="Default:1" responsible="true" load="30.0"/>
         <allocation task-id="26" resource-id="1" function="Default:1" responsible="false" load="100.0"/>
         <allocation task-id="28" resource-id="1" function="Default:1" responsible="false" load="70.0"/>
         <allocation task-id="100" resource-id="1" function="Default:1" responsible="false" load="100.0"/>
+        <allocation task-id="281" resource-id="1" function="SoftwareDevelopment:2" responsible="false" load="50.0"/>
+        <allocation task-id="283" resource-id="1" function="SoftwareDevelopment:2" responsible="false" load="50.0"/>
+        <allocation task-id="284" resource-id="1" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
         <allocation task-id="28" resource-id="2" function="SoftwareDevelopment:2" responsible="false" load="70.0"/>
         <allocation task-id="100" resource-id="2" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="282" resource-id="2" function="SoftwareDevelopment:3" responsible="false" load="50.0"/>
+        <allocation task-id="281" resource-id="2" function="SoftwareDevelopment:3" responsible="false" load="50.0"/>
+        <allocation task-id="285" resource-id="2" function="SoftwareDevelopment:3" responsible="false" load="100.0"/>
     </allocations>
     <vacations/>
     <previous/>
