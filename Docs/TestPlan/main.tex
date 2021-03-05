@@ -1,0 +1,1427 @@
+\documentclass[12pt, titlepage]{article}
+
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=blue
+}
+\usepackage[round]{natbib}
+
+\title{SE 3XA3: Test Plan\\SupremeChess}
+
+\author{Team 2, The Triple Grobs
+        \\ Jonathan Cels (celsj)
+        \\ Rupinder Nagra (nagrar5)
+		\\ Pesara Amarasekera (amarasep)
+}
+
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\pagenumbering{roman}
+\tableofcontents
+\listoftables
+
+\begin{table}[bp]
+\caption{\bf Revision History}
+\begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
+\toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
+\midrule
+2021-02-23 & 1.0 & Created document, completed up to functional requirement tests\\
+2021-03-02 & 1.1 & Finished functional requirements, started non-functional requirement tests\\
+2021-03-03 & 1.2 & Finished non-functional requirements and the rest of the document\\
+2021-03-05 & 1.3 & Minor edits and changes\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\newpage
+
+\pagenumbering{arabic}
+
+\section{General Information}
+
+\subsection{Purpose}
+
+The purpose of testing this system is to detect and correct software failures, increasing confidence that the system was implemented correctly.
+
+\subsection{Scope}
+
+The project, SupremeChess, is a chess game played online by one player against an AI opponent, or by two players against each other. The scope of testing for this project will cover three main areas:
+
+\begin{enumerate}
+    \item The implementation of the chess game logic. This includes testing moves, game states, and game termination.
+    \item Surrounding functionality such as the timers, the menu, the chat feature, and the AI opponent.
+    \item The online multiplayer functionality against an AI opponent or another user.
+\end{enumerate}
+
+\subsection{Acronyms, Abbreviations, and Symbols}
+	
+\begin{table}[hbp]
+\caption{\textbf{Table of Abbreviations}} \label{Table}
+
+\begin{tabularx}{\textwidth}{p{3cm}X}
+\toprule
+\textbf{Abbreviation} & \textbf{Definition} \\
+\midrule
+POC & Proof of Concept\\
+GUI & Graphical User Interface\\
+SRS & Software Requirements Specification\\
+\bottomrule
+\end{tabularx}
+
+\end{table}
+
+\begin{table}[!htbp]
+\caption{\textbf{Table of Definitions}} \label{Table}
+
+\begin{tabularx}{\textwidth}{p{4cm}X}
+\toprule
+\textbf{Term} & \textbf{Definition}\\
+\midrule
+Static Testing & Testing that does not involve program execution.\\
+Dynamic Testing & Testing that requires program execution.\\
+Manual Testing & Testing that is conducted by people by hand.\\
+Automated Testing & Testing that is done automatically by software.\\
+Structural Testing & Testing that is derived from the structure of the software system.\\
+Functional Testing & Testing that is derived from the functionality of the software system.\\
+Equivalence Testing & Testing that partitions possible inputs based on their behaviour and tests them together.\\
+\bottomrule
+\end{tabularx}
+
+\end{table}	
+
+\subsection{Overview of Document}
+
+The SupremeChess project plans to re-implement the open source project \href{https://github.com/techwithtim/Online-Chess-Game}{``Online-Chess-Game''}. The software will allow users to play chess with anyone on a web server. All software requirements of the project are stated in the Software Requirements Document in the SRS folder of the 3XA3-Group2-Chess Git Repository.
+
+\section{Plan}
+	
+\subsection{Software Description}
+
+The software will allow a user to play a game of chess against either another user online, or against an AI opponent. The implementation will be completed in JavaScript using Node.js and React.
+
+\subsection{Test Team}
+
+The individuals responsible for testing the system are Jonathan Cels, Rupinder Nagra, and Pesara Amarasekera.
+
+\subsection{Automated Testing Approach}
+
+Automated testing will be done using the software testing tools specified below, Enzyme and Mocha. The team will write unit tests for React components using Enzyme, and write the test suite using Mocha. Further detail on the unit testing strategy can be found in section 6, the Unit Testing Plan. The test suite will be run after each major commit to the master branch, and will be run before and after merging any branches to ensure that nothing is broken on addition of new components.
+
+\subsection{Testing Tools}
+\begin{enumerate}
+    \item \textbf{Enzyme}:
+        Enzyme will be the tool used to test React components.
+    \item \textbf{Mocha}:
+        Mocha will be used to write the automated test suite.
+\end{enumerate}
+
+\subsection{Testing Schedule}
+		
+A Gantt chart detailing the project and testing schedule can be found at the \href{https://gitlab.cas.mcmaster.ca/celsj/3xa3-group2-chess/-/blob/master/ProjectSchedule/3XA3_ProjectSchedule.pdf}{following link}. 
+
+\section{System Test Description}
+	
+\subsection{Tests for Functional Requirements}
+
+%Select Opponent
+\subsubsection{Select Opponent}
+		
+    \paragraph{Connection to server}
+    
+        \begin{enumerate}
+        
+        \item{T-FR1-1\\}
+        
+            Type: Manual, Dynamic, Structural.
+            					
+            Initial State: A user is attempting to connect to the web server.
+            					
+            Input: Valid connection request.
+            					
+            Output: The user is presented with the options of playing against an AI or online player. A successful connection will verify that the connection was made with a console output message.
+            					
+            How test will be performed: A team member will manually attempt to connect to the server and will ensure that the server verifies the connection in the console.
+        
+        \item{T-FR1-2\\}
+        
+            Type: Manual, Dynamic, Structural.
+            					
+            Initial State: A user is attempting to connect to the web server.
+            					
+            Input: Invalid connection request.
+            					
+            Output: An exception is generated, the user is presented with a connection error, and no connection is made.
+            					
+            How test will be performed: A team member will manually attempt to connect to the server while the server is not running and will verify that an error is displayed and an exception occurs.
+        
+        \end{enumerate}
+    
+    \paragraph{Select AI opponent or online player}
+        
+        \begin{enumerate}
+        
+        \item{T-FR2-1\\}
+        
+            Type: Manual, Static, Structural.
+            					
+            Initial State: A user is presented with the options of playing against an AI opponent or online player.
+            					
+            Input: User selects an online player.
+            					
+            Output: An invite link visible to the player.
+            					
+            How test will be performed: A team member will choose to play against an online player and verify that an invite link is generated.
+        
+        \item{T-FR2-2\\}
+        
+            Type: Functional, Dynamic, Manual.
+            					
+            Initial State: A user is presented with the options of playing against an AI opponent or online player.
+            					
+            Input: User selects an AI opponent.
+            					
+            Output: The system attempts to start a game against an AI opponent.
+            					
+            How test will be performed: A team member will choose to play against an AI opponent and verify that the system attempts to start a game.
+                
+        \end{enumerate}
+
+%Play Against Live Opponent
+\subsubsection{Play Against Live Opponent}
+
+    \paragraph{Pair with Invite Link}
+
+        \begin{enumerate}
+
+        \item{T-FR3-1\\}
+
+            Type: Manual, Dynamic, Structural.
+            					
+            Initial State: A user has connected to the web server.
+            					
+            Input: User chooses the option of playing against a live opponent and inputs a valid invite link.
+            					
+            Output: A successful invitation will grant access for the player to join the game and play. The system will verify that access was granted with a console output message.
+            					
+            How test will be performed: Two members of the team will manually attempt to be granted access to play one another. 
+
+        \item{T-FR3-2\\}
+
+            Type: Manual, Dynamic, Structural.
+            					
+            Initial State: A user has connected to the web server.
+            					
+            Input: User chooses the option of playing against a live opponent and inputs an invalid invite link.
+            					
+            Output: An unsuccessful invitation will not provide access for a player to join a game and play against another opponent. The system will show that access was not granted with an exception.
+            					
+            How test will be performed: Two members of the team will manually attempt to be granted access to play with one another, but fails. 
+
+        \end{enumerate}
+
+    \paragraph{Options while Awaiting Player}
+
+        \begin{enumerate}
+
+        \item{T-FR4-1\\}
+
+            Type: Manual, Functional, Dynamic.
+            					
+            Initial State: The user has a valid invite link and is awaiting player.
+            					
+            Input: The user chooses to quit the game.
+            					
+            Output: The invite link will expire the player will no longer be awaiting a player.
+            					
+            How test will be performed: Two members of the team will manually attempt to play with one another, but one member quits the game while awaiting the other player to join. 
+        
+        \item{T-FR4-2\\}
+            
+            Type: Manual, Functional, Dynamic.
+            					
+            Initial State: The user has a valid invite link and is awaiting player.
+            					
+            Input: The user chooses to play against the AI.
+            					
+            Output: The invite link will expire and the system will now set up the game to play against the AI.
+            					
+            How test will be performed: Two members of the team will manually attempt to play with one another, but one member will choose to play against the AI while awaiting the other player to join. 
+        
+        \end{enumerate}
+
+    \paragraph{Terminate Game}
+    
+        \begin{enumerate}
+        
+        \item{T-FR5-1\\}
+        
+            Type: Manual, Functional, Dynamic.
+            					
+            Initial State: The user has a valid invite link and is awaiting player.
+            					
+            Input: The user chooses to quit the game.
+            					
+            Output: The current game shall be terminated.
+            					
+            How test will be performed: Two members of the team will manually attempt to play with one another, but one member leaves the game while awaiting the other player to join. 
+        
+        \end{enumerate}
+
+    \paragraph{User Selects the Quit Option}
+    
+        \begin{enumerate}
+        
+            \item{T-FR6-1\\}
+                
+                Type: Manual, Functional, Dynamic.
+                					
+                Initial State: The user has a valid invite link and is awaiting player.
+                					
+                Input: The user chooses to quit the game.
+                					
+                Output: The current game shall be terminated.
+                					
+                How test will be performed: Two members of the team will manually attempt to play with one another, but one member leaves the game while awaiting the other player to join. 
+        
+        \end{enumerate}
+
+    \paragraph{User Selects the Play Against AI Option}
+
+        \begin{enumerate}
+
+        \item{T-FR7-1\\}
+
+            Type: Manual, Functional, Dynamic.
+            					
+            Initial State: The user has a valid invite link and is awaiting player.
+            					
+            Input: The user chooses to play against the AI.
+            					
+            Output: The invite link will expire and the system will now set up the game to play against the AI.
+            					
+            How test will be performed: Two members of the team will manually attempt to play with one another, but one member will choose to play against the AI while awaiting the other player to join. 
+
+        \end{enumerate}
+            
+    \paragraph{Present Loading Screen}
+
+        \begin{enumerate}
+
+        \item{T-FR8-1\\}
+
+            Type: Manual, Functional, Dynamic.
+            					
+            Initial State: Both users have joined the invite link.
+            					
+            Input: The users join the game and the loading screen is initialized.
+            					
+            Output: The system presents the players a view of the board.
+            					
+            How test will be performed: Two members of the team will join a game, and system shall check if the loading screen has been initialized.
+
+        \end{enumerate}
+            
+    \paragraph{Call ``Start Game'' use case}
+
+        \begin{enumerate}
+
+        \item{T-FR9-1\\}
+
+            Type: Manual, Functional, Dynamic.
+            					
+            Initial State: The system presents the players a view of the board.
+            					
+            Input: The game will begin to call the ``Start Game'' use case.
+            					
+            Output: The system initializes the game after calling the ``Start Game'' use case, and both players may now play.
+            					
+            How test will be performed: Two members of the team will join a game, and system shall check if the ``Start Game'' use case has been called.
+
+        \end{enumerate}
+
+    \paragraph{Accept or Reject Game}
+
+        \begin{enumerate}
+
+        \item{T-FR10-1\\}
+
+            Type: Manual, Functional, Dynamic.
+            					
+            Initial State: The game calls the ``Start Game'' use case.
+            					
+            Input: The current server information and concurrent users are checked in the ``Start Game'' use case.
+            					
+            Output: The system shall reject
+            the request and return to the ``Select Opponent” use case.
+
+            How test will be performed: Two members of the team will join a game, and system shall check if the ``Start Game'' use case successfully completes with less and more than 15 concurrent users.
+
+        \end{enumerate}
+
+%Play Against AI
+\subsubsection{Play Against AI}
+
+    \paragraph{Call ``Start Game'' use case}
+
+        \begin{enumerate}
+
+        \item{T-FR11-1\\}
+
+            Type: Manual, Functional, Dynamic.
+            					
+            Initial State: The user is faced with the option of playing a Live Opponent or an AI.
+            					
+            Input: The user selects to ``Play Against AI''.
+            					
+            Output: The system initializes the game by calling the ``Start Game'' use case.
+            					
+            How test will be performed: One member of the team will join a game, and system shall check if the ``Start Game'' use case has been called.
+
+        \end{enumerate}
+
+    \paragraph{No Chat Option}
+
+        \begin{enumerate}
+
+        \item{T-FR12-1\\}
+
+            Type: Manual, Functional, Dynamic.
+            					
+            Initial State: The game calls the ``Start Game'' use case.
+            					
+            Input: The game between the player and AI has begun.
+            					
+            Output: The system shall restrict the chat window if the player is playing against the AI.
+
+            How test will be performed: One member of the team will join a game, and system shall check if the user is able to talk to the AI player.
+
+        \end{enumerate}
+
+    \paragraph{Accept or Reject Game}
+
+        \begin{enumerate}
+
+        \item{T-FR13-1\\}
+
+            Type: Manual, Functional, Dynamic.
+            					
+            Initial State: The game calls the ``Start Game'' use case.
+            					
+            Input: The current server information and concurrent users are checked in the ``Start Game'' use case.
+            					
+            Output: The system shall reject
+            the request and return to the “Select Opponent” use case.
+
+            How test will be performed: Two members of the team will join a game, and system shall check if the ``Start Game'' use case successfully completes with less and more than 15 concurrent users.
+
+        \end{enumerate}
+
+
+%Start Game
+\subsubsection{Start Game}
+
+    \paragraph{User Chooses ``AI''}
+
+        \begin{enumerate}
+
+        \item{T-FR14-1\\}
+
+            Type: Manual, Functional, Dynamic.
+            					
+            Initial State: The user is faced with the option of playing a Live Opponent or an AI.
+            					
+            Input: The user chooses ``AI'' from the ``Select Opponent'' use case
+            					
+            Output: The server shall connect to an AI
+            player and arbitrarily assign black or white to each player.
+
+            How test will be performed: One member of the team will join a game with an ``AI'' and check if a game is successfully started.
+
+        \end{enumerate}
+
+    \paragraph{User Chooses ``Online Player''}
+
+        \begin{enumerate}
+
+        \item{T-FR15-1\\}
+
+            Type: Manual, Functional, Dynamic.
+            					
+            Initial State: The user is faced with the option of playing a Live Opponent or an AI.
+            					
+            Input: The user chooses ``Online Player'' from the “Select Opponent” use case.
+            					
+            Output: A shareable link shall be
+            created with which a player can join the server. If a player joins, each player shall be arbitrarily
+            assigned black or white.
+
+            How test will be performed: One member of the team will join a game with a ``Online Player'' and check if a game is successfully started.
+
+        \end{enumerate}
+            
+    \paragraph{Initialize Board}
+
+        \begin{enumerate}
+
+        \item{T-FR16-1\\}
+
+            Type: Manual, Functional, Dynamic.
+            					
+            Initial State: The user is faced with the option of playing a Live Opponent or an AI.
+            					
+            Input: The user chooses ``AI'' or ``Online Player'' from the ``Select Opponent'' use case.
+            					
+            Output: The board and pieces shall be initialized, and the orientation of the board will be determined
+            based on the colour of the users pieces.
+
+            How test will be performed: One member of the team will start a game and check to see if the board has been appropriately initialized.
+
+        \end{enumerate}
+
+    \paragraph{Initialize Timer}
+
+        \begin{enumerate}
+
+        \item{T-FR17-1\\}
+
+            Type: Manual, Functional, Dynamic.
+            					
+            Initial State: The user chooses ``AI'' or ``Online Player'' from the ``Select Opponent'' use case.
+            					
+            Input: The board and pieces have been initialized.
+            					
+            Output: The timer shall be initialized with a countdown of 10 minutes for each player, and the game control is dependent on the player with the white pieces.
+
+            How test will be performed: One member of the team will start a game and check to see if the timer has been appropriately initialized.
+
+        \end{enumerate}
+
+    \paragraph{Give Control to White Pieces}
+
+        \begin{enumerate}
+
+        \item{T-FR18-1\\}
+
+            Type: Manual, Functional, Dynamic.
+            					
+            Initial State: The board and pieces have been initialized.
+            					
+            Input: The timers have been initialized.
+            					
+            Output: The system shall give exclusive control to the player with the white pieces and start that player’s timer.
+
+            How test will be performed: One member of the team will start a game and check to see if white pieces have been given control and their time has begun.
+
+        \end{enumerate}
+
+%Make Move
+\subsubsection{Make Move}
+
+    \paragraph{Await Opponent Move}
+
+        \begin{enumerate}
+
+        \item{T-FR19-1\\}
+
+            Type: Manual, Functional, Dynamic.
+            					
+            Initial State: The board and pieces have been initialized.
+            					
+            Input: The system has given exclusive control to the player with the white pieces and has started that player’s timer.
+            					
+            Output: The system shall not allow the player to make a move until their opponent has played a move,
+            with the exception of the first move of the game.
+
+            How test will be performed: One member of the team will start a game and check to see if they are allowed to make a move before their opponent if they have the black pieces.
+
+        \end{enumerate}
+
+    \paragraph{Move Piece}
+
+        \begin{enumerate}
+
+        \item{T-FR20-1\\}
+
+            Type: Manual, Functional, Dynamic.
+            					
+            Initial State: The system has given exclusive control to the player with the white pieces and has started that player’s timer.
+            					
+            Input: The system shall not allow the player to make a move until their opponent has played a move,
+            with the exception of the first move of the game.
+            					
+            Output: If a player clicks a piece, holds the mouse down, drags the piece to a square, and releases the mouse, the system shall register an attempted move.
+
+            How test will be performed: One member of the team will start a game and check to see if they are allowed to drag and drop a piece to make a move on the board.
+
+        \end{enumerate}
+
+    \paragraph{Check if the Move is Legal}
+
+        \begin{enumerate}
+
+        \item{T-FR21-1\\}
+
+            Type: Manual, Functional, Dynamic.
+            					
+            Initial State: The system shall not allow the player to make a move until their opponent has played a move, with the exception of the first move of the game.
+            					
+            Input: If a player clicks a piece, holds the mouse down, drags the piece to a square, and releases the mouse, the system shall register an attempted move.
+            					
+            Output: The application shall confirm that the move is legal as defined by the rules of the game.
+
+            How test will be performed: One member of the team will start a game and check to see if they the ``Check Legal Move'' use case is triggered after moving a piece.
+
+        \end{enumerate}
+
+    \paragraph{The Move is Legal}
+
+            \begin{enumerate}
+
+            \item{T-FR22\\}
+
+                Type: Manual, Functional, Dynamic.
+                					
+                Initial State: If a player clicks a piece, holds the mouse down, drags the piece to a square, and releases the mouse, the system shall register an attempted move.
+                					
+                Input: The application shall confirm that the move is legal as defined by the rules of the game.
+                					
+                Output: If the attempted move is legal, the move shall be sent to the server and the opposite player shall be given control.
+
+                How test will be performed: One member of the team will start a game and check to see if they the ``Check Legal Move'' use case is triggered after moving a piece, and that the opposite player is given control.
+
+            \end{enumerate}
+
+    \paragraph{The Move is Not Legal}
+
+        \begin{enumerate}
+
+        \item{T-FR23-1\\}
+
+            Type: Manual, Functional, Dynamic.
+            					
+            Initial State: If a player clicks a piece, holds the mouse down, drags the piece to a square, and releases the mouse, the system shall register an attempted move.
+            					
+            Input: The application shall confirm that the move is legal as defined by the rules of the game.
+            					
+            Output: If the attempted move is not legal, the move shall not be sent to the server and the player shall retain control.
+
+            How test will be performed: One member of the team will start a game and check to see if they the ``Check Legal Move'' use case is triggered after moving a piece, and that the current player retains control.
+
+        \end{enumerate}
+
+    \paragraph{Check ``Terminate Game'' use case}
+
+        \begin{enumerate}
+
+        \item{T-FR24-1\\}
+
+            Type: Manual, Functional, Dynamic.
+            					
+            Initial State: If a player clicks a piece, holds the mouse down, drags the piece to a square, and releases the mouse, the system shall register an attempted move.
+            					
+            Input: The application shall confirm that the move is legal as defined by the rules of the game.
+            					
+            Output: The ‘Terminate Game‘ use case shall be checked after every move is made.
+
+            How test will be performed: One member of the team will start a game and check to see if they the ``Terminate Game'' use case is triggered after moving a piece.
+
+        \end{enumerate}
+
+    \paragraph{Resume Game Timer}
+
+        \begin{enumerate}
+
+        \item{T-FR25-1\\}
+
+            Type: Manual, Functional, Dynamic.
+            					
+            Initial State: The application shall confirm that the move is legal as defined by the rules of the game.
+            					
+            Input: The ``Terminate Game'' use case shall be checked after every move is made.
+            					
+            Output: If the game is not terminated, the timer for the other player shall resume.
+
+            How test will be performed: One member of the team will start a game and check to see if they the ``Terminate Game'' use case is triggered after moving a piece. The game will resume if the game is not terminated.
+
+        \end{enumerate}
+            
+%Check Legal Move
+\subsubsection{Check Legal Move}
+		
+    \paragraph{Verify move}
+    
+        \begin{enumerate}
+        
+            \item{T-FR26-1\\}
+            
+                Type: Automated, Dynamic.
+                					
+                Initial State: A user has made a move.
+                					
+                Input: A valid move based on the current game state.
+                					
+                Output: A positive signal will be returned to signify that the game state should be updated to reflect the input move.
+                					
+                How test will be performed: The system will input a valid move into the check legal move module and verify that a positive signal is returned.
+            
+            \item{T-FR26-2\\}
+            
+                Type: Automated, Dynamic
+                					
+                Initial State: A user has made a move.
+                					
+                Input: An invalid move based on the current game state.
+                					
+                Output: A negative signal will be returned to signify that the game state should not be updated.
+                					
+                How test will be performed: The system will input an invalid move into the check legal move module and verify that a negative signal is returned.
+        
+        \end{enumerate}
+    
+    \paragraph{Update Board State}
+
+        \begin{enumerate}
+
+        \item{T-FR27-1\\}
+
+            Type: Manual, Functional, Dynamic.
+            					
+            Initial State: A move has been made and a signal has been passed returned.
+            					
+            Input: An inputted move and a positive or negative signal representing if the move was legal.
+            					
+            Output: An update to the board state data representing a legal move made.
+
+            How test will be performed: The system will input a valid move and verify that the same move is reflected on the board state.
+
+        \end{enumerate}
+        
+        \begin{enumerate}
+
+        \item{T-FR27-2\\}
+
+            Type: Manual, Functional, Dynamic.
+            					
+            Initial State: A move has been made and a signal has been passed returned.
+            					
+            Input: An inputted move and a positive or negative signal representing if the move was legal.
+            					
+            Output: An update to the board state data representing a legal move made.
+
+            How test will be performed: The system will input an invalid move and verify that the same move is not reflected on the board state.
+
+        \end{enumerate}
+    
+    \paragraph{Lock Player Control}
+
+        \begin{enumerate}
+
+        \item{T-FR28-1\\}
+
+            Type: Automated, Functional, Dynamic.
+            					
+            Initial State: A legal move has been made and the board state has been updated.
+            					
+            Input: Both players attempt to make a move simultaneously.
+            					
+            Output: Only one move will occur.
+
+            How test will be performed: The system will input a valid move from both players simultaneously and verify that only the move of the player with control is reflected on the board state.
+
+        \end{enumerate}
+
+%Initiate Chat
+\subsubsection{Initiate Chat}
+		
+    \paragraph{Present Start Chat Option}
+    
+        \begin{enumerate}
+        
+            \item{T-FR29-1\\}
+            
+                Type: Manual, Functional, Dynamic.
+                					
+                Initial State: A game has been started between two players.
+                					
+                Input: None.
+                					
+                Output: An option to start chat is presented to the players.
+                					
+                How test will be performed: Two team members will start a game with each other and verify that they both have an option to start chat.
+        
+        \end{enumerate}
+    
+    \paragraph{Open Chat Window}
+
+        \begin{enumerate}
+
+        \item{T-FR30-1\\}
+
+            Type: Manual, Dynamic.
+            					
+            Initial State: A game has been started between two players.
+            					
+            Input: One player has selected the start chat option.
+            					
+            Output: A chat window is opened for both players.
+
+            How test will be performed: Two team members will start a game with each other and verify that one of them starting the chat opens a chat window for both players.
+
+        \end{enumerate}
+        
+    \paragraph{Open Chat Window Simultaneously}
+
+        \begin{enumerate}
+
+        \item{T-FR31-1\\}
+
+            Type: Manual, Dynamic.
+            					
+            Initial State: A game has been started between two players.
+            					
+            Input: Both players have selected the start chat option simultaneously.
+            					
+            Output: A chat window is opened for both players.
+
+            How test will be performed: Two team members will start a game with each other and verify that both of them starting the chat simultaneously opens a chat window for both players.
+
+        \end{enumerate}
+    
+    \paragraph{Present End Chat Option}
+
+        \begin{enumerate}
+
+        \item{T-FR32-1\\}
+
+            Type: Manual, Functional, Dynamic.
+            					
+            Initial State: A chat has been started between two players.
+            					
+            Input: The chat window has been opened between both players.
+            					
+            Output: An option to end chat is presented to the players.
+
+            How test will be performed: Two team members will start a game and chat with each other and verify that they both have an option to end chat.
+
+        \end{enumerate}
+        
+%End Chat
+\subsubsection{End Chat}
+		
+    \paragraph{Present End Chat Option}
+
+        \begin{enumerate}
+
+        \item{T-FR33-1\\}
+
+            Type: Manual, Functional, Dynamic.
+            					
+            Initial State: A chat has been started between two players.
+            					
+            Input: The chat window has been opened between both players.
+            					
+            Output: An option to end chat is presented to the players.
+
+            How test will be performed: Two team members will start a game and chat with each other and verify that they both have an option to end chat.
+
+        \end{enumerate}
+    
+    \paragraph{Close Chat Window}
+
+        \begin{enumerate}
+
+        \item{T-FR34-1\\}
+
+            Type: Manual, Functional.
+            					
+            Initial State: A chat has been started between two players.
+            					
+            Input: One player has selected the end chat option.
+            					
+            Output: The chat window has disappeared for both players and an option to start chat is presented to the players.
+
+            How test will be performed: Two team members will start a chat with each other, one will end the chat, and they will verify that the chat window has disappeared and both players have an option to start chat.
+
+        \end{enumerate}
+        
+    \paragraph{Close Chat Window Simultaneously}
+
+        \begin{enumerate}
+
+        \item{T-FR35-1\\}
+
+            Type: Manual, Functional.
+            					
+            Initial State: A chat has been started between two players.
+            					
+            Input: Both players have selected the end chat option simultaneously.
+            					
+            Output: The chat window has disappeared for both players and an option to start chat is presented to the players.
+
+            How test will be performed: Two team members will start a chat with each other, both will end the chat simultaneously, and they will verify that the chat window has disappeared and both players have an option to start chat.
+
+        \end{enumerate}
+    
+    \paragraph{Clear Chat Data}
+
+        \begin{enumerate}
+
+        \item{T-FR36-1\\}
+
+            Type: Manual, Functional, Dynamic.
+            					
+            Initial State: A chat has been ended between two players.
+            					
+            Input: The chat window has been closed between both players.
+            					
+            Output: A new chat window will have no previous chat data.
+
+            How test will be performed: Two team members will start a chat with each other, type some message in the chat, and then end the chat. One will then start the chat again and verify that no previous messages are in the chat window for either player.
+
+        \end{enumerate}
+
+%End Chat
+\subsubsection{Start Timers}
+		
+    \paragraph{Start Timer On Game Start}
+
+        \begin{enumerate}
+
+        \item{T-FR37-1\\}
+
+            Type: Manual, Functional, Dynamic, Structural.
+            					
+            Initial State: A game has been started between two players.
+            					
+            Input: None.
+            					
+            Output: One timer has been initialized for each player. The timer for the player with the white pieces has started counting down.
+
+            How test will be performed: Two team members will start a game and verify that they each have a timer and that the timer for the player with the white pieces has started counting down.
+
+        \end{enumerate}
+    
+    \paragraph{Initialize Timer Values}
+
+        \begin{enumerate}
+
+        \item{T-FR38-1\\}
+
+            Type: Automated, Functional, Dynamic.
+            					
+            Initial State: A game has been started between two players.
+            					
+            Input: None.
+            					
+            Output: One timer has been initialized for each player with 10:00 minutes of total time.
+
+            How test will be performed: Two team members will start a game and verify that they each have a timer with 10:00 minutes of total time.
+
+        \end{enumerate}
+        
+    \paragraph{Pause and Resume Timers}
+
+        \begin{enumerate}
+
+        \item{T-FR39-1\\}
+
+            Type: Manual, Functional, Dynamic.
+            					
+            Initial State: A game has been started between two players.
+            					
+            Input: Both players input valid moves in valid sequence.
+            					
+            Output: After each valid move, the player who made the move will have their timer paused and the other timer will resume.
+
+            How test will be performed: Two team members will start a game with each other and make valid moves in a valid sequence. They will verify that the timers are pausing and resuming after each valid move.
+
+        \end{enumerate}
+
+        \begin{enumerate}
+
+        \item{T-FR39-2\\}
+
+            Type: Manual, Functional, Dynamic.
+            					
+            Initial State: A game has been started between two players.
+            					
+            Input: Both players input invalid moves in valid sequence.
+            					
+            Output: After each invalid move, the player who made the move will still have their timer going, and the other player will still have their timer paused.
+
+            How test will be performed: Two team members will start a game with each other and make invalid moves. They will verify that the timers are not pausing and resuming after any invalid moves.
+
+        \end{enumerate}
+        
+%Terminate Game
+\subsubsection{Terminate Game}
+
+    \paragraph{Establish System Checks}
+
+            \begin{enumerate}
+
+            \item{T-FR40-1\\}
+
+                Type: Manual, Functional, Dynamic.
+                					
+                Initial State: The ‘Terminate Game‘ use case shall be checked after every move is made.
+                					
+                Input: The system will have checks to establish if the game shall be terminated with the appropriate use case possibilities. 
+                					
+                Output: These checks include the Checkmate, Stalemate, Draw, Resignation, and Timeout use cases.
+
+                How test will be performed: One member of the team will start a game and check to see if they the ``Terminate Game'' use case is triggered.
+
+            \end{enumerate}
+
+%Checkmate
+\subsubsection{Checkmate}
+
+    \paragraph{Check if a Checkmate has occurred}
+
+            \begin{enumerate}
+
+            \item{T-FR41-1\\}
+
+                Type: Manual, Functional, Dynamic.
+                					
+                Initial State: The ‘Terminate Game‘ use case shall be checked after every move is made.
+                					
+                Input: The system shall determine if the opposing player is in ‘Check‘ (state where the King is under attack) and has no legal moves for the King.
+                					
+                Output: If true, this shall result in a victory with ‘Checkmate‘ for the current player.
+
+                How test will be performed: One member of the team will play a game and check to see if they have achieved a 'Checkmate'.
+
+            \end{enumerate}
+
+%Stalemate
+\subsubsection{Stalemate}
+
+    \paragraph{Check if a Stalemate has occurred}
+
+            \begin{enumerate}
+
+            \item{T-FR42-1\\}
+
+                Type: Manual, Functional, Dynamic.
+                					
+                Initial State: The ‘Terminate Game‘ use case shall be checked after every move is made.
+                					
+                Input: The system shall determine if the opponent player is not in ‘Check‘ and has also no legal moves.
+                					
+                Output: If true, this shall result in a draw with ‘Stalemate‘ for both players.
+
+                How test will be performed: One member of the team will play a game and check to see if they have achieved a 'Stalemate'.
+
+            \end{enumerate}
+
+%Draw
+\subsubsection{Draw}
+
+    \paragraph{Check if a Draw has occurred}
+
+            \begin{enumerate}
+
+            \item{T-FR43-1\\}
+
+                Type: Manual, Functional, Dynamic.
+                					
+                Initial State: The ‘Terminate Game‘ use case shall be checked after every move is made.
+                					
+                Input: The system shall present the user with the ‘Offer Draw‘ button to offer a draw to the opponent.
+                					
+                Output: If true, the draw must be accepted to end the game.
+
+                How test will be performed: One member of the team will play a game and check to see if they have achieved a 'Draw'.
+
+            \end{enumerate}
+
+%Resignation
+\subsubsection{Resignation}
+
+    \paragraph{Check if a Resignation has occurred}
+
+            \begin{enumerate}
+
+            \item{T-FR44-1\\}
+
+                Type: Manual, Functional, Dynamic.
+                					
+                Initial State: The ‘Terminate Game‘ use case shall be checked after every move is made.
+                					
+                Input: The system shall present the user with a decision to end the game with the ‘Resign‘ button.
+                					
+                Output: If true, this shall immediately end the game.
+
+                How test will be performed: One member of the team will play a game and check to see if they have achieved a 'Resignation'.
+
+            \end{enumerate}
+
+%Timeout
+\subsubsection{Timeout}
+
+    \paragraph{Check if a Timeout has occurred}
+
+            \begin{enumerate}
+
+            \item{T-FR45-1\\}
+
+                Type: Manual, Functional, Dynamic.
+                					
+                Initial State: The ‘Terminate Game‘ use case shall be checked after every move is made.
+                					
+                Input: The system shall determine if the user is out of time.
+                					
+                Output: If true, this causes that player to lose the game.
+
+                How test will be performed: One member of the team will play a game and check to see if they have achieved a 'Timeout'.
+
+            \end{enumerate}
+
+\subsection{Tests for Nonfunctional Requirements}
+
+\subsubsection{Usability and Humanity}
+		
+    \paragraph{Ease of Use}
+    
+        \begin{enumerate}
+        
+            \item{T-UH2\\}
+            
+                Type: Manual, Functional(Usability), Dynamic
+                					
+                Initial State: The game is started and presented to a ten 10 year old children.
+                
+                Input/Condition: The children are presented with the interface to play the game.
+                The children should not have played the game previously before-hand.
+                					
+                Output/Result: Around 90\% of the test subjects should be able to play a move within five minutes of starting the presented program without any assistance.
+                					
+                How test will be performed: The test will be performed by presenting the game to random 10-year-olds in the populace.
+            					
+            \item{T-UH5\\}
+            
+                Type: Functional(Learning), Dynamic, Manual
+                					
+                Initial State: The program is started and presented to a panel of 10 year old children.
+                					
+                Input: The children are presented with the interface to play the game.
+                The children should not have played the game previously or interacted with the system in any way.
+                					
+                Output/Result: At least 90\% of the test subjects should be able to start a game and play a move within five minutes of starting the presented program without any assistance.
+        
+                How test will be performed: The test will be performed by presenting the game to a selected panel of 10-year-olds in the populace. They will be presented with the system on the main page and will be asked to start playing. A team member will measure the time between each person being presented with the system and that person making their first move.
+        
+        \end{enumerate}
+\subsubsection{Performance Requirements}
+
+    \paragraph{System Response Time}
+
+        \begin{enumerate}
+    
+            \item{T-PR1-1\\}
+            
+                Type: Functional, Dynamic, Automated
+                					
+                Initial State: A user is presented with a game that has started.
+                					
+                Input: The user will try to drag and drop a piece in place. An
+                internal clock specifically for testing will start every time a user selects a piece and ends when the visual display updates.
+                					
+                Output: The output time measured, on average (taking the mean and mode), should be less than 0.25 seconds
+                					
+                How test will be performed: Games will be played by various test users, and measurements will be taken from all of them (at least 10 games). These times will be averaged by a program, which will verify that the average is less than 0.25 seconds.
+            
+            \item{T-PR2-1\\}
+            
+                Type: Functional, Dynamic, Automatic
+                					
+                Initial State: A user is presented with a game that has started.
+                					
+                Input: The user will try to drag and drop a piece in place. A timer, an
+                internal clock specifically for testing, will start every time a user starts a motion and will end when the visual display updates.
+                					
+                Output: The maximum response time measured (out of all trials) should be less than 2 seconds
+                					
+                How test will be performed: Games will be played by various test users, and measurements will be taken from all of them (at least 10 games) and the maximum response time will be taken from the data points. The system will then run through every response time and verify that they are all less than 2 seconds.
+            
+            \item{T-PR3-1\\}
+            
+                Type: Functional, Dynamic, Automatic
+                		
+                Initial State: A user is presented with a game that has started.
+        
+                Input: The user will try to drag and drop a piece in place. An
+                internal clock specifically for testing will start every time a user selects a piece and will end when the opposing player's turn timer resumes.
+                					
+                Output: The maximum response time measured (out of all trials) should be less than 0.1 seconds.
+                					
+                How test will be performed: Games will be played by various test users, and measurements will be taken from all of them (at least 10 games) and the maximum response time will be taken from the data points. The system will then run through every response time and verify that they are all less than 0.1 seconds.
+                
+        \end{enumerate}
+        
+    \paragraph{Ram Usage}
+        
+        \begin{enumerate}
+            \item{T-PR8-1\\}
+            
+                Type: Functional, Dynamic, Manual
+                					
+                Initial State: A user is presented with a game that has started. A program, such as Windows Task Manager, will run on the background to help take measurements.
+            					
+                Input: Multiple games (at least 10) will be played by various users on the same computer.
+                					
+                Output: The amount of RAM consumed when the game is running should be checked to be less than 2GB.
+                					
+                How test will be performed: A team member will observe the program used for bench marking while a user uses the program and will verify that the RAM usage never exceeds 2GB.
+            
+        \end{enumerate}
+
+\subsection{Traceability Between Test Cases and Requirements}
+
+Requirement-driven test cases were named with the following naming convention: T-Req\#-Test\#. T stands for test, Req\# represents a specific requirement, such as FR1 or UH2, and Test\# represents the numbering for multiple tests on the same requirement. Eg. T-FR1-2 represents the second test for functional requirement with ID FR2.
+
+\subsubsection{Traceability Matrix}
+\begin{center}
+    \begin{longtable}{ |c|c|c| } 
+        \caption{\textbf{Traceability Matrix}} \label{tab:long}\\
+        \hline
+        \multicolumn{1}{|c|}{\textbf{Requirement ID}} & \multicolumn{1}{c|}{\textbf{Description}} & \multicolumn{1}{c|}{\textbf{Test ID}} \\ \hline 
+        \endfirsthead
+        
+        \hline
+        FR1     & Server Connection                     & T-FR1-1 \\ 
+        FR1     & Server Connection                     & T-FR1-2 \\ 
+        \hline
+        FR2     & Select AI Opponent or Online Player   & T-FR2-1 \\ 
+        FR2     & Select AI Opponent or Online Player   & T-FR2-2 \\ 
+        \hline
+        FR3     & Pair with Invite Link                 & T-FR3-1 \\ 
+        FR3     & Pair with Invite Link                 & T-FR3-2 \\ 
+        \hline
+        FR4     & Options while Awaiting Player         & T-FR4-1 \\ 
+        FR4     & Options while Awaiting Player         & T-FR4-2 \\ 
+        \hline
+        FR5     & Terminate Game                        & T-FR5-1 \\ 
+        \hline
+        FR6     & Selects Quit Option                   & T-FR6-1 \\ 
+        \hline
+        FR7     & Selects AI Option                     & T-FR7-1 \\ 
+        \hline
+        FR8     & Present Loading Screen                & T-FR8-1 \\ 
+        \hline
+        FR9     & Call Start Game                       & T-FR9-1 \\ 
+        \hline
+        FR10    & Accept or Reject Game                 & T-FR10-1 \\ 
+        \hline
+        FR11    & Call Start Game                       & T-FR11-1 \\ 
+        \hline
+        FR12    & No Chat Option                        & T-FR12-1 \\ 
+        \hline
+        FR13    & Accept or Reject Game                 & T-FR13-1 \\ 
+        \hline
+        FR14    & User Chooses AI Opponent              & T-FR14-1 \\ 
+        \hline
+        FR15    & User Chooses Online Player            & T-FR15-1 \\ 
+        \hline
+        FR16    & Initialize Board                      & T-FR16-1 \\ 
+        \hline
+        FR17    & Initialize Timer                      & T-FR17-1 \\ 
+        \hline
+        FR18    & Give Control to White Pieces          & T-FR18-1 \\ 
+        \hline
+        FR19    & Await Opponent Move                   & T-FR19-1 \\ 
+        \hline
+        FR20    & Move Piece                            & T-FR20-1 \\ 
+        \hline
+        FR21    & Check if Move is Legal                & T-FR21-1 \\ 
+        \hline
+        FR22    & Move is Legal                         & T-FR22-1 \\ 
+        \hline
+        FR23    & Move is Not Legal                     & T-FR23-1 \\ 
+        \hline
+        FR24    & Check terminate game                  & T-FR24-1 \\ 
+        \hline
+        FR25    & Resume game timer                     & T-FR25-1 \\ 
+        \hline
+        FR26    & Verify move                           & T-FR26-1 \\ 
+        \hline
+        FR27    & Update Board State                    & T-FR27-1 \\ 
+        FR27    & Update Board State                    & T-FR27-2 \\ 
+        \hline
+        FR28    & Lock Player Control                   & T-FR28-1 \\ 
+        \hline
+        FR29    & Present Start Chat Option             & T-FR29-1 \\ 
+        \hline
+        FR30    & Open Chat Window                      & T-FR30-1 \\ 
+        \hline
+        FR31    & Open Chat Window Simultaneously       & T-FR31-1 \\ 
+        \hline
+        FR32    & Present End Chat Option               & T-FR32-1 \\ 
+        \hline
+        FR33    & Present End Chat Option               & T-FR33-1 \\ 
+        \hline
+        FR34    & Close Chat Window                     & T-FR34-1 \\ 
+        \hline
+        FR35    & Close Chat Window Simultaneously      & T-FR35-1 \\ 
+        \hline
+        FR36    & Clear Chat Data                       & T-FR36-1 \\ 
+        \hline
+        FR37    & Start Timer On Game Start             & T-FR37-1 \\ 
+        \hline
+        FR38    & Initialize Timer Values               & T-FR38-1 \\ 
+        \hline
+        FR39    & Pause and Resume Timers               & T-FR39-1 \\ 
+        FR39    & Pause and Resume Timers               & T-FR39-2 \\ 
+        \hline
+        FR40    & Establish System Checks               & T-FR40-1 \\ 
+        \hline
+        FR41    & Check if a Checkmate has occurred     & T-FR41-1 \\
+        \hline
+        FR42    & Check if a Stalemate has occurred     & T-FR42-1 \\
+        \hline
+        FR43    & Check if a Draw has occurred          & T-FR43-1 \\ 
+        \hline
+        FR44    & Check if a Resignation has occurred   & T-FR44-1 \\
+        \hline
+        FR45    & Check if a Timeout has occurred       & T-FR45-1 \\
+        \hline
+        UH2     & Ease of Use                           & T-UH2-1 \\ 
+        \hline
+        UH5     & Ease of Use                           & T-UH5-1 \\ 
+        \hline
+        PR1     & System Response Time                  & T-PR1-1 \\ 
+        \hline
+        PR2     & System Response Time                  & T-PR2-1 \\ 
+        \hline
+        PR3     & System Response Time                  & T-PR3-1 \\ 
+        \hline
+        PR8     & Ram Usage                             & T-PR8-1 \\ 
+        \hline
+    \end{longtable}
+\end{center}
+\section{Tests for Proof of Concept}
+
+The testing for the proof of concept will be focused around validation of game control logic as well as functionality of other components, such as the chat feature.
+
+\subsection{Validation of Player Control}
+    \paragraph{Player Control}
+        \begin{enumerate}
+        
+            \item{T-PC1\\}
+            
+                Type: Functional, Dynamic, Automatic
+                					
+                Initial State: Both player boards have been initialized and the game is in play.
+                					
+                Input: The current player has the first move, or the opponent has made a move.
+                					
+                Output: The current player is given complete control to the board, and can choose to make any legal move they want. The opponent may not make a move during this period.
+                					
+                How test will be performed: The system will make the first move for the player with the white pieces. The test is deemed successful if the player is able to do so.
+
+            \item{T-PC2\\}
+            
+                Type: Functional, Dynamic, Automatic
+                					
+                Initial State: Both player boards have been initialized and the game is in play.
+                					
+                Input: The opponent player is to make the first move, or the current user has made their move.
+                					
+                Output: The current player has been restricted all control to the board, and cannot make any legal move on the board.
+                					
+                How test will be performed: The system will make the opponent start with the white pieces. The test is deemed successful if the current player, with the black pieces, is not able to make a move on the board before the opponent makes a move.
+
+        \end{enumerate}
+
+\subsection{Functionality of Supporting Components}
+
+    \paragraph{Functionality of Chat Option}
+    
+        \begin{enumerate}
+        
+            \item{T-PC3\\}
+            
+                Type: Functional, Dynamic, Manual.
+                					
+                Initial State: A chat has been started between two players.
+                					
+                Input: A valid input string representing a message sent by one of the players.
+                					
+                Output: The message should be visible by both players in the chat window.
+                					
+                How test will be performed: Two team members will start a game with each other and start a chat. One player will send a message in the chat and they will verify that both players can see the message in the chat window. They will also verify that additional messages do not delete previous messages and remain ordered.
+				
+        \end{enumerate}
+
+	
+\section{Comparison to Existing Implementation}	
+
+A test that compares the system implementation against the existing implementation is as follows:
+
+\paragraph{Board State Comparison}
+    
+    \begin{enumerate}
+    
+        \item{T-EI1\\}
+        
+            Type: Functional, Dynamic, Manual.
+            					
+            Initial State: A game has been started on the system as well as on the existing implementation.
+            					
+            Input: The same set of valid moves is input into both systems.
+            					
+            Output: Both systems have the same game state response after each input.
+            					
+            How test will be performed: Two team members will start a game on the system as well as on the existing implementation. The team members will play the same moves on both systems and ensure the same response occurs on both systems.
+			
+    \end{enumerate}
+
+\begin{enumerate}
+    \item 
+\end{enumerate}
+
+\section{Unit Testing Plan}
+		
+    The Mocha \& Enzyme frameworks will be used to do unit testing for this project. Enzyme will be the utility used to for React that makes it easier to work with React. Mocha will be used to write the test suite.
+
+\subsection{Unit testing of internal functions}
+
+	To create unit tests for the internal functions of the program, the methods with return values can be tested. This process would involve using the methods by providing appropriate input values. Using the expected outputs of these methods, several unit tests will be developed for the system. Such unit tests will attempt to also generate exceptions, along with valid inputs. No stubs or drivers are necessary for testing the system. Enzyme \& Mocha both come with functionality to make imports and tests extremely easy to use. Anything that needs to be imported will already be done by the individual classes. The team goal is to achieve 80-100\% statement coverage and greater than 50\% path coverage.
+	
+\subsection{Unit testing of output files}		
+
+	To develop unit tests that will test the accuracy of our output, the system will provide various chess positions and moves, where they will be compared to the actual and the expected output. To complete this task, the chess application will present a chess position, and a method will confirm if the set of moves provided match the current chess position output. For the tests to be deemed successful, all positions should match the corresponding set of moves. The required library for performing unit testing of outputs files is \href{https://www.npmjs.com/package/chess.js}{chess.js}.
+
+\bibliographystyle{plainnat}
+
+\bibliography{SRS}
+
+\newpage
+
+% \section{Appendix}
+
+% This is where you can place additional information.
+
+% \subsection{Symbolic Parameters}
+
+% The definition of the test cases will call for SYMBOLIC\_CONSTANTS.
+% Their values are defined in this section for easy maintenance.
+
+% \subsection{Usability Survey Questions?}
+
+% This is a section that would be appropriate for some teams.
+
+\end{document}
