@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><project name="3XA3ChessProject" company="" webLink="http://" view-date="2021-03-13" view-index="0" gantt-divider-location="300" resource-divider-location="300" version="3.0.3001" locale="en_CA">
+<?xml version="1.0" encoding="UTF-8"?><project name="3XA3ChessProject" company="" webLink="http://" view-date="2021-02-25" view-index="0" gantt-divider-location="300" resource-divider-location="300" version="3.0.3004" locale="en_CA">
     <description>
         <![CDATA[Product development schedule for the 3XA3 term project - a chess game refactored in JavaScript using Node.js and React.]]>
     </description>
@@ -82,8 +82,12 @@
         <task id="158" name="Test Plan Deadline" color="#8cb6ce" meeting="true" start="2021-03-06" duration="0" complete="0" thirdDate="2021-02-18" thirdDate-constraint="0" expand="true"/>
         <task id="168" name="Design &amp; Document Revision 0" color="#8cb6ce" meeting="false" start="2021-03-06" duration="13" complete="0" thirdDate="2021-03-08" thirdDate-constraint="0" expand="true">
             <depend id="171" type="2" difference="0" hardness="Strong"/>
-            <task id="169" name="MIS" color="#8cb6ce" meeting="false" start="2021-03-06" duration="8" complete="0" thirdDate="2021-01-22" thirdDate-constraint="0" expand="true"/>
-            <task id="170" name="MG" color="#8cb6ce" meeting="false" start="2021-03-13" duration="6" complete="0" thirdDate="2021-01-22" thirdDate-constraint="0" expand="true"/>
+            <task id="170" name="MG" color="#8cb6ce" meeting="false" start="2021-03-06" duration="8" complete="0" thirdDate="2021-01-22" thirdDate-constraint="0" expand="true">
+                <task id="294" name="Anticipated and Unlikely Changes" color="#8cb6ce" meeting="false" start="2021-03-06" duration="2" complete="0" thirdDate="2021-03-13" thirdDate-constraint="0" expand="true"/>
+                <task id="292" name="Connection to Requirements" color="#8cb6ce" meeting="false" start="2021-03-08" duration="2" complete="0" thirdDate="2021-03-13" thirdDate-constraint="0" expand="true"/>
+                <task id="290" name="Module Hierarchy and Decomposition" color="#8cb6ce" meeting="false" start="2021-03-10" duration="4" complete="0" thirdDate="2021-03-13" thirdDate-constraint="0" expand="true"/>
+            </task>
+            <task id="169" name="MIS" color="#8cb6ce" meeting="false" start="2021-03-14" duration="5" complete="0" thirdDate="2021-01-22" thirdDate-constraint="0" expand="true"/>
         </task>
         <task id="171" name="Design &amp; Document Deadline" color="#8cb6ce" meeting="true" start="2021-03-19" duration="0" complete="0" thirdDate="2021-01-22" thirdDate-constraint="0" expand="true"/>
         <task id="185" name="Revision 0 Demonstration (Revision 1)" color="#8cb6ce" meeting="false" start="2021-03-19" duration="8" complete="0" thirdDate="2021-03-19" thirdDate-constraint="0" expand="true">
@@ -135,17 +139,26 @@
         <allocation task-id="285" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
         <allocation task-id="282" resource-id="0" function="Default:1" responsible="true" load="20.0"/>
         <allocation task-id="283" resource-id="0" function="Default:1" responsible="true" load="30.0"/>
+        <allocation task-id="294" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="292" resource-id="0" function="Default:1" responsible="false" load="40.0"/>
+        <allocation task-id="290" resource-id="0" function="Default:1" responsible="false" load="30.0"/>
+        <allocation task-id="169" resource-id="0" function="Default:1" responsible="true" load="30.0"/>
         <allocation task-id="26" resource-id="1" function="Default:1" responsible="false" load="100.0"/>
         <allocation task-id="28" resource-id="1" function="Default:1" responsible="false" load="70.0"/>
         <allocation task-id="100" resource-id="1" function="Default:1" responsible="false" load="100.0"/>
         <allocation task-id="281" resource-id="1" function="SoftwareDevelopment:2" responsible="false" load="50.0"/>
         <allocation task-id="283" resource-id="1" function="SoftwareDevelopment:2" responsible="false" load="50.0"/>
         <allocation task-id="284" resource-id="1" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
+        <allocation task-id="292" resource-id="1" function="SoftwareDevelopment:2" responsible="true" load="60.0"/>
+        <allocation task-id="290" resource-id="1" function="SoftwareDevelopment:2" responsible="false" load="30.0"/>
+        <allocation task-id="169" resource-id="1" function="SoftwareDevelopment:2" responsible="false" load="40.0"/>
         <allocation task-id="28" resource-id="2" function="SoftwareDevelopment:2" responsible="false" load="70.0"/>
         <allocation task-id="100" resource-id="2" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
         <allocation task-id="282" resource-id="2" function="SoftwareDevelopment:3" responsible="false" load="50.0"/>
         <allocation task-id="281" resource-id="2" function="SoftwareDevelopment:3" responsible="false" load="50.0"/>
         <allocation task-id="285" resource-id="2" function="SoftwareDevelopment:3" responsible="false" load="100.0"/>
+        <allocation task-id="290" resource-id="2" function="SoftwareDevelopment:3" responsible="true" load="40.0"/>
+        <allocation task-id="169" resource-id="2" function="SoftwareDevelopment:3" responsible="false" load="30.0"/>
     </allocations>
     <vacations/>
     <previous/>
