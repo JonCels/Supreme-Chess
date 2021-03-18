@@ -1,0 +1,729 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{amsmath}
+\geometry{margin=1.5in}
+
+\title{SE 3XA3: Module Interface Specification\\SupremeChess}
+
+\author{Team \#2, The Triple Grobs
+		\\ Rupinder Nagra (nagrar5)
+		\\ Pesara Amarasekera (amarasep)
+		\\ Jonathan Cels (celsj)
+}
+
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+%Input Module
+\newpage
+\section*{Input Module}
+    \subsection*{Module}
+        Input
+    
+    \subsection*{Uses}
+        Shared Data Module
+    
+    \subsection*{Syntax}
+        \#define BOARD\_X 8\\
+        \#define BOARD\_Y 8
+        
+        \begin{center}
+            \begin{tabular}{|c|c|c|c|} 
+                \hline
+                Routine Names & Inputs & Outputs & Exceptions \\
+                \hline
+                getScreenSize & & & \\
+                \hline
+                setBoardSize & & & \\ 
+                \hline
+                onClickPress & mouseDown & seq of int & \\ 
+                \hline
+                onClickRelease & mouseUp & seq of int & notOnBoard \\
+                \hline
+                getClickPressSquare & & seq of int & noClick\\
+                \hline
+                getClickReleaseSquare & & seq of int & noClick\\
+                \hline
+            \end{tabular}
+        \end{center}
+    
+    \subsection*{Semantics}
+        \subsubsection*{State Variables}
+            screenX: int \#Screen pixel width\\
+            screenY: int \#Screen pixel height\\
+            boardX: int \#Board pixel width\\
+            boardY: int \#Board pixel height\\
+            boardStart: sequence of int \#(x, y) pixel coordinates of bottom left board corner\\
+            squareX: int \#Square pixel width\\
+            squareY: int \#Square pixel height
+            
+        \subsubsection*{State Invariant}
+            $|boardBounds| \leq screenX*screenY$ \\
+            $|boardX| = |boardY|$ \\
+            $|squareX| = |squareY|$ \\
+            $|boardX| = |squareX| * BOARD\_X$ \\
+            $|boardY| = |squareY| * BOARD\_Y$ \\
+            
+    \subsection*{Environment Variables}
+        mouseDown: \#Left click press provided by the user mouse\\
+        mouseUp: \#Left click release provided by the user mouse\\
+        
+        \subsubsection*{Assumptions and Design Decisions}
+            getScreenSize is called before any other access routine, followed immediately by setBoardSize
+            
+    \subsection*{Access Routine Semantics}
+        \subsubsection*{getScreenSize} 
+            transition: screenX = screen pixel width, screenY = screen pixel height \\
+            exceptions: none
+        
+        \subsubsection*{setBoardSize} 
+            transition: boardX = board pixel width based on screen width, boardY = board pixel width
+            
+            based on screen height, boardStart = bottom left coordinate of the board based on 
+            
+            screen size. $squareX = \frac{boardX}{BOARD\_X}$. $squareY = \frac{boardY}{BOARD\_Y}$ \\
+            exceptions: none
+                
+        \subsubsection*{onClickPress:} 
+            output: tuple of (pixel value of mouse along x axis, pixel value of mouse along y axis). \\
+            exceptions: none
+        
+        \subsubsection*{onClickRelease:} 
+            output: tuple of (pixel value of mouse along x axis, pixel value of mouse along y axis). \\
+            exceptions: notOnBoard, if the tuple of coordinates is not within the bounds of the board. 
+            
+        \subsubsection*{getClickPressSquare} 
+            output: tuple of (integer from 1 to BOARD\_X, integer from 1 to BOARD\_Y) where the values represent an x and y square coordinate respectively. \\
+            exceptions: noClick, if called before a click input occurs
+        
+        \subsubsection*{getClickReleaseSquare} 
+            output: tuple of (integer from 1 to BOARD\_X, integer from 1 to BOARD\_Y) where the values represent an x and y square coordinate respectively. \\
+            exceptions: noClick, if called before a click input occurs
+        
+%Output Module  
+\newpage
+\section*{Output Module}
+    \subsection*{Module}
+        Output
+    
+    \subsection*{Uses}
+        Shared Data Module \\
+        App Module
+    
+    \subsection*{Syntax}
+        N/A
+        
+        \begin{center}
+            \begin{tabular}{|c|c|c|c|} 
+                \hline
+                Routine Names & Inputs & Outputs & Exceptions \\
+                \hline
+                drawSquare & string & &  \\ 
+                \hline
+                drawWhiteTimer & double &  &  \\ 
+                \hline
+                drawBlackTimer & double &  &  \\ 
+                \hline
+                drawBoard & sequence of (sequence of int) &  &  \\ 
+                \hline
+                drawChat & sequence of (char, string) &  &  \\ 
+                \hline
+                drawOptions & sequence of int &  &  \\ 
+                \hline
+                setBackground & string  &  &  \\ 
+                \hline
+            \end{tabular}
+        \end{center}
+    
+    \subsection*{Semantics}
+        \subsubsection*{State Variables}
+            N/A
+
+        \subsubsection*{State Invariant}
+            N/A
+            
+    \subsection*{Environment Variables}
+
+        \subsubsection*{Assumptions and Design Decisions}
+            N/A
+            
+    \subsection*{Access Routine Semantics}
+    
+        \subsubsection*{drawSquare}
+            output: draw board square \\ 
+            exceptions: none 
+            
+        \subsubsection*{drawWhiteTimer}
+            transition: draw value of the white player's timer \\
+            exceptions: none 
+            
+        \subsubsection*{drawBlackTimer}
+            transition: draw value of the black player's timer \\
+            exceptions: none 
+            
+        \subsubsection*{drawBoard}
+            transition: use $drawSquare$ routine to build game board \\
+            exceptions: none 
+
+        \subsubsection*{drawChat}
+            transition: draw strings of chat messages sent by players \\
+            exceptions: none 
+            
+        \subsubsection*{drawOptions}
+            transition: draw game options (checkmate, draw, stalemate, etc.) \\
+            exceptions: none 
+
+        \subsubsection*{setBackground}
+            transition: set background colour \\
+            exceptions: none 
+
+%Board Module
+\newpage
+\section*{Board Module}
+    \subsection*{Module}
+        Board
+    
+    \subsection*{Uses}
+        Piece Module
+    
+    \subsection*{Syntax}
+        \#define letter ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
+        
+        \begin{center}
+            \begin{tabular}{|c|c|c|c|} 
+                \hline
+                Routine Names & Inputs & Outputs & Exceptions \\
+                \hline
+                initialize &  &  & \\ 
+                \hline
+                getXYPosition & int & tuple of int & invalidIndex \\ 
+                \hline
+                isBlack & int & boolean & \\ 
+                \hline
+                getPosition & int & tuple of int & invalidPosition \\ 
+                \hline
+            \end{tabular}
+        \end{center}
+    
+    \subsection*{Semantics}
+        \subsubsection*{State Variables}
+            currTurn: string \#Signifies player with the current turn
+            
+        \subsubsection*{State Invariant}
+            N/A
+            
+    \subsection*{Environment Variables}
+            
+        \subsubsection*{Assumptions and Design Decisions}
+            initialize is called before any other access routine.
+            
+    \subsection*{Access Routine Semantics}
+    
+        \subsubsection*{initialize}
+            transition: currTurn is set to starting chess board state, $currTurn = `w'$ \\ 
+            exceptions: none
+    
+        \subsubsection*{getXYPosition}
+            output: tuple of ($x, y$) coordinates from board square index \\ 
+            exceptions: the board index does not exist
+            
+        \subsubsection*{isBlack}
+            output: string of piece image location \\ 
+            exceptions: none
+        
+        \subsubsection*{getPosition}
+            output: tuple of (board $letter$ index, $y$ coordinate index) \\ 
+            exceptions: the board position does not exist
+
+            
+%Shared Data Module
+\newpage
+\section*{Shared Data Module}
+    \subsection*{Module}
+        Shared Data
+    
+    \subsection*{Uses}
+        App Module \\
+        Timer Module \\
+        Chat Module \\
+        AI Module 
+    
+    \subsection*{Syntax}
+        \#define BOARD\_X 8\\
+        \#define BOARD\_Y 8
+        
+        \begin{center}
+            \begin{tabular}{|c|c|c|c|} 
+                \hline
+                Routine Names & Inputs & Outputs & Exceptions \\
+                \hline
+                initialize & double & & \\
+                \hline
+                getBoardState & & sequence of (sequence of int) & \\ 
+                \hline
+                getTurnState & & char & \\
+                \hline
+                getWhiteTimer & & double & \\ 
+                \hline
+                getBlackTimer & & double & \\ 
+                \hline
+                getChatHistory & & sequence of (char, string) & \\ 
+                \hline
+                setBoardState & sequence of (sequence of int) & & invalidBoardState\\ 
+                \hline
+                setTimerValues & double, double & & \\ 
+                \hline
+                addMessage & char, string & & \\ 
+                \hline
+                clearChat & & & \\
+                \hline
+            \end{tabular}
+        \end{center}
+    
+    \subsection*{Semantics}
+        \subsubsection*{State Variables}
+            boardState: sequence of (sequence of int) \#Chess board state with different integers for 
+            
+            different pieces\\
+            turnState: char \#`w' or `b', representing which player's turn it is, white or black. \\
+            whiteTimer: double \#Value of the player with the white pieces' turn timer. \\
+            blackTimer: double \#Value of the player with the black pieces' turn timer. \\
+            chatHistory: sequence of (char, string) \#Sequence of tuples where the character is `w' or 
+            
+            `b' representing the player, and the string is a chat message they sent. \\
+            
+        \subsubsection*{State Invariant}
+            $|boardState| = |boardState[i]| = BOARD\_X = BOARD\_Y$ \\
+            $|chatHistory| \geq 0$
+            
+    \subsection*{Environment Variables}
+        \subsubsection*{Assumptions and Design Decisions}
+            initialize is called before any other access routine.
+            
+    \subsection*{Access Routine Semantics}
+        \subsubsection*{initialize} 
+            transition: boardState is set to starting chess board state, $turnState = `w'$, 
+            
+            $whiteTimer = blackTimer = \textrm{input value}$, chatHistory is set to an empty sequence. \\
+            exceptions: none
+            
+        \subsubsection*{getBoardState} 
+            output: current board state \\
+            exceptions: none
+        
+        \subsubsection*{getTurnState} 
+            output: turnState \\
+            exceptions: none
+        
+        \subsubsection*{getWhiteTimer} 
+            output: whiteTimer \\
+            exceptions: none
+        
+        \subsubsection*{getBlackTimer} 
+            output: blackTimer \\
+            exceptions: none
+        
+        \subsubsection*{getChatHistory} 
+            output: chatHistory \\
+            exceptions: none
+        
+        \subsubsection*{setBoardState} 
+            transition: updates boardState to match the given board state \\
+            exceptions: invalidBoardState, if the given board state is impossible to reach
+        
+        \subsubsection*{setTimerValues} 
+            transition: updates both whiteTimer and blackTimer to match the given timer values \\
+            exceptions: none
+        
+        \subsubsection*{addMessage} 
+            transition: adds the given message to chatHistory \\
+            exceptions: none
+        
+        \subsubsection*{clearChat} 
+            transition: sets chatHistory to an empty sequence
+            exceptions: none
+
+%Piece Module  
+\newpage
+\section*{Piece Module}
+    \subsection*{Module}
+        Piece
+    
+    \subsection*{Uses}
+        N/A
+    
+    \subsection*{Syntax}
+        \begin{center}
+            \begin{tabular}{|c|c|c|c|} 
+                \hline
+                Routine Names & Inputs & Outputs & Exceptions \\
+                \hline
+                getPiece & array of strings & string & noPiece \\ 
+                \hline
+                dragPiece & object of int &  & \\ 
+                \hline
+            \end{tabular}
+        \end{center}
+    
+    \subsection*{Semantics}
+        \subsubsection*{State Variables}
+            pieceImg: string \#Image location of piece\\
+            id: string \#Unique piece ID with piece type, colour, position
+
+        \subsubsection*{State Invariant}
+            N/A
+            
+    \subsection*{Environment Variables}
+        type: \#The piece type (PAWN, KNIGHT, BISHOP, ROOK, QUEEN, KING) \\
+        colour: \#The colour of the piece
+
+        \subsubsection*{Assumptions and Design Decisions}
+            N/A
+            
+    \subsection*{Access Routine Semantics}
+    
+        \subsubsection*{getPiece}
+            output: string of piece image location \\ 
+            exceptions: the piece type does not exist
+            
+        \subsubsection*{dragPiece}
+            transition: id = concatenated string of piece type, colour, and position \\
+            exceptions: the piece type does not exist
+            
+
+%Game Module
+\newpage
+\section*{Game Module}
+    \subsection*{Module}
+        Game
+    
+    \subsection*{Uses}
+        N/A
+    
+    \subsection*{Syntax}
+        \begin{center}
+            \begin{tabular}{|c|c|c|c|} 
+                \hline
+                Routine Names & Inputs & Outputs & Exceptions \\
+                \hline
+                initGame &  &  & \\ 
+                \hline
+                resetGame &  &  & \\ 
+                \hline
+                handleMove & tuple of int &  & \\ 
+                \hline
+                getGameResult & & string &  \\ 
+                \hline
+            \end{tabular}
+        \end{center}
+    
+    \subsection*{Semantics}
+        \subsubsection*{State Variables}
+            currMoves: array of strings \#Shows set of moves of current game\\
+            boardState: string \#Saves current board state
+            
+        \subsubsection*{State Invariant}
+            N/A
+            
+    \subsection*{Environment Variables}
+            
+        \subsubsection*{Assumptions and Design Decisions}
+            initGame is called before any other access routine.
+            
+    \subsection*{Access Routine Semantics}
+    
+        \subsubsection*{initGame}
+            transition: set to default board state \\ 
+            exceptions: none
+    
+        \subsubsection*{resetGame}
+            transition: reset to default board state \\
+            exceptions: none
+            
+        \subsubsection*{handleMove}
+            transition: append move to currMoves and update board state \\ 
+            exceptions: none
+        
+        \subsubsection*{getGameResult}
+            output: string of game result (checkmate, draw, stalemate, etc.) \\
+            exceptions: none
+            
+
+%App Module
+\newpage
+\section*{App Module}
+    \subsection*{Module}
+        App
+    
+    \subsection*{Uses}
+        Game Module \\
+        Board Module
+    
+    \subsection*{Syntax}
+        \begin{center}
+            \begin{tabular}{|c|c|c|c|} 
+                \hline
+                Routines & Inputs & Outputs & Exceptions \\
+                \hline
+                initialize & & &\\
+                \hline
+                setBoard & Board, Game & Board &  \\ 
+                \hline
+                %Does 
+                setGame & Board, Game & Game & inValidMove \\
+                \hline
+            \end{tabular}
+        \end{center}
+    
+    \subsection*{Semantics}
+        \subsubsection*{State Variables}
+            Board: Board Module\\
+            Game: Game Module
+            
+        \subsubsection*{State Invariant}
+            N/A
+            
+    \subsection*{Environment Variables}
+            
+        \subsubsection*{Assumptions and Design Decisions}
+            \textbf{initialize} is called before any other access routine
+            
+    \subsection*{Access Routine Semantics}
+    \subsubsection*{initialize} 
+            transition: Board and Game modules are initialized to begin functions\\
+            exceptions: none
+            
+        \subsubsection*{setBoard} 
+            transition: updates the Board using the Game for representation purposes\\
+            exceptions: none
+        
+        \subsubsection*{setGame} 
+            transition: updates the Game to a new valid configuration based on
+            the moves played on the Board\\
+            exceptions: invalidMove, if the played move is illegal
+
+\newpage
+\section*{Chat Module}
+    \subsection*{Module}
+        Chat
+    
+    \subsection*{Uses}
+        N/A
+    
+    \subsection*{Syntax}
+        
+        \begin{center}
+            \begin{tabular}{|c|c|c|c|} 
+                \hline
+                Routines & Inputs & Outputs & Exceptions \\
+                \hline
+                initialize & & &\\
+                \hline
+                setMessage & String &  & noChatInitialized\\ 
+                \hline
+                %Does 
+                getMessage &  & String & noChatInitialized\\
+                \hline
+                endChat & & & noChatInitialized\\
+                \hline
+            \end{tabular}
+        \end{center}
+    
+    \subsection*{Semantics}
+        \subsubsection*{State Variables}
+            N/A
+            
+        \subsubsection*{State Invariant}
+            N/A
+            
+    \subsection*{Environment Variables}
+            
+        \subsubsection*{Assumptions and Design Decisions}
+            \textbf{initialize} is called before any other access routine
+            
+    \subsection*{Access Routine Semantics}
+    \subsubsection*{initialize} 
+            transition: The chat is initialized with no chat data\\
+            exceptions: none
+            
+        \subsubsection*{setMessage} 
+            transition: updates the chat with a new message\\
+            exceptions: noChatInitialized, when no chat is initialized before updating the message data\\
+        
+        \subsubsection*{getMessage} 
+            output: gets the chat data in string format\\
+            exceptions: noChatInitialized, when no chat is initialized to get data from\\
+        
+        \subsubsection*{endChat} 
+            transition: ends the chat upon request\\
+            exceptions: noChatInitialized, when no chat is initialized to get end\\
+
+%Timer Module
+\newpage
+\section*{Timer Module}
+    \subsection*{Module}
+        Timer Data
+    
+    \subsection*{Uses}
+        N/A
+        
+    \subsection*{Syntax}
+        \begin{center}
+            \begin{tabular}{|c|c|c|c|} 
+                \hline
+                Routine Names & Inputs & Outputs & Exceptions \\
+                \hline
+                initialize & double, double & & \\
+                \hline
+                getTime & & double & \\
+                \hline
+                startTimer & & & timeUp \\
+                \hline
+                pauseTimer & & & \\
+                \hline
+            \end{tabular}
+        \end{center}
+    
+    \subsection*{Semantics}
+        \subsubsection*{State Variables}
+            startValue: double \#Starting time value of the timer
+            incrementValue: double \#Value added to time after every move
+            currentValue: double \#Current time value of the timer
+            player: char \#`w' or `b', representing which player's timer it is, white or black. \\
+            
+        \subsubsection*{State Invariant}
+            $(incrementValue = 0) \Rightarrow |startValue| \geq |currentValue|$\\
+            
+    \subsection*{Environment Variables}
+        \subsubsection*{Assumptions and Design Decisions}
+            initialize is called before any other access routine.
+            
+    \subsection*{Access Routine Semantics}
+        \subsubsection*{initialize} 
+            transition: startValue is set to the first input representing the total time on the timer. 
+            
+            incrementValue is set to the second input representing the time increment added after 
+            
+            each move. currentValue is set equal to startValue.\\
+            exception: none
+            
+        \subsubsection*{getTime}
+            output: currentValue. \\
+            exceptions: timeUp, if currentValue is 0.
+        
+        \subsubsection*{startTimer}
+            transition: currentValue starts decreasing.
+            exceptions: timeUp, if currentValue reaches 0 at any point.
+        
+        \subsubsection*{pauseTimer}
+            transition: currentValue stops decreasing and timeIncrement is added to currentValue.
+            exceptions: none            
+
+%AI Module
+\newpage
+\section*{AI Module}
+    \subsection*{Module}
+        AI
+    
+    \subsection*{Uses}
+        Game Module
+    
+    \subsection*{Syntax}
+        \#define WPAWN 1\\
+        \#define WBISHOP 2\\
+        \#define WROOK 3\\
+        \#define WKNIGHT 4\\
+        \#define WQUEEN 5\\
+        \#define WKING 6\\
+        \#define BPAWN 11\\
+        \#define BBISHOP 12\\
+        \#define BROOK 13\\
+        \#define BKNIGHT 14\\
+        \#define BQUEEN 15\\
+        \#define BKING 16\\
+        \#define PawnWeight 10\\
+        \#define RookWeight 50\\
+        \#define BishopWeight 40\\
+        \#define KnightWeight 30\\
+        \#define QueenWeight 90\\
+        \#define KingWeight 420\\
+        \#define MobilityWeight 10\\
+        \begin{center}
+            \begin{tabular}{|c|c|c|c|} 
+                \hline
+                Routines & Inputs & Outputs & Exceptions \\
+                \hline
+                initialize & Game & &\\
+                \hline
+                setBoard & Game & &  \\ 
+                \hline
+                setGame & Game &  & \\
+                \hline
+                evaluateBoard & Game & Integer & \\
+                \hline
+                makeMove & & (PieceVal, BoardXPos, BoardYPos)& \\
+                \hline
+            \end{tabular}
+        \end{center}
+    
+    \subsection*{Semantics}
+        \subsubsection*{State Variables}
+            internalBoard: sequence of sequence of integers\\
+            GameTree: Tree of Boards\\
+            % PieceVal: {WPAWN, WBISHOP, WROOK, WKNIGHT, WKING, WQUEEN,
+            %           BPAWN, BBISHOP, BROOK, BKNIGHT, BKING, BQUEEN}\\
+            % PieceWeight: {PawnWeight, RookWeight, BishopWeight, KnightWeight, KingWeight, QueenWeight}\\
+            
+        \subsubsection*{State Invariant}
+            N/A
+            
+    \subsection*{Environment Variables}
+            
+        \subsubsection*{Assumptions and Design Decisions}
+            \textbf{initialize} is called before any other access routine
+            
+    \subsection*{Access Routine Semantics}
+    \subsubsection*{initialize} 
+            transition: internal Board representation (internalBoard) initialized to begin functions\\
+            
+        \subsubsection*{setBoard} 
+            transition: updates internal Board using the external Game state for representation purposes\\
+            exceptions: none
+        
+        \subsubsection*{setGame} 
+            transition: updates the internalBoard to a new valid configuration based on the moves played (the new Game state)\\
+            exceptions: none
+        
+        \subsubsection*{evaluateBoard}
+            output: evaluates the board according to the defined weights
+            and cost function and returns $eval$ (defined below).
+            \begin{center}
+            \begin{multline*}
+                materialScore = KingWeight (wK-bK) + QueenWeight  (wQ-bQ)\\
+                           + RookWeight (wR-bR)+ KnightWeight(wN-bN)\\
+                           + BishopWeight (wB-bB) + PawnWeight (wP-bP)\\
+            \end{multline*}
+            \begin{gather*}
+              mobilityScore = mobilityWeight (wMobility-bMobility)\\
+              eval = (mobilityScore+materialScore)whoMoved
+            \end{gather*}
+            \end{center}
+            where $wK = \# of White Kings$, $wQ = \# of White Queens$,
+            $wP = \# of White Pawns$,\\ $wB = \# of White Bishops$, $wR = \# of White Rooks$, $wN = \# of White Knights$\\
+            $bK = \# of Black Kings$, $bQ = \# of Black Queens$,
+            $bP = \# of Black Pawns$,\\ $bB = \# of Black Bishops$, $bR = \# of Black Rooks$, and $bN = \# of Black Knights$.\\
+            
+            The mobility of a side is defined by the number of squares reachable by the pieces of a side. $wMobility = \# squares reachable by white$ and $bMobility = \# squares reachable by black$.
+            
+            The $whoMoved$ value is 1 if the current player is white and -1 if the current player is black.
+            exceptions:none
+        
+        \subsubsection*{makeMove}
+        output: Evaluate the current game state and makes a move, returns a tuple that represents the piece being moved, and the position on the Board where it should be moved to.
+        exceptions: none
+            
+\end{document}
