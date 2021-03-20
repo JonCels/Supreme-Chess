@@ -5,7 +5,7 @@ export default function Piece({
     piece: { type, color },
     position,
 }) {
-    const [{ isDragging }, drag, preview] = useDrag({
+    const [{ isDragging }, drag] = useDrag({
         item: {
             type: 'piece',
             id: `${position}_${type}_${color}`,
