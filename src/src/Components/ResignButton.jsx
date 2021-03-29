@@ -11,8 +11,9 @@ export default function ResignButton({ player }) {
         }
     }
     return (
-        <button onClick={resignGame}>
-            Hello World
+        <button onClick={resignGame} className="resign">
+
+            Resign
         </button>
     )
 }

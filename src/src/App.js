@@ -3,6 +3,7 @@ import './App.css';
 import {gameSubject} from './Game'
 import Board from './Components/Board'
 import ResignButton from './Components/ResignButton'
+import Timer from './Components/Timer'
 function App() {
   const [board, setBoard] = useState([])
   useEffect(() => {
@@ -18,6 +19,9 @@ function App() {
       </div>
       <div className="button-1">
           <ResignButton player='w'/>
+      </div>
+      <div className="timer-1">
+          <Timer player='w'/>
       </div>
     </div>
   )
