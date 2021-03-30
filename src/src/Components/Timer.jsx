@@ -1,21 +1,15 @@
 import React, { useState, useEffect } from 'react';
-
-export default function Timer( {player, start}) {
+import { toggleTimer } from '../Game'
+export default function Timer( { player, active }) {
     const [time, setTime] = useState({ minutes: 10, seconds: 0 });
-    const [isActive, setIsActive] = useState(start);
-
-    function toggle() {
-        setIsActive(!isActive);
-    }
 
     function reset() {
         setTime({ minutes: 10, seconds: 0 });
-        setIsActive(false);
     }
 
     useEffect(() => {
         let interval = null;
-        if (isActive) {
+        if (active) {
             interval = setInterval(() => {
                 if (time.seconds > 0) {
                     setTime({ minutes: time.minutes, seconds: time.seconds - 1 });
@@ -25,15 +19,14 @@ export default function Timer( {player, start}) {
                 }
                 else {
                     console.log("Timer done");
-                    toggle();
                 }
 
             }, 1000);
-        } else if (!isActive && time.seconds !== 0) {
+        } else if (!active && time.seconds !== 0) {
             clearInterval(interval);
         }
         return () => clearInterval(interval);
-    }, [isActive, time]);
+    }, [active, time]);
 
     return (
         <div>

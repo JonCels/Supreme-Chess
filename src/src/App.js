@@ -10,6 +10,7 @@ function App() {
   const [isGameOver, setIsGameOver] = useState()
   const [result, setResult] = useState()
   const [turn, setTurn] = useState()
+  const [timerActive, setTimerActive] = useState();
   useEffect(() => {
     initGame()
     const subscribe = gameSubject.subscribe((game) => {
@@ -17,6 +18,7 @@ function App() {
       setIsGameOver(game.isGameOver)
       setResult(game.result)
       setTurn(game.turn)
+      setTimerActive(game.timerActive)
     })
     return () => subscribe.unsubscribe()
   }, [])
@@ -35,8 +37,8 @@ function App() {
       </div>
       {result && <p className="vertical-text">{result}</p>}
       <div>
-          <Timer player='b' start={false}/>
-          <Timer player='w' start={true}/>
+          <Timer player='b' active={!timerActive}/>
+          <Timer player='w' active={timerActive}/>
           <DrawButton />
       </div>
     </div>
