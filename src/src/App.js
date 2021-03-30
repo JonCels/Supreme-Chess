@@ -33,6 +33,9 @@ function App() {
         <Board board={board} turn={turn} />
       </div>
       {result && <p className="vertical-text">{result}</p>}
+      <div>
+          <Timer player='w'/>
+      </div>
     </div>
   )
 }

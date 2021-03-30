@@ -1,6 +1,6 @@
 import * as Chess from 'chess.js'
 import {BehaviorSubject} from 'rxjs'
-
+import Promotion from './Components/Promote'
 // let stalemate = "k7/1R1RN3/p3p3/P3P2p/1PP4P/3K1PP1/8/8 b - h3 0 1";
 // let checkmate = "r1bqkbnr/ppp2Qpp/2np4/4p3/2B1P3/8/PPPP1PPP/RNB1K1NR b KQkq - 0 4";
 
@@ -40,8 +40,8 @@ export function move(from, to, promotion) {
 
     if (legalMove) {
         updateGame()
+        console.log(from, to)
     }
-    console.log(from, to)
 }
 
 function updateGame(pendingPromotion) {

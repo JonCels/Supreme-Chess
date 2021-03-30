@@ -65,7 +65,6 @@
   max-height: 80%;
 }
 
-<<<<<<< HEAD
 .resign {
     background-color: #919191; /* Grey */
     border-radius: 4px;
@@ -83,7 +82,7 @@
     background-color: #555555;
     color: white;
 }
-=======
+
 .vertical-text {
   text-orientation: upright;
   writing-mode: vertical-lr;
@@ -100,4 +99,3 @@
   border-radius: 10px;
 
 }
->>>>>>> promotion
