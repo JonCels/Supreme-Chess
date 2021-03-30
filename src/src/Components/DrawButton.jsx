@@ -1,29 +1,25 @@
 import React, { useState } from 'react';
-export default function DrawButton() {
+import { drawGame } from '../Game'
 
+export default function DrawButton() {
     const [draw, setDraw] = useState(false)
     const [drawOffered, setDrawOffered] = useState(false);
+    
     function offerDraw() {
         setDrawOffered(true);
-        console.log("Draw has been offered");
     }
 
     function acceptDraw() {
         setDraw(true);
         setDrawOffered(false);
-        console.log("Draw accepted");
         drawGame();
     }
 
     function declineDraw() {
         setDraw(false);
         setDrawOffered(false);
-        console.log("Draw declined");
     }
 
-    function drawGame() {
-        console.log("Game is drawn");
-    }
     return (
         <div>
             {!drawOffered &&

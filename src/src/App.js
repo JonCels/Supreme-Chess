@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react'
 import './App.css'
 import { gameSubject, initGame, resetGame } from './Game'
 import Board from './Components/Board'
-import ResignButton from './Components/ResignButton'
 import Timer from './Components/Timer'
 import DrawButton from './Components/DrawButton'
+import ResignButton from './Components/ResignButton'
+
 function App() {
   const [board, setBoard] = useState([])
   const [isGameOver, setIsGameOver] = useState()
@@ -37,9 +38,10 @@ function App() {
       </div>
       {result && <p className="vertical-text">{result}</p>}
       <div>
-          <Timer player='b' active={!timerActive}/>
-          <Timer player='w' active={timerActive}/>
+          <Timer player='b' active={!timerActive} />
+          <Timer player='w' active={timerActive} />
           <DrawButton />
+          <ResignButton player={turn}/>
       </div>
     </div>
   )
