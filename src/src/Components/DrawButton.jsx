@@ -27,17 +27,17 @@ export default function DrawButton() {
     return (
         <div>
             {!drawOffered &&
-                <button onClick={offerDraw} className="resign">
+                <button onClick={offerDraw} className="draw">
                     Offer Draw
                 </button>
             }
             {drawOffered &&
                 <div>
                     <button onClick={acceptDraw} className="resign">
-                        Accept
+                        <img src='./assets/checkmark.png' alt="" className="drawIcon" />
                     </button>
                     <button onClick={declineDraw} className="resign">
-                        Decline
+                        <img src='./assets/ex.png' alt="" className="drawIcon" />
                     </button>
                 </div>
             }
