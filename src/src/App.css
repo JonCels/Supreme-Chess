@@ -97,5 +97,10 @@
   background: rgb(110, 109, 109);
   border: 2px solid rgb(51, 50, 50);
   border-radius: 10px;
+}
 
+.timer {
+    font-size: 24px;
+    font-weight: bold;
+    width: 11ch; /* Stops the board from moving when minute goes from 10 -> 9 */
 }

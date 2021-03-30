@@ -4,6 +4,7 @@ import { gameSubject, initGame, resetGame } from './Game'
 import Board from './Components/Board'
 import ResignButton from './Components/ResignButton'
 import Timer from './Components/Timer'
+import DrawButton from './Components/DrawButton'
 function App() {
   const [board, setBoard] = useState([])
   const [isGameOver, setIsGameOver] = useState()
@@ -34,7 +35,9 @@ function App() {
       </div>
       {result && <p className="vertical-text">{result}</p>}
       <div>
-          <Timer player='w'/>
+          <Timer player='b' start={false}/>
+          <Timer player='w' start={true}/>
+          <DrawButton />
       </div>
     </div>
   )

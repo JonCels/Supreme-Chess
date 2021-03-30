@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
-export default function Timer( {player}) {
+export default function Timer( {player, start}) {
     const [time, setTime] = useState({ minutes: 10, seconds: 0 });
-    const [isActive, setIsActive] = useState(true);
+    const [isActive, setIsActive] = useState(start);
 
     function toggle() {
         setIsActive(!isActive);
@@ -37,7 +37,7 @@ export default function Timer( {player}) {
 
     return (
         <div>
-            <h1>{player === 'w' ? "White: " : "Black: "}{time.minutes}:{time.seconds < 10 ? `0${time.seconds}`: time.seconds}</h1>
+            <h2 className="timer">{player === 'w' ? "White: " : "Black: "}{time.minutes}:{time.seconds < 10 ? `0${time.seconds}`: time.seconds}</h2>
         </div>
     )
 }
