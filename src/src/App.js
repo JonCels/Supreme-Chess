@@ -12,6 +12,7 @@ function App() {
   const [result, setResult] = useState()
   const [turn, setTurn] = useState()
   const [timerActive, setTimerActive] = useState();
+  const [resetTimer, setResetTimer] = useState();
   useEffect(() => {
     initGame()
     const subscribe = gameSubject.subscribe((game) => {
@@ -20,6 +21,7 @@ function App() {
       setResult(game.result)
       setTurn(game.turn)
       setTimerActive(game.timerActive)
+      setResetTimer(game.resetTimer)
     })
     return () => subscribe.unsubscribe()
   }, [])
@@ -38,8 +40,8 @@ function App() {
       </div>
       {result && <p className="vertical-text">{result}</p>}
       <div>
-          <Timer player='b' active={!timerActive} />
-          <Timer player='w' active={timerActive} />
+          <Timer player='b' active={!timerActive} gameActive={!isGameOver} resetGame={resetTimer}/>
+          <Timer player='w' active={timerActive} gameActive={!isGameOver} resetGame={resetTimer}/>
           <DrawButton />
           <ResignButton player={turn}/>
       </div>

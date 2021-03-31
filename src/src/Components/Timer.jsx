@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { timeout, reset } from '../Game'
 
-export default function Timer( { player, active }) {
-    const [time, setTime] = useState({ minutes: 10, seconds: 0 });
-    let gameActive = true;
+export default function Timer( { player, active, gameActive, resetGame }) {
+    let initMinutes = 0;
+    let initSeconds = 10;
+    const [time, setTime] = useState({ minutes: initMinutes, seconds: initSeconds });
+
     function reset() {
-        setTime({ minutes: 10, seconds: 0 });
+        setTime({ minutes: initMinutes, seconds: initSeconds });
     }
 
     useEffect(() => {
@@ -20,7 +22,7 @@ export default function Timer( { player, active }) {
                 }
                 else {
                     timeout();
-                    gameActive = false;
+                    //gameActive = false;
                     clearInterval(interval);
                 }
             }, 1000);
@@ -29,6 +31,10 @@ export default function Timer( { player, active }) {
         }
         return () => clearInterval(interval);
     }, [active, time]);
+
+    useEffect(() => {
+        reset();
+    }, [resetGame]);
 
     return (
         <div>

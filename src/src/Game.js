@@ -9,6 +9,7 @@ let timeLoss = false;
 let resign = false;
 let resignPlayer;
 let drawAccepted = false;
+let reset = false;
 
 export const gameSubject = new BehaviorSubject()
 
@@ -21,6 +22,7 @@ export function resetGame() {
     resign = false;
     drawAccepted = false;
     chess.reset()
+    reset = false
     updateGame()
 }
 
@@ -77,7 +79,8 @@ function updateGame(pendingPromotion) {
         isGameOver,
         turn: turn,
         result: isGameOver ? getGameResult() : null,
-        timerActive: turn === 'w'
+        timerActive: turn === 'w',
+        resetTimer: reset
     }
 
     gameSubject.next(newGame)
