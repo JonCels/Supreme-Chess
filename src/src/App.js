@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react'
 import './App.css'
 import { gameSubject, initGame, resetGame } from './Game'
 import Board from './Components/Board'
-import { initChat } from './Backend/server'
+//import { initChat } from './Backend/server'
 
 function App() {
   const [board, setBoard] = useState([])
@@ -22,21 +22,21 @@ function App() {
       setIsGameOver(game.isGameOver)
       setResult(game.result)
       setTurn(game.turn)
-       
     })
 
       
     return () => subscribe.unsubscribe()
   }, [])
 
-  useEffect(() => {
-      initChat()
-      //setChatOn(game.isChatOn)
-      //setMessages(game.messages)
-  },[])
+ // useEffect(() => {
+ //     initChat()
+ //     setChatOn(game.isChatOn)
+ //     setMessages(game.messages)
+  //},[])
 
   const sendMessage = () => {
-        setMessages([...messages,text])
+        const newList = messages.concat(text)
+        setMessages(newList)
         if (text !== ""){
             setText("");
         }
@@ -51,6 +51,7 @@ function App() {
   useEffect(scrollToBottom, [messages]);
 
   console.log("messages : ", messages);
+
   return (
     <div className="container">
       {isGameOver && (
@@ -65,20 +66,27 @@ function App() {
         <Board board={board} turn={turn} />
       </div>
       {result && <p className="vertical-text">{result}</p>}
-      {isChatOn && (
+      { isChatOn && (
           <div className="chat-board">
             <ul className="chat-messages">
-            {messages.map((msg) => {return <li> msg  </li>})}
+            {messages.map((msg) => { return <li> {msg}  </li>})}
             </ul>
             <form className="chat-form" actions="">
-                <input 
+          <input 
+                    placeholder = "Enter Message"
                     className="chat-input" 
                     value={text} 
                     onChange={(e) => setText(e.target.value)} 
-                     autocomplete="off"> </input> 
+                    autoComplete="off"
+                    onKeyPress = {(e) => {
+                                    if(e.key === "Enter"){
+                                        sendMessage();
+                                    }
+                                    }}
+                    ></input> 
                 <button className="chat-send" onClick = {sendMessage}>Send</button>
-                <button className="chat-close" onClick = {() => setChatOn(!isChatOn)}> Close </button>
-            </form>
+                <button className="chat-close" onClick = {() => setChatOn(!isChatOn)}>Close</button>
+           </form>
           <div ref={messagesEndRef} /> 
           </div>
       )} 
