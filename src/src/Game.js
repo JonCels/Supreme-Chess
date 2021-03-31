@@ -72,7 +72,7 @@ export function move(from, to, promotion) {
 function updateGame(pendingPromotion) {
     const isGameOver = chess.game_over() || timeLoss || drawAccepted || resign
     const turn = chess.turn()
-
+    console.log(isGameOver);
     const newGame = {
         board: chess.board(),
         pendingPromotion,

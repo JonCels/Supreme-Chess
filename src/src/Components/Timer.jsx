@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { timeout, reset } from '../Game'
+import { timeout } from '../Game'
 
-export default function Timer( { player, active, gameActive, resetGame }) {
-    let initMinutes = 0;
-    let initSeconds = 10;
+export default function Timer( { player, active, gameOver }) {
+    let initMinutes = 10;
+    let initSeconds = 0;
     const [time, setTime] = useState({ minutes: initMinutes, seconds: initSeconds });
 
     function reset() {
@@ -12,9 +12,12 @@ export default function Timer( { player, active, gameActive, resetGame }) {
 
     useEffect(() => {
         let interval = null;
-        if (active && gameActive) {
+        if (active) {
             interval = setInterval(() => {
-                if (time.seconds > 0) {
+                if (gameOver) {
+                    clearInterval(interval);
+                }
+                else if (time.seconds > 0) {
                     setTime({ minutes: time.minutes, seconds: time.seconds - 1 });
                 }
                 else if (time.minutes > 0) {
@@ -22,7 +25,6 @@ export default function Timer( { player, active, gameActive, resetGame }) {
                 }
                 else {
                     timeout();
-                    //gameActive = false;
                     clearInterval(interval);
                 }
             }, 1000);
@@ -30,11 +32,11 @@ export default function Timer( { player, active, gameActive, resetGame }) {
             clearInterval(interval);
         }
         return () => clearInterval(interval);
-    }, [active, time]);
+    }, [active, time, gameOver]);
 
     useEffect(() => {
         reset();
-    }, [resetGame]);
+    }, [gameOver]);
 
     return (
         <div>

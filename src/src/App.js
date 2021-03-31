@@ -40,8 +40,8 @@ function App() {
       </div>
       {result && <p className="vertical-text">{result}</p>}
       <div>
-          <Timer player='b' active={!timerActive} gameActive={!isGameOver} resetGame={resetTimer}/>
-          <Timer player='w' active={timerActive} gameActive={!isGameOver} resetGame={resetTimer}/>
+          <Timer player='b' active={!timerActive} gameOver={isGameOver} />
+          <Timer player='w' active={timerActive} gameOver={isGameOver} />
           <DrawButton />
           <ResignButton player={turn}/>
       </div>
