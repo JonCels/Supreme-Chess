@@ -1,31 +1,79 @@
-const app = require('express')();
-const http = require('http').createServer(app);
-const io = require('socket.io')(http);
-const port = process.env.PORT || 3000;
-//var socket = io();
+const express = require('express');
+const http = require('http');
+const socketio = require('socket.io');
+const multiplayerLogic = require('./multiplayerLogic.js')
 
-//export function initChat() {
-//    socket = io();   
-//}
+const {getCurrentUser, userLeave, userJoin } = require('./user.js');
 
-app.get('/', (req,res) => {
-    res.sendFile(__dirname+'/index.html');
-});
+const port = process.env.PORT || 8000;
+
+const app = express();
+const server = http.createServer(app);
+const io = socketio(server);
+
+//app.get('/', (req,res) => {
+//    res.sendFile(__dirname+'/index.html');
+//});
 
 io.on('connection', (socket) => {
     console.log('a user connected');
 
-    socket.on('chat message', (msg) => {
-        console.log('message: '+msg);
-        io.emit('chat message',msg);
-    });
+    //multiplayerLogic.initializeGame(io, socket);
     
-    socket.on('disconnect',() => {
-        console.log('user disconnected');
+
+    // the username can be included in the reciever
+    //io stuff for chat
+    socket.on("joinRoom", ({username, roomname}) => {
+        //* create user
+        const user = userJoin(socket.id, username, roomname);
+        console.log(socket.id, "=id");
+        socket.join(user.room);
+
+        //* emit message to user to welcome him/her
+        socket.emit("message", {
+            userId: user.id,
+            username: user.username,
+            text: `Welcome ${user.username}`
+        });
+
+        //* Broadcast message to everyone except user that he has joined
+        socket.broadcast.to(user.room).emit("message", {
+            userId: user.id,
+            username: user.username,
+            text: `${user.username} has joined the chat`
+        });  
     });
+
+    //when somebody send text
+    socket.on("chat", (text) => {
+i       //* get user room and emit message
+        const user = getCurrentUser(socket.id);
+
+        io.to(user.room).emit("message", {
+            userId: user.id
+            username: user.username,
+            text: text
+        });
+    });
+
+    //Disconnect, when user leave room
+    socket.on("chat", (text) => {
+i       //* get user room and emit message
+        const user = userLeave(socket.id);
+
+        if(user){
+            io.to(user.room).emit("message", {
+                userId: user.id
+                username: user.username,
+                text: `${user.username} has left the chat`
+            });
+        }
+    });
+
 });
 
-http.listen(port, () => {
-    console.log(`listening on *: ${port}`);
+
+server.listen(port, () => {
+    console.log(`Server is running in ${process.env.NODE_ENV} on *: ${port}`.yellow.bold);
 });
 
