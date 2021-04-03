@@ -2,6 +2,7 @@ const express = require('express');
 const http = require('http');
 const socketio = require('socket.io');
 const multiplayerLogic = require('./multiplayerLogic.js')
+const colors = require('colors')
 
 const {getCurrentUser, userLeave, userJoin } = require('./user.js');
 
@@ -14,6 +15,11 @@ const io = socketio(server);
 //app.get('/', (req,res) => {
 //    res.sendFile(__dirname+'/index.html');
 //});
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 io.on('connection', (socket) => {
     console.log('a user connected');
@@ -50,7 +56,7 @@ i       //* get user room and emit message
         const user = getCurrentUser(socket.id);
 
         io.to(user.room).emit("message", {
-            userId: user.id
+            userId: user.id,
             username: user.username,
             text: text
         });
@@ -63,7 +69,7 @@ i       //* get user room and emit message
 
         if(user){
             io.to(user.room).emit("message", {
-                userId: user.id
+                userId: user.id,
                 username: user.username,
                 text: `${user.username} has left the chat`
             });

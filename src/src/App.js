@@ -1,20 +1,21 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useEffect, useState } from 'react'
+import Chat from './Connections/chat'
 import './App.css'
+import Home from './home'
 import { gameSubject, initGame, resetGame } from './Game'
 import Board from './Components/Board'
-//import { initChat } from './Backend/server'
+import {BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { socket, mySocketId } from'./Connections/socket'
 
-function App() {
+function Appmain(props){
   const [board, setBoard] = useState([])
   const [isGameOver, setIsGameOver] = useState()
   const [result, setResult] = useState()
   const [turn, setTurn] = useState()
-    
-  const [isChatOn, setChatOn] = useState(true)
-  const [messages, setMessages] = useState([])
-  const [text, setText] = useState("")
-
-  useEffect(() => {
+   
+  const [isChatOn, setChatOn] = useState(true);
+  
+    useEffect(() => {
     initGame()
     
     const subscribe = gameSubject.subscribe((game) => {
@@ -28,31 +29,7 @@ function App() {
     return () => subscribe.unsubscribe()
   }, [])
 
- // useEffect(() => {
- //     initChat()
- //     setChatOn(game.isChatOn)
- //     setMessages(game.messages)
-  //},[])
-
-  const sendMessage = () => {
-        const newList = messages.concat(text)
-        setMessages(newList)
-        if (text !== ""){
-            setText("");
-        }
-    };
-
-  const messagesEndRef = useRef(null);
-  
-  const scrollToBottom = () => {
-    messagesEndRef.current.scrollIntoView({ behaviour : "smooth"});
-  };
-
-  useEffect(scrollToBottom, [messages]);
-
-  console.log("messages : ", messages);
-
-  return (
+    return (
     <div className="container">
       {isGameOver && (
         <h2 className="vertical-text">
@@ -66,31 +43,37 @@ function App() {
         <Board board={board} turn={turn} />
       </div>
       {result && <p className="vertical-text">{result}</p>}
+          <div classname="chat-board">
+        <React.Fragment>
       { isChatOn && (
-          <div className="chat-board">
-            <ul className="chat-messages">
-            {messages.map((msg) => { return <li> {msg}  </li>})}
-            </ul>
-            <form className="chat-form" actions="">
-          <input 
-                    placeholder = "Enter Message"
-                    className="chat-input" 
-                    value={text} 
-                    onChange={(e) => setText(e.target.value)} 
-                    autoComplete="off"
-                    onKeyPress = {(e) => {
-                                    if(e.key === "Enter"){
-                                        sendMessage();
-                                    }
-                                    }}
-                    ></input> 
-                <button className="chat-send" onClick = {sendMessage}>Send</button>
-                <button className="chat-close" onClick = {() => setChatOn(!isChatOn)}>Close</button>
-           </form>
-          <div ref={messagesEndRef} /> 
-          </div>
+                <Chat
+                    username={props.match.params.username}
+                    roomname={props.match.params.roomname}
+                    socket={socket}
+                />
       )} 
-    </div>
+          <button className="chat-close" onClick = {() => setChatOn(!isChatOn)}>{(isChatOn) ? `Close` : `Open`}</button>
+        </React.Fragment>
+        </div>
+        <div>{props.children}</div>
+        </div>
+    );
+}
+
+function App() {
+  return (
+    <Router>
+      <div className="App">
+      <Switch>
+        <Route path="/" exact>
+            <Home socket={socket} />
+        </Route>
+        <Route
+        path="/chat/:roomname/:username"
+        component={Appmain} />
+      </Switch>
+      </div>
+    </Router>
   )
 }
 
