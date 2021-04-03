@@ -39,8 +39,8 @@ export default function Timer( { player, active, gameOver }) {
     }, [gameOver]);
 
     return (
-        <div>
-            <h2 className="timer">{player === 'w' ? "White: " : "Black: "}{time.minutes}:{time.seconds < 10 ? `0${time.seconds}`: time.seconds}</h2>
+        <div className="timer">
+            <p>{player === 'w' ? "White: " : "Black: "}{time.minutes}:{time.seconds < 10 ? `0${time.seconds}`: time.seconds}</p>
         </div>
     )
 }

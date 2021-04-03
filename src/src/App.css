@@ -124,7 +124,14 @@
 }
 
 .timer {
-    font-size: 24px;
-    font-weight: bold;
-    width: 11ch; /* Stops the board from moving when minute goes from 10 -> 9 */
+  text-align: center;
+  color: rgb(45, 45, 46);
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 24px;
+  width: 11ch; /* Stops the board from moving when minute goes from 10 -> 9 */
+  margin: 30px;
+  padding: 5px;
+  background-color: #ffffff;
+  border: 1px solid rgb(46, 46, 46);
+  border-radius: 2px;
 }

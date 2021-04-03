@@ -26,7 +26,7 @@ function App() {
     return () => subscribe.unsubscribe()
   }, [])
   return (
-    <div className="container">
+    <div className="container"><Timer player='w' active={timerActive} gameOver={isGameOver} />
       {isGameOver && (
         <h2 className="vertical-text">
           GAME OVER
@@ -41,7 +41,7 @@ function App() {
       {result && <p className="vertical-text">{result}</p>}
       <div className="col">
           <Timer player='b' active={!timerActive} gameOver={isGameOver} />
-          <Timer player='w' active={timerActive} gameOver={isGameOver} />
+          
       </div>
       <DrawButton />
       <ResignButton player={turn}/>
