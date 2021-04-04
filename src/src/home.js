@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { Button, Input } from '@material-ui/core';
 
 function Homepage({ socket }) {
     const [username, setusername] = useState("")
@@ -15,19 +16,29 @@ function Homepage({ socket }) {
 
     return(
     <div className="homepage">
-        <h1> Welcome to Supreme Chess! </h1>
-        <input
-            placeholder = "user name"
+        <p className="welcome">Welcome to Supreme Chess</p>
+        {/* <input
+            placeholder="Username"
+            value={username}
+            onChange={(e) => setusername(e.target.value)}
+        /> */}
+        {/* <input
+            placeholder="Room Name"
+            value={roomname}
+            onChange={(e) => setroomname(e.target.value)}
+        /> */}
+        <Input
+            placeholder="Username"
             value={username}
             onChange={(e) => setusername(e.target.value)}
         />
-        <input
-            placeholder="Room name"
+        <Input
+            placeholder="Room Name"
             value={roomname}
             onChange={(e) => setroomname(e.target.value)}
         />
         <Link to={`/chat/${roomname}/${username}`}>
-            <button onClick={sendData}>Join</button>
+            <Button variant="contained" color="primary" onClick={sendData}>Join</Button>
         </Link>
      </div>
     );

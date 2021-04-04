@@ -262,3 +262,20 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     padding-bottom: 1rem;
 }
+
+.homepage {
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(179, 212, 202, 0.664);
+}
+
+.welcome {
+  text-align: center;
+  font-size: 30px;
+  letter-spacing: 5px;
+  margin-bottom: 5%;
+  margin: 10%;
+}
