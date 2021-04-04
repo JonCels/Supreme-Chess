@@ -5,6 +5,11 @@ import {BehaviorSubject} from 'rxjs'
 // let checkmate = "r1bqkbnr/ppp2Qpp/2np4/4p3/2B1P3/8/PPPP1PPP/RNB1K1NR b KQkq - 0 4";
 
 const chess = new Chess()
+let timeLoss = false;
+let resign = false;
+let resignPlayer;
+let drawAccepted = false;
+let reset = false;
 
 export const gameSubject = new BehaviorSubject()
 
@@ -13,8 +18,28 @@ export function initGame() {
 }
 
 export function resetGame() {
+    timeLoss = false;
+    resign = false;
+    drawAccepted = false;
     chess.reset()
+    reset = false
     updateGame()
+}
+
+export function timeout() {
+    timeLoss = true
+    updateGame()
+}
+
+export function drawGame() {
+    drawAccepted = true;
+    updateGame();
+}
+
+export function resignGame(player) {
+    resignPlayer = player
+    resign = true;
+    updateGame();
 }
 
 export function handleMove(from, to) {
@@ -40,19 +65,22 @@ export function move(from, to, promotion) {
 
     if (legalMove) {
         updateGame()
+        console.log(from, to)
     }
-    console.log(from, to)
 }
 
 function updateGame(pendingPromotion) {
-    const isGameOver = chess.game_over()
-
+    const isGameOver = chess.game_over() || timeLoss || drawAccepted || resign
+    const turn = chess.turn()
+    console.log(isGameOver);
     const newGame = {
         board: chess.board(),
         pendingPromotion,
         isGameOver,
-        turn: chess.turn(),
-        result: isGameOver ? getGameResult() : null
+        turn: turn,
+        result: isGameOver ? getGameResult() : null,
+        timerActive: turn === 'w',
+        resetTimer: reset
     }
 
     gameSubject.next(newGame)
@@ -62,6 +90,14 @@ function getGameResult() {
     if (chess.in_checkmate()) {
         const winner = chess.turn() === "w" ? 'BLACK' : 'WHITE'
         return `CHECKMATE - WINNER - ${winner}`
+    } else if (timeLoss) {
+        const winner = chess.turn() === "w" ? 'BLACK' : 'WHITE'
+        return `TIMEOUT - WINNER - ${winner}`
+    } else if (resign) {
+        const winner = resignPlayer === "w" ? 'BLACK' : 'WHITE'
+        return `RESIGNATION - WINNER - ${winner}`
+    } else if (drawAccepted) {
+        return 'DRAW'
     } else if (chess.in_draw()) {
         let reason = '50 - MOVES - RULE'
         if (chess.in_stalemate()) {

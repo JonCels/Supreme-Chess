@@ -5,10 +5,10 @@ import { useDrop } from 'react-dnd'
 import { handleMove } from '../Game'
 import { gameSubject } from '../Game'
 import Promote from './Promote'
-export default function BoardSquare({ 
-    piece, 
-    black, 
-    position 
+export default function BoardSquare({
+    piece,
+    black,
+    position
 }) {
     const [promotion, setPromotion] = useState(null)
     const [, drop] = useDrop({
@@ -19,10 +19,10 @@ export default function BoardSquare({
         }
     })
     useEffect(() => {
-        const subscribe = gameSubject.subscribe(({pendingPromotion}) => 
-            pendingPromotion && pendingPromotion.to === position 
-                ? setPromotion(pendingPromotion) 
-                : setPromotion(null) 
+        const subscribe = gameSubject.subscribe(({pendingPromotion}) =>
+            pendingPromotion && pendingPromotion.to === position
+                ? setPromotion(pendingPromotion)
+                : setPromotion(null)
         )
         return () => subscribe.unsubscribe()
     }, [position])

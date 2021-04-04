@@ -6,16 +6,19 @@ import { gameSubject, initGame, resetGame } from './Game'
 import Board from './Components/Board'
 import {BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { socket, mySocketId } from'./Connections/socket'
+import Timer from './Components/Timer'
+import DrawButton from './Components/DrawButton'
+import ResignButton from './Components/ResignButton'
 
 function Appmain(props){
   const [board, setBoard] = useState([])
   const [isGameOver, setIsGameOver] = useState()
   const [result, setResult] = useState()
   const [turn, setTurn] = useState()
-
   const [isChatOn, setChatOn] = useState(true);
-
-    useEffect(() => {
+  const [timerActive, setTimerActive] = useState();
+  const [resetTimer, setResetTimer] = useState();
+  useEffect(() => {
     initGame()
 
     const subscribe = gameSubject.subscribe((game) => {
@@ -23,6 +26,8 @@ function Appmain(props){
       setIsGameOver(game.isGameOver)
       setResult(game.result)
       setTurn(game.turn)
+      setTimerActive(game.timerActive)
+      setResetTimer(game.resetTimer)
     })
 
 
@@ -31,18 +36,30 @@ function Appmain(props){
 
     return (
     <div className="container">
+
+      <Timer player='w' active={timerActive} gameOver={isGameOver} />
       {isGameOver && (
         <h2 className="vertical-text">
           GAME OVER
           <button onClick={resetGame}>
-            <span className="vertical-text"> NEW GAME</span>
+            <span className="vertical-text">NEW GAME</span>
           </button>
         </h2>
       )}
-      <div className="board-container">
-        <Board board={board} turn={turn} />
+      <div>
+        <p className="title">Supreme Chess</p>
+        <div className="board-container">
+
+          <Board board={board} turn={turn} />
+        </div>
+        <div>
+            <Timer player='b' active={!timerActive} gameOver={isGameOver} />
+            <DrawButton/>
+            <ResignButton/>
+        </div>
       </div>
       {result && <p className="vertical-text">{result}</p>}
+
           <div className="chat-board">
         <React.Fragment>
       { isChatOn && (
