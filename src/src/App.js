@@ -61,16 +61,18 @@ function Appmain(props){
           <Board board={board} turn={turn} />
         </div>
       </div>
-      <div className="chat-board">
+      <div>
         <React.Fragment>
       { isChatOn && (
-        <Chat
-            username={props.match.params.username}
-            roomname={props.match.params.roomname}
-            socket={socket}
-        />
+        <div>
+            <Chat
+                username={props.match.params.username}
+                roomname={props.match.params.roomname}
+                socket={socket}
+            />
+        </div>
       )}
-          <button className="chat-close" onClick = {() => setChatOn(!isChatOn)}>{(isChatOn) ? `Close` : `Open`}</button>
+          <button className="chat-close" onClick = {() => setChatOn(!isChatOn)}>{(isChatOn) ? `Close Chat` : `Open Chat`}</button>
         </React.Fragment>
         </div>
         <div>{props.children}</div>

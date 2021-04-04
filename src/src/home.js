@@ -14,15 +14,15 @@ function Homepage({ socket }) {
     };
 
     return(
-    <div className="homepage">
+    <div className="homepage" className="title">
         <h1> Welcome to Supreme Chess! </h1>
         <input
-            placeholder = "user name"
+            placeholder = "Enter a username"
             value={username}
             onChange={(e) => setusername(e.target.value)}
         />
         <input
-            placeholder="Room name"
+            placeholder="Enter a room name"
             value={roomname}
             onChange={(e) => setroomname(e.target.value)}
         />

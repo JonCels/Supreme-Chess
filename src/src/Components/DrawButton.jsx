@@ -28,12 +28,12 @@ export default function DrawButton() {
                 </button>
             }
             {drawOffered &&
-                <div>
-                    <button onClick={acceptDraw} className="drawOption">
-                        <img src={require('./assets/checkmark.png')} alt="" className="drawIcon" />
+                <div >
+                    <button className="draw-option-accept" onClick={acceptDraw} >
+                        <img src={require('./assets/checkmark.png')} height="25" alt=""/>
                     </button>
-                    <button onClick={declineDraw} className="drawOption">
-                        <img src={require('./assets/ex.png')} alt="" className="drawIcon" />
+                    <button className="draw-option-decline" onClick={declineDraw}>
+                        <img src={require('./assets/ex.png')} height="25" alt=""/>
                     </button>
                 </div>
             }

@@ -44,25 +44,24 @@ function Chat({ username, roomname, socket}){
                 { messages.map((i, num) => {
                     if (i.username === username) {
                         return (
-                            <div key={num}>
-                                <span className="span-message-right">{i.username}</span>
-                                <p className="p-message-right">{i.text}</p>
+                            <div className="right-message" key={num}>
+                                <span>{i.username}</span>
+                                <p>{i.text}</p>
                             </div>
                         );
                      } else {
                        return (
-                           <div key={num}>
-                                <span className="span-message">{i.username}</span>
-                                <p className="p-message">{i.text}</p>
+                           <div className="left-message" key={num}>
+                                <span>{i.username}</span>
+                                <p>{i.text}</p>
                            </div>
                        );
                      }
                 })}
                 <div ref={messagesEndRef} />
             </div>
-            <div>
+            <div  className="send" >
                 <input
-                    className="send-input"
                     placeholder="enter your message"
                     value={text}
                     onChange={(e) => setText(e.target.value)}
@@ -71,7 +70,7 @@ function Chat({ username, roomname, socket}){
                             sendMessage();
                         }
                     }} />
-                <button className="send-button" onClick={sendMessage}>Send</button>
+                <button onClick={sendMessage}>Send</button>
             </div>
         </div>
     );
