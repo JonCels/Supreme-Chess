@@ -15,7 +15,7 @@ function Homepage({ socket }) {
 
     return(
     <div className="homepage">
-        <h1> Welcome 🙏 </h1>
+        <h1> Welcome to Supreme Chess! </h1>
         <input
             placeholder = "user name"
             value={username}

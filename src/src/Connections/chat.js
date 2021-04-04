@@ -45,15 +45,15 @@ function Chat({ username, roomname, socket}){
                 if (i.username === username) {
                     return (
                         <div className="message" key={num}>
-                            <p>{i.text}</p>
                             <span>{i.username}</span>
+                            <p>{i.text}</p>
                         </div>
                     );
                  } else {
                    return (
                        <div className="message mess-right" key={num}>
-                            <p>{i.text}</p>
                             <span>{i.username}</span>
+                            <p>{i.text}</p>
                        </div>
                    );
                  }
