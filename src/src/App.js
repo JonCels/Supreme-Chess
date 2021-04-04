@@ -26,23 +26,26 @@ function App() {
     return () => subscribe.unsubscribe()
   }, [])
   return (
-    <div className="container"><Timer player='w' active={timerActive} gameOver={isGameOver} />
+    <div className="container">
+      
+      <Timer player='w' active={timerActive} gameOver={isGameOver} />
       {isGameOver && (
         <h2 className="vertical-text">
           GAME OVER
           <button onClick={resetGame}>
-            <span className="vertical-text"> NEW GAME</span>
+            <span className="vertical-text">NEW GAME</span>
           </button>
         </h2>
       )}
-      <div className="board-container">
-        <Board board={board} turn={turn} />
+      <div>
+        <p className="title">Supreme Chess</p>
+        <div className="board-container">
+          
+          <Board board={board} turn={turn} />
+        </div>
       </div>
       {result && <p className="vertical-text">{result}</p>}
-      <div className="col">
-          <Timer player='b' active={!timerActive} gameOver={isGameOver} />
-          
-      </div>
+      <Timer player='b' active={!timerActive} gameOver={isGameOver} />
       <DrawButton />
       <ResignButton player={turn}/>
     </div>

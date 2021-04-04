@@ -97,7 +97,7 @@ function getGameResult() {
         const winner = resignPlayer === "w" ? 'BLACK' : 'WHITE'
         return `RESIGNATION - WINNER - ${winner}`
     } else if (drawAccepted) {
-        return 'DRAW BY AGREEMENT'
+        return 'DRAW'
     } else if (chess.in_draw()) {
         let reason = '50 - MOVES - RULE'
         if (chess.in_stalemate()) {
