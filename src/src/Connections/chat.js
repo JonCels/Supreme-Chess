@@ -39,39 +39,39 @@ function Chat({ username, roomname, socket}){
                 <h2>
                     {username} <span style={{fontSize: "0.7rem"}}>in {roomname}</span>
                 </h2>
-        </div>
-        <div className="chat-message">
-            { messages.map((i, num) => {
-                if (i.username === username) {
-                    return (
-                        <div className="message" key={num}>
-                            <span>{i.username}</span>
-                            <p>{i.text}</p>
-                        </div>
-                    );
-                 } else {
-                   return (
-                       <div className="message mess-right" key={num}>
-                            <span>{i.username}</span>
-                            <p>{i.text}</p>
-                       </div>
-                   );
-                 }
-            })}
-            <div ref={messagesEndRef} />
-        </div>
-        <div className="send">
-            <input
-                placeholder="enter your message"
-                value={text}
-                onChange={(e) => setText(e.target.value)}
-                onKeyPress={(e) => {
-                    if(e.key === "Enter"){
-                        sendMessage();
-                    }
-                }} />
-            <button onClick={sendMessage}>Send</button>
-        </div>
+            </div>
+            <div className="chat-message">
+                { messages.map((i, num) => {
+                    if (i.username === username) {
+                        return (
+                            <div className="message" key={num}>
+                                <span>{i.username}</span>
+                                <p>{i.text}</p>
+                            </div>
+                        );
+                     } else {
+                       return (
+                           <div className="message mess-right" key={num}>
+                                <span>{i.username}</span>
+                                <p>{i.text}</p>
+                           </div>
+                       );
+                     }
+                })}
+                <div ref={messagesEndRef} />
+            </div>
+            <div className="send">
+                <input
+                    placeholder="enter your message"
+                    value={text}
+                    onChange={(e) => setText(e.target.value)}
+                    onKeyPress={(e) => {
+                        if(e.key === "Enter"){
+                            sendMessage();
+                        }
+                    }} />
+                <button onClick={sendMessage}>Send</button>
+            </div>
         </div>
     );
 }

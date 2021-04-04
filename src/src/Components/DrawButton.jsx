@@ -29,10 +29,10 @@ export default function DrawButton() {
             }
             {drawOffered &&
                 <div>
-                    <button onClick={acceptDraw} className="resign">
+                    <button onClick={acceptDraw} className="drawOption">
                         <img src={require('./assets/checkmark.png')} alt="" className="drawIcon" />
                     </button>
-                    <button onClick={declineDraw} className="resign">
+                    <button onClick={declineDraw} className="drawOption">
                         <img src={require('./assets/ex.png')} alt="" className="drawIcon" />
                     </button>
                 </div>

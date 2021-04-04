@@ -54,25 +54,19 @@ function Appmain(props){
       )}
       <div>
         <p className="title">Supreme Chess</p>
+        {result && <p className="result-text">{result}</p>}
         <div className="board-container">
-
           <Board board={board} turn={turn} />
         </div>
-        <div>
-
-        </div>
       </div>
-      {result && <p className="vertical-text">{result}</p>}
-
-
       <div className="chat-board">
         <React.Fragment>
       { isChatOn && (
-                <Chat
-                    username={props.match.params.username}
-                    roomname={props.match.params.roomname}
-                    socket={socket}
-                />
+        <Chat
+            username={props.match.params.username}
+            roomname={props.match.params.roomname}
+            socket={socket}
+        />
       )}
           <button className="chat-close" onClick = {() => setChatOn(!isChatOn)}>{(isChatOn) ? `Close` : `Open`}</button>
         </React.Fragment>
