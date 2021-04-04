@@ -15,24 +15,24 @@ function Chat({ username, roomname, socket}){
             setMessages([...temp])
        });
     },[socket])
-  
+
     const sendMessage = () => {
           if (text !== ""){
               socket.emit("chat",text);
               setText("");
           }
       };
-  
+
     const messagesEndRef = useRef(null);
-    
+
     const scrollToBottom = () => {
       messagesEndRef.current.scrollIntoView({ behaviour : "smooth"});
     };
-  
+
     useEffect(scrollToBottom, [messages]);
-  
+
     console.log("messages : ", messages);
-      
+
     return (
         <div className="chat">
             <div className="user-name">
@@ -41,17 +41,17 @@ function Chat({ username, roomname, socket}){
                 </h2>
         </div>
         <div className="chat-message">
-            { messages.map((i) => {
+            { messages.map((i, num) => {
                 if (i.username === username) {
                     return (
-                        <div className="message">
+                        <div className="message" key={num}>
                             <p>{i.text}</p>
                             <span>{i.username}</span>
                         </div>
                     );
                  } else {
                    return (
-                       <div className="message mess-right">
+                       <div className="message mess-right" key={num}>
                             <p>{i.text}</p>
                             <span>{i.username}</span>
                        </div>
