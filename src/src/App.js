@@ -53,6 +53,8 @@ function Appmain(props){
         </h2>
       )}
       <div>
+          <div>
+          </div>
         <p className="title">Supreme Chess</p>
         {result && <p className="result-text">{result}</p>}
         <div className="board-container">

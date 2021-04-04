@@ -35,9 +35,9 @@ function Chat({ username, roomname, socket}){
 
     return (
         <div className="chat">
-            <div className="user-name">
-                <h2>
-                    {username} <span style={{fontSize: "0.7rem"}}>in {roomname}</span>
+            <div>
+                <h2 className="user-name">
+                    {username} <span style={{fontSize: "0.7rem"}}>in room "{roomname}"</span>
                 </h2>
             </div>
             <div className="chat-message">
@@ -45,23 +45,24 @@ function Chat({ username, roomname, socket}){
                     if (i.username === username) {
                         return (
                             <div key={num}>
-                                <span className="span-message">{i.username}</span>
-                                <p className="p-message">{i.text}</p>
+                                <span className="span-message-right">{i.username}</span>
+                                <p className="p-message-right">{i.text}</p>
                             </div>
                         );
                      } else {
                        return (
                            <div key={num}>
-                                <span className="span-message-right">{i.username}</span>
-                                <p className="p-message-right">{i.text}</p>
+                                <span className="span-message">{i.username}</span>
+                                <p className="p-message">{i.text}</p>
                            </div>
                        );
                      }
                 })}
                 <div ref={messagesEndRef} />
             </div>
-            <div className="send">
+            <div>
                 <input
+                    className="send-input"
                     placeholder="enter your message"
                     value={text}
                     onChange={(e) => setText(e.target.value)}
@@ -70,7 +71,7 @@ function Chat({ username, roomname, socket}){
                             sendMessage();
                         }
                     }} />
-                <button onClick={sendMessage}>Send</button>
+                <button className="send-button" onClick={sendMessage}>Send</button>
             </div>
         </div>
     );
