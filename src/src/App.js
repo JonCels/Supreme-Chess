@@ -12,12 +12,12 @@ function Appmain(props){
   const [isGameOver, setIsGameOver] = useState()
   const [result, setResult] = useState()
   const [turn, setTurn] = useState()
-   
+
   const [isChatOn, setChatOn] = useState(true);
-  
+
     useEffect(() => {
     initGame()
-    
+
     const subscribe = gameSubject.subscribe((game) => {
       setBoard(game.board)
       setIsGameOver(game.isGameOver)
@@ -25,7 +25,7 @@ function Appmain(props){
       setTurn(game.turn)
     })
 
-      
+
     return () => subscribe.unsubscribe()
   }, [])
 
@@ -43,7 +43,7 @@ function Appmain(props){
         <Board board={board} turn={turn} />
       </div>
       {result && <p className="vertical-text">{result}</p>}
-          <div classname="chat-board">
+          <div className="chat-board">
         <React.Fragment>
       { isChatOn && (
                 <Chat
@@ -51,7 +51,7 @@ function Appmain(props){
                     roomname={props.match.params.roomname}
                     socket={socket}
                 />
-      )} 
+      )}
           <button className="chat-close" onClick = {() => setChatOn(!isChatOn)}>{(isChatOn) ? `Close` : `Open`}</button>
         </React.Fragment>
         </div>

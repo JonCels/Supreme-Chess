@@ -25,7 +25,7 @@ io.on('connection', (socket) => {
     console.log('a user connected');
 
     //multiplayerLogic.initializeGame(io, socket);
-    
+
 
     // the username can be included in the reciever
     //io stuff for chat
@@ -47,12 +47,12 @@ io.on('connection', (socket) => {
             userId: user.id,
             username: user.username,
             text: `${user.username} has joined the chat`
-        });  
+        });
     });
 
     //when somebody send text
     socket.on("chat", (text) => {
-i       //* get user room and emit message
+       //* get user room and emit message
         const user = getCurrentUser(socket.id);
 
         io.to(user.room).emit("message", {
@@ -63,8 +63,8 @@ i       //* get user room and emit message
     });
 
     //Disconnect, when user leave room
-    socket.on("chat", (text) => {
-i       //* get user room and emit message
+    socket.on("disconnect", (text) => {
+       //* get user room and emit message
         const user = userLeave(socket.id);
 
         if(user){
@@ -82,4 +82,3 @@ i       //* get user room and emit message
 server.listen(port, () => {
     console.log(`Server is running in ${process.env.NODE_ENV} on *: ${port}`.yellow.bold);
 });
-
