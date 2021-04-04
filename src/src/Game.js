@@ -43,6 +43,9 @@ export function resignGame(player) {
 }
 
 export function handleMove(from, to) {
+    if (timeLoss || drawAccepted || resign) {
+        return;
+    }
     const promotions = chess.moves({ verbose: true }).filter(m => m.promotion)
     console.table(promotions)
     if (promotions.some(p => `${p.from}:${p.to}` === `${from}:${to}`)) {
