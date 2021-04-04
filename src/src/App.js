@@ -36,8 +36,14 @@ function Appmain(props){
 
     return (
     <div className="container">
-
-      <Timer player='w' active={timerActive} gameOver={isGameOver} />
+      <div>
+          <Timer player='b' active={!timerActive} gameOver={isGameOver} />
+          <div>
+              <DrawButton/>
+              <ResignButton/>
+          </div>
+          <Timer player='w' active={timerActive} gameOver={isGameOver} />
+      </div>
       {isGameOver && (
         <h2 className="vertical-text">
           GAME OVER
@@ -53,14 +59,13 @@ function Appmain(props){
           <Board board={board} turn={turn} />
         </div>
         <div>
-            <Timer player='b' active={!timerActive} gameOver={isGameOver} />
-            <DrawButton/>
-            <ResignButton/>
+
         </div>
       </div>
       {result && <p className="vertical-text">{result}</p>}
 
-          <div className="chat-board">
+
+      <div className="chat-board">
         <React.Fragment>
       { isChatOn && (
                 <Chat

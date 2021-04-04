@@ -72,44 +72,8 @@
   max-height: 80%;
 }
 
-.resign {
-    background-color: #555555; /* Grey */
-    border-radius: 4px;
-    border: none;
-    color: white;
-    padding: 10px 16px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    transition-duration: 0.3s;
-}
-
-.resign:hover {
-    background-color: #919191;
-    color: white;
-}
-
-.draw {
-    background-color: #555555; /* Grey */
-    border-radius: 4px;
-    border: none;
-    color: white;
-    padding: 10px 16px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    transition-duration: 0.3s;
-}
-
-.draw:hover {
-    background-color: #919191;
-    color: white;
-}
-
 .drawIcon {
-    height: 14px;
+    height: 13px;
     width: 22px;
     filter: invert();
 }
@@ -153,6 +117,7 @@
   font-size: 15px;
   width: 11ch;
   margin: 10px;
+  margin-left: 30px;
   padding: 5px;
   background-color: #ffffff;
   border: 1px solid rgb(46, 46, 46);
@@ -167,9 +132,20 @@
   Arial,
   sans-serif;
   font-size: 15px;
-  margin: 5px;
+  margin: 10px;
+  margin-left: 30px;
   padding: 5px;
   background-color: rgb(46, 46, 46);
   border: 1px solid rgb(255, 255, 255);
   border-radius: 2px;
+}
+
+.resign:hover {
+    background-color: #919191;
+    color: white;
+}
+
+.draw:hover {
+    background-color: #919191;
+    color: white;
 }

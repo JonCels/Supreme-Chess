@@ -4,7 +4,7 @@ import { drawGame } from '../Game'
 export default function DrawButton() {
     const [draw, setDraw] = useState(false)
     const [drawOffered, setDrawOffered] = useState(false);
-    
+
     function offerDraw() {
         setDrawOffered(true);
     }
@@ -30,10 +30,10 @@ export default function DrawButton() {
             {drawOffered &&
                 <div>
                     <button onClick={acceptDraw} className="resign">
-                        <img src='./assets/checkmark.png' alt="" className="drawIcon" />
+                        <img src={require('./assets/checkmark.png')} alt="" className="drawIcon" />
                     </button>
                     <button onClick={declineDraw} className="resign">
-                        <img src='./assets/ex.png' alt="" className="drawIcon" />
+                        <img src={require('./assets/ex.png')} alt="" className="drawIcon" />
                     </button>
                 </div>
             }
