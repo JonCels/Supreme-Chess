@@ -187,10 +187,53 @@
     color: white;
 }
 
-.message {
+.p-message {
     margin-left: 0px;
     max-width: 220px;
     padding-left: 0.5rem;
+    font-size: 1rem;
+    background-color: #343841;
+    padding: 1rem;
+    border-radius: 0px 10px 10px 10px;
+    font-weight: 300;
+    color: #b4b6be;
+}
+
+.span-message {
+    margin-left: 0px;
+    max-width: 220px;
+    padding-left: 0.5rem;
+    font-size: 0.6rem;
+    font-weight: 200;
+    color: #b4b6be;
+    padding-left: 0.5rem;
+}
+
+.p-message-right {
+    margin-left: auto;
+    margin-right: 0px;
+    display: flex;
+    flex-direction: column;
+    max-width: 220px;
+    padding-right: 0.5rem;
+    text-align: end;
+    border-radius: 10px 0px 10px 10px;
+    background-color: $redColor;
+    color: white;
+}
+
+.span-message-right {
+    margin-left: auto;
+    margin-right: 0px;
+    display: flex;
+    flex-direction: column;
+    max-width: 220px;
+    padding-right: 0.5rem;
+    width: 100%;
+    text-align: end;
+    padding-left: 0rem;
+    padding-right: 0.5rem;
+
 }
 ::-webkit-scrollbar {
   width: 8px;

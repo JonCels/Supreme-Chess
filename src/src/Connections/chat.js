@@ -44,16 +44,16 @@ function Chat({ username, roomname, socket}){
                 { messages.map((i, num) => {
                     if (i.username === username) {
                         return (
-                            <div className="message" key={num}>
-                                <span>{i.username}</span>
-                                <p>{i.text}</p>
+                            <div key={num}>
+                                <span className="span-message">{i.username}</span>
+                                <p className="p-message">{i.text}</p>
                             </div>
                         );
                      } else {
                        return (
-                           <div className="message mess-right" key={num}>
-                                <span>{i.username}</span>
-                                <p>{i.text}</p>
+                           <div key={num}>
+                                <span className="span-message-right">{i.username}</span>
+                                <p className="p-message-right">{i.text}</p>
                            </div>
                        );
                      }
