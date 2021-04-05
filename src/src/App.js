@@ -30,7 +30,6 @@ function Appmain(props){
       setResetTimer(game.resetTimer)
     })
 
-
     return () => subscribe.unsubscribe()
   }, [])
 

@@ -10,6 +10,7 @@ let resign = false;
 let resignPlayer;
 let drawAccepted = false;
 let reset = false;
+var boardState;
 
 export const gameSubject = new BehaviorSubject()
 
@@ -85,7 +86,6 @@ function updateGame(pendingPromotion) {
         timerActive: turn === 'w',
         resetTimer: reset
     }
-
     gameSubject.next(newGame)
 }
 function getGameResult() {

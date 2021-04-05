@@ -17,22 +17,14 @@ function Homepage({ socket }) {
     return(
     <div className="homepage">
         <p className="welcome">Welcome to Supreme Chess</p>
-        {/* <input
-            placeholder="Username"
-            value={username}
-            onChange={(e) => setusername(e.target.value)}
-        /> */}
-        {/* <input
-            placeholder="Room Name"
-            value={roomname}
-            onChange={(e) => setroomname(e.target.value)}
-        /> */}
         <Input
+
             placeholder="Username"
             value={username}
             onChange={(e) => setusername(e.target.value)}
         />
         <Input
+
             placeholder="Room Name"
             value={roomname}
             onChange={(e) => setroomname(e.target.value)}
