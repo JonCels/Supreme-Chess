@@ -4,7 +4,7 @@ var gameSocket
 var gamesInSession = []
 
 const initializeGame = (sio,client) => {
-    io = io
+    io = sio
     gameSocket = client
     
     gamesInSession.push(gameSocket);
@@ -22,8 +22,6 @@ const initializeGame = (sio,client) => {
     //request for received username
     gameSocket.on('recieved username', receivedUserName)
     
-    //handling the chat work
-    //chatStuff()
 }
 
 function playerJoinGame(idData){
@@ -60,9 +58,9 @@ function createNewGame(gameId){
     this.join(gameId);
 }
 
-function newMove(move){
-    const gameId = move.gameId
-    io.to(gameId).emit('opponent move', move)
+function newMove(data){
+    const room = data.roomname
+    io.to(room).emit('opponent move', move)
 }
 
 function onDisconnect(){

@@ -18,8 +18,15 @@ function Appmain(props){
   const [isChatOn, setChatOn] = useState(true);
   const [timerActive, setTimerActive] = useState();
   const [resetTimer, setResetTimer] = useState();
+  const [roomName, setRoomName] = useState();
+  useEffect(() =>{
+      socket.on("opponent move", (data) =>{
+          setBoard(data.boardState);
+    });
+  },[socket])
+
   useEffect(() => {
-    initGame()
+    initGame(props.match.params.roomname) 
 
     const subscribe = gameSubject.subscribe((game) => {
       setBoard(game.board)
@@ -56,7 +63,7 @@ function Appmain(props){
         <p className="title">Supreme Chess</p>
         <div className="board-container">
 
-          <Board board={board} turn={turn} />
+          <Board socket={socket} board={board} turn={turn} />
         </div>
         <div>
 
@@ -91,7 +98,7 @@ function App() {
             <Home socket={socket} />
         </Route>
         <Route
-        path="/chat/:roomname/:username"
+        path="/game/:roomname/:username"
         component={Appmain} />
       </Switch>
       </div>
