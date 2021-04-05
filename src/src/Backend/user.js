@@ -5,8 +5,8 @@ const users = []
 
 //const initializeGame = (sio,socket) =
 
-function userJoin (id,username, room){
-    const user = {id, username, room};
+function userJoin (id,username, room, isCreator){
+    const user = {id, username, room, isCreator};
 
     users.push(user);
     console.log(users, "users");

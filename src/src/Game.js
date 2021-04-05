@@ -1,5 +1,6 @@
 import * as Chess from 'chess.js'
 import {BehaviorSubject} from 'rxjs'
+import {socket, mySocketId } from './Connections/socket'
 
 // let stalemate = "k7/1R1RN3/p3p3/P3P2p/1PP4P/3K1PP1/8/8 b - h3 0 1";
 // let checkmate = "r1bqkbnr/ppp2Qpp/2np4/4p3/2B1P3/8/PPPP1PPP/RNB1K1NR b KQkq - 0 4";
@@ -10,11 +11,12 @@ let resign = false;
 let resignPlayer;
 let drawAccepted = false;
 let reset = false;
-var boardState;
+let roomname;
 
 export const gameSubject = new BehaviorSubject()
 
-export function initGame() {
+export function initGame(r) {
+    roomname = r;
     updateGame()
 }
 
@@ -69,6 +71,14 @@ export function move(from, to, promotion) {
 
     if (legalMove) {
         updateGame()
+        const turn = chess.turn()
+        socket.emit("new move",{
+            nextPlayerColorToMove: turn === 'w' ? 'w' : 'b',
+            playerColorThatJustMoved: turn === 'w' ? 'b' : 'w',
+            finalPosition: to,
+            boardState: chess.board(),
+            roomname: roomname
+        });
         console.log(from, to)
     }
 }
@@ -84,7 +94,8 @@ function updateGame(pendingPromotion) {
         turn: turn,
         result: isGameOver ? getGameResult() : null,
         timerActive: turn === 'w',
-        resetTimer: reset
+        resetTimer: reset,
+        roomName: roomname
     }
     gameSubject.next(newGame)
 }

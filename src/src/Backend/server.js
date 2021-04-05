@@ -2,24 +2,22 @@ const express = require('express');
 const http = require('http');
 const socketio = require('socket.io');
 const multiplayerLogic = require('./multiplayerLogic.js')
-const colors = require('colors')
-
+const color = require('colors')
+const cors = require('cors');
 const {getCurrentUser, userLeave, userJoin } = require('./user.js');
 
 const port = process.env.PORT || 8000;
 
 const app = express();
+//app.use(cors({origin: "http://localhost:8000"}));
+
+//app.use(function(req, res, next) {
+//  res.header("Access-Control-Allow-Origin", "*");
+//  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//  next();
+//});
 const server = http.createServer(app);
 const io = socketio(server);
-
-//app.get('/', (req,res) => {
-//    res.sendFile(__dirname+'/index.html');
-//});
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
 
 io.on('connection', (socket) => {
     console.log('a user connected');
@@ -31,9 +29,18 @@ io.on('connection', (socket) => {
     //io stuff for chat
     socket.on("joinRoom", ({username, roomname}) => {
         //* create user
-        const user = userJoin(socket.id, username, roomname);
+        socket.join(roomname);
+        var room = io.sockets.adapter.rooms.get(roomname); 
+
+        //console.log(io.sockets.adapter.rooms.get(roomname))
+        if(room === undefined){
+            socket.emit('status', "This session does not exist");
+            return
+        }
+        var isCreator = (room.size <= 1) 
         console.log(socket.id, "=id");
-        socket.join(user.room);
+
+        const user = userJoin(socket.id, username, roomname, isCreator);
 
         //* emit message to user to welcome him/her
         socket.emit("message", {
@@ -60,6 +67,13 @@ io.on('connection', (socket) => {
             username: user.username,
             text: text
         });
+    });
+
+    //when someone moves
+    socket.on("new move", (data) => {
+        const r = data.roomname
+        console.log(r);
+        io.to(r).emit('opponent move', data)
     });
 
     //Disconnect, when user leave room
