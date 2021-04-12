@@ -1,7 +1,6 @@
 const express = require('express');
 const http = require('http');
 const socketio = require('socket.io');
-const multiplayerLogic = require('./multiplayerLogic.js')
 const colors = require('colors')
 
 const {getCurrentUser, userLeave, userJoin } = require('./user.js');
@@ -12,9 +11,6 @@ const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
 
-//app.get('/', (req,res) => {
-//    res.sendFile(__dirname+'/index.html');
-//});
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -23,9 +19,6 @@ app.use(function(req, res, next) {
 
 io.on('connection', (socket) => {
     console.log('a user connected');
-
-    //multiplayerLogic.initializeGame(io, socket);
-
 
     // the username can be included in the reciever
     //io stuff for chat
