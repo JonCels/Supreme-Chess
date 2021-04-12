@@ -15,10 +15,12 @@ import b_b from './assets/b_b.png'
 import n_b from './assets/n_b.png'
 import p_b from './assets/p_b.png'
 
+// creates a piece object
 export default function Piece({
     piece: { type, color },
     position,
 }) {
+    // add drag and drop functionality
     const [{ isDragging }, drag] = useDrag({
         item: {
             type: 'piece',

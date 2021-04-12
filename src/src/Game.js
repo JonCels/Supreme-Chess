@@ -1,9 +1,7 @@
 import * as Chess from 'chess.js'
 import {BehaviorSubject} from 'rxjs'
 
-// let stalemate = "k7/1R1RN3/p3p3/P3P2p/1PP4P/3K1PP1/8/8 b - h3 0 1";
-// let checkmate = "r1bqkbnr/ppp2Qpp/2np4/4p3/2B1P3/8/PPPP1PPP/RNB1K1NR b KQkq - 0 4";
-
+// instantiate Chess object and boolean variables
 const chess = new Chess()
 let timeLoss = false;
 let resign = false;
@@ -12,12 +10,15 @@ let drawAccepted = false;
 let reset = false;
 var boardState;
 
+// create BehaviorSubject observable
 export const gameSubject = new BehaviorSubject()
 
+// initializes the game
 export function initGame() {
     updateGame()
 }
 
+// reset the game
 export function resetGame() {
     timeLoss = false;
     resign = false;
@@ -27,22 +28,26 @@ export function resetGame() {
     updateGame()
 }
 
+// call a game timeout
 export function timeout() {
     timeLoss = true
     updateGame()
 }
 
+// draw the game
 export function drawGame() {
     drawAccepted = true;
     updateGame();
 }
 
+// resign the game
 export function resignGame(player) {
     resignPlayer = player
     resign = true;
     updateGame();
 }
 
+// handle a chess move
 export function handleMove(from, to) {
     if (timeLoss || drawAccepted || resign) {
         return;
@@ -60,6 +65,7 @@ export function handleMove(from, to) {
     }
 }
 
+// move chess piece
 export function move(from, to, promotion) {
     let tempMove = { from, to }
     if (promotion) {
@@ -73,6 +79,7 @@ export function move(from, to, promotion) {
     }
 }
 
+// update the game with potential pawn promotion
 function updateGame(pendingPromotion) {
     const isGameOver = chess.game_over() || timeLoss || drawAccepted || resign
     const turn = chess.turn()
@@ -88,6 +95,8 @@ function updateGame(pendingPromotion) {
     }
     gameSubject.next(newGame)
 }
+
+// get the result of the game
 function getGameResult() {
     console.log(chess.fen())
     if (chess.in_checkmate()) {

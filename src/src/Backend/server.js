@@ -1,7 +1,6 @@
 const express = require('express');
 const http = require('http');
 const socketio = require('socket.io');
-const multiplayerLogic = require('./multiplayerLogic.js')
 const colors = require('colors')
 
 //get exports for defining users

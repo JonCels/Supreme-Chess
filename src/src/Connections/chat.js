@@ -15,8 +15,8 @@ function Chat({ username, roomname, socket}){
             text: data.text
         });
             setMessages([...temp])
-       });
-    },[socket])
+        });
+    }, [socket])
 
     const sendMessage = () => {
           if (text !== ""){
@@ -29,7 +29,7 @@ function Chat({ username, roomname, socket}){
     const messagesEndRef = useRef(null);
 
     const scrollToBottom = () => {
-      messagesEndRef.current.scrollIntoView({ behaviour : "smooth"});
+        messagesEndRef.current.scrollIntoView({ behaviour : "smooth"});
     };
 
     useEffect(scrollToBottom, [messages]);

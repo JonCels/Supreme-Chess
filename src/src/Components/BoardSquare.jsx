@@ -5,6 +5,8 @@ import { useDrop } from 'react-dnd'
 import { handleMove } from '../Game'
 import { gameSubject } from '../Game'
 import Promote from './Promote'
+
+// component to check for board promotion
 export default function BoardSquare({
     piece,
     black,

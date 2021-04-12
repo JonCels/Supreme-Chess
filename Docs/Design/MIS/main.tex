@@ -1,10 +1,15 @@
-\documentclass{article}
+\documentclass[12pt, titlepage]{article}
 \usepackage[utf8]{inputenc}
 \usepackage{geometry}
 \usepackage{amsmath}
+\usepackage{tabularx}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage[normalem]{ulem}
+\definecolor{darkgreen}{rgb}{0.0, 0.5, 0.0}
 \geometry{margin=1.5in}
 
-\title{SE 3XA3: Module Interface Specification\\SupremeChess}
+\title{SE 3XA3: Module Interface Specification\\Supreme Chess}
 
 \author{Team \#2, The Triple Grobs
 		\\ Rupinder Nagra (nagrar5)
@@ -17,6 +22,29 @@
 \begin{document}
 
 \maketitle
+
+\newpage
+\begin{table}[bp]
+    \caption{\bf Revision History}
+    \begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
+    \toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
+    \midrule
+    2021-03-13 & 1.0 & Created and completed document.\\
+    \textcolor{red}{2021-04-11} & \textcolor{red}{2.0} & \textcolor{red}{Made changes to modules to match the system, as requirements were altered during the course of the development process.}\\
+    \bottomrule
+    \end{tabularx}
+\end{table}
+
+\pagenumbering{arabic}
+
+\section*{Important Information}
+    Text that has been struck through, \sout{like this}, was in the previous revision of the document and has been removed. \\
+    
+    Text that is colored red, \textcolor{red}{like this}, is new to revision 1, and reflects the most recent information. \\
+    
+    Text that is colored green, \textcolor{darkgreen}{like this}, is a comment to the TA's/professor and should not be included as a part of the content in this document. \\
+
+\newpage
 
 %Input Module
 \newpage
@@ -250,7 +278,7 @@
         App Module \\
         Timer Module \\
         Chat Module \\
-        AI Module 
+        \sout{AI Module}
     
     \subsection*{Syntax}
         \#define BOARD\_X 8\\
@@ -623,17 +651,21 @@
             transition: currentValue stops decreasing and timeIncrement is added to currentValue.
             exceptions: none            
 
+
+
+
 %AI Module
 \newpage
-\section*{AI Module}
-    \subsection*{Module}
-        AI
+\textcolor{darkgreen}{The entire AI module has been removed. Some text may not be struck through for formatting reasons, however all content from this point on in the document has been removed.}
+\section*{\sout{AI Module}}
+    \subsection*{\sout{Module}}
+        \sout{AI}
     
-    \subsection*{Uses}
-        Game Module
+    \subsection*{\sout{Uses}}
+        \sout{Game Module}
     
-    \subsection*{Syntax}
-        \#define WPAWN 1\\
+    \subsection*{\sout{Syntax}}
+        \sout{\#define WPAWN 1\\
         \#define WBISHOP 2\\
         \#define WROOK 3\\
         \#define WKNIGHT 4\\
@@ -651,56 +683,56 @@
         \#define KnightWeight 30\\
         \#define QueenWeight 90\\
         \#define KingWeight 420\\
-        \#define MobilityWeight 10\\
+        \#define MobilityWeight 10\\}
         \begin{center}
             \begin{tabular}{|c|c|c|c|} 
                 \hline
-                Routines & Inputs & Outputs & Exceptions \\
+                \sout{Routines} & \sout{Inputs} & \sout{Outputs} & \sout{Exceptions} \\
                 \hline
-                initialize & Game & &\\
+                \sout{initialize} & \sout{Game} & &\\
                 \hline
-                setBoard & Game & &  \\ 
+                \sout{setBoard} & \sout{Game} & &  \\ 
                 \hline
-                setGame & Game &  & \\
+                \sout{setGame} & \sout{Game} &  & \\
                 \hline
-                evaluateBoard & Game & Integer & \\
+                \sout{evaluateBoard} & \sout{Game} & \sout{Integer} & \\
                 \hline
-                makeMove & & (PieceVal, BoardXPos, BoardYPos)& \\
+                \sout{makeMove} & & \sout{(PieceVal, BoardXPos, BoardYPos)} & \\
                 \hline
             \end{tabular}
         \end{center}
     
-    \subsection*{Semantics}
-        \subsubsection*{State Variables}
-            internalBoard: sequence of sequence of integers\\
-            GameTree: Tree of Boards\\
+    \subsection*{\sout{Semantics}}
+        \subsubsection*{\sout{State Variables}}
+            \sout{internalBoard: sequence of sequence of integers\\
+            GameTree: Tree of Boards\\}
             % PieceVal: {WPAWN, WBISHOP, WROOK, WKNIGHT, WKING, WQUEEN,
             %           BPAWN, BBISHOP, BROOK, BKNIGHT, BKING, BQUEEN}\\
             % PieceWeight: {PawnWeight, RookWeight, BishopWeight, KnightWeight, KingWeight, QueenWeight}\\
             
-        \subsubsection*{State Invariant}
-            N/A
+        \subsubsection*{\sout{State Invariant}}
+            \sout{N/A}
             
-    \subsection*{Environment Variables}
+    \subsection*{\sout{Environment Variables}}
             
-        \subsubsection*{Assumptions and Design Decisions}
-            \textbf{initialize} is called before any other access routine
+        \subsubsection*{\sout{Assumptions and Design Decisions}}
+            \sout{\textbf{initialize} is called before any other access routine}
             
-    \subsection*{Access Routine Semantics}
-    \subsubsection*{initialize} 
-            transition: internal Board representation (internalBoard) initialized to begin functions\\
+    \subsection*{\sout{Access Routine Semantics}}
+    \subsubsection*{\sout{initialize} }
+            \sout{transition: internal Board representation (internalBoard) initialized to begin functions}\\
             
-        \subsubsection*{setBoard} 
-            transition: updates internal Board using the external Game state for representation purposes\\
-            exceptions: none
+        \subsubsection*{\sout{setBoard} }
+            \sout{transition: updates internal Board using the external Game state for representation purposes\\
+            exceptions: none}
         
-        \subsubsection*{setGame} 
-            transition: updates the internalBoard to a new valid configuration based on the moves played (the new Game state)\\
-            exceptions: none
+        \subsubsection*{\sout{setGame} }
+            \sout{transition: updates the internalBoard to a new valid configuration based on the moves played (the new Game state)\\
+            exceptions: none}
         
-        \subsubsection*{evaluateBoard}
-            output: evaluates the board according to the defined weights
-            and cost function and returns $eval$ (defined below).
+        \subsubsection*{\sout{evaluateBoard}}
+            \sout{output: evaluates the board according to the defined weights
+            and cost function and returns $eval$ (defined below).}
             \begin{center}
             \begin{multline*}
                 materialScore = KingWeight (wK-bK) + QueenWeight  (wQ-bQ)\\
@@ -717,13 +749,13 @@
             $bK = \# of Black Kings$, $bQ = \# of Black Queens$,
             $bP = \# of Black Pawns$,\\ $bB = \# of Black Bishops$, $bR = \# of Black Rooks$, and $bN = \# of Black Knights$.\\
             
-            The mobility of a side is defined by the number of squares reachable by the pieces of a side. $wMobility = \# squares reachable by white$ and $bMobility = \# squares reachable by black$.
+           The mobility of a side is defined by the number of squares reachable by the pieces of a side. $wMobility = \# squares reachable by white$ and $bMobility = \# squares reachable by black$.\\
             
             The $whoMoved$ value is 1 if the current player is white and -1 if the current player is black.
             exceptions:none
         
-        \subsubsection*{makeMove}
-        output: Evaluate the current game state and makes a move, returns a tuple that represents the piece being moved, and the position on the Board where it should be moved to.
-        exceptions: none
+        \subsubsection*{\sout{makeMove}}
+        \sout{output: Evaluate the current game state and makes a move, returns a tuple that represents the piece being moved, and the position on the Board where it should be moved to.
+        exceptions: none}
             
 \end{document}

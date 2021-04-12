@@ -15,6 +15,7 @@ import n_b from './assets/n_b.png'
 
 const promotionPieces = ['r', 'n', 'b', 'q']
 
+// handles the pawn promotion for each piece
 export default function Promote({
     promotion: { from, to, color },
 }) {

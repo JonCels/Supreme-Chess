@@ -1,5 +1,6 @@
 import React from 'react'
 
+// class for checking the square color
 export default function Square({ children, black }) {
     const bgClass = black ? 'square-black' : 'square-white'
 
