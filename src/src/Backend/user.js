@@ -1,10 +1,9 @@
 var io
-var chatSocket //same as gameSocket for now
+var chatSocket 
 
 const users = []
 
-//const initializeGame = (sio,socket) =
-
+//add users
 function userJoin (id,username, room){
     const user = {id, username, room};
 
@@ -14,6 +13,7 @@ function userJoin (id,username, room){
     return user
 }
 
+//output users on the server side (to check against)
 console.log("user out", users);
 
 //Get current user

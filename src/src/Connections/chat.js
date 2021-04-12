@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react'
 
+//Function for rendering Chat
 function Chat({ username, roomname, socket}){
     const [text, setText] = useState("");
     const [messages, setMessages] = useState([]);
 
+    //Cause an effect to update messages
     useEffect(() => {
         socket.on("message", (data) => {
         let temp = messages;
@@ -22,7 +24,8 @@ function Chat({ username, roomname, socket}){
               setText("");
           }
       };
-
+    
+    //Add scroll effect to chat
     const messagesEndRef = useRef(null);
 
     const scrollToBottom = () => {
@@ -31,8 +34,7 @@ function Chat({ username, roomname, socket}){
 
     useEffect(scrollToBottom, [messages]);
 
-    console.log("messages : ", messages);
-
+    //Structure for rendering
     return (
         <div className="chat">
             <div>
@@ -41,7 +43,8 @@ function Chat({ username, roomname, socket}){
                 </h2>
             </div>
             <div className="chat-message">
-                { messages.map((i, num) => {
+                {   //render messages
+                    messages.map((i, num) => {
                     if (i.username === username) {
                         return (
                             <div className="right-message" key={num}>
@@ -61,6 +64,7 @@ function Chat({ username, roomname, socket}){
                 <div ref={messagesEndRef} />
             </div>
             <div  className="send" >
+                {/* message input and sending */}
                 <input
                     placeholder="enter your message"
                     value={text}

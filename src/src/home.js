@@ -2,10 +2,12 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Button, Input } from '@material-ui/core';
 
+/*Render Homepage*/
 function Homepage({ socket }) {
     const [username, setusername] = useState("")
     const [roomname, setroomname] = useState("")
 
+    //Send Data functionality
     const sendData = () => {
         if (username !== "" && roomname !== "") {
             socket.emit("joinRoom", {username, roomname });
@@ -14,6 +16,8 @@ function Homepage({ socket }) {
         }
     };
 
+    //Render input sections
+    //and send to back-end
     return(
     <div className="homepage">
         <p className="welcome">Welcome to Supreme Chess</p>
