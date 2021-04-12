@@ -1,0 +1,546 @@
+\documentclass[12pt, titlepage]{article}
+\usepackage{enumerate}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{hyperref}
+\usepackage{longtable}
+\usepackage[normalem]{ulem}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=blue
+}
+\usepackage[round]{natbib}
+
+\title{SE 3XA3: Test Report\\Supreme Chess}
+
+\author{Team \#2, The Triple Grobs
+		\\ Rupinder Nagra (nagrar5)
+		\\ Pesara Amarasekera (amarasep)
+		\\ Jonathan Cels (celsj)
+}
+
+\begin{document}
+
+\maketitle
+
+\pagenumbering{roman}
+\tableofcontents
+\listoftables
+\listoffigures
+
+\begin{table}[bp]
+    \caption{\bf Revision History}
+    \begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
+        \toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
+        \midrule
+        2021-04-11 & 1.0 & Revision 1 of the Test Report\\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+\newpage
+
+\pagenumbering{arabic}
+
+\section{Functional Requirements Evaluation}
+    \begin{enumerate}[\indent {}]
+        \setlength{\itemsep}{30pt}
+        \item 
+            \begin{enumerate}[ ]
+                \item Test: T-FR1-1
+                \item Result: A user is able to connect to the server successfully.
+            \end{enumerate}
+        
+        \item 
+            \begin{enumerate}[ ]
+                \item Test: T-FR1-2
+                \item Result: A user is unable to connect to the server while it is not running.
+            \end{enumerate}
+            
+        \item 
+            \begin{enumerate}[ ]
+                \item Test: T-FR2-3
+                \item Result: A user is presented with a welcome screen when connecting to the application.
+            \end{enumerate}
+    
+        \item 
+            \begin{enumerate}[ ]
+                \item Test: T-FR3-1
+                \item Result: A user is presented with options to input a username and room name, and join the room.
+            \end{enumerate}
+            
+        \item 
+            \begin{enumerate}[ ]
+                \item Test: T-FR4-1
+                \item Result: A user is able to join a specified chat room after inputting a username and room name.
+            \end{enumerate}
+        
+        \item 
+            \begin{enumerate}[ ]
+                \item Test: T-FR4-2
+                \item Result: A user is unable to join a chat room before inputting a username and room name.
+            \end{enumerate}
+    
+        \item 
+            \begin{enumerate}[ ]
+                \item Test: T-FR18-1
+                \item Result: The board is initialized properly with the correct piece locations and view orientation.
+            \end{enumerate}
+            
+        \item 
+            \begin{enumerate}[ ]
+                \item Test: T-FR19-1
+                \item Result: The timers are initialized properly.
+            \end{enumerate}
+            
+        \item 
+            \begin{enumerate}[ ]
+                \item Test: T-FR20-1
+                \item Result: The white pieces are able to move and the black pieces are not. The white timer has begun counting down.
+            \end{enumerate}
+            
+        \item 
+            \begin{enumerate}[ ]
+                \item Test: T-FR21-1
+                \item Result: A user is unable to move the black pieces as the first move of the game.
+            \end{enumerate}
+            
+        \item 
+            \begin{enumerate}[ ]
+                \item Test: T-FR22-1
+                \item Result: A user is able to move the white pieces as the first move of the game with a legal move by dragging and dropping a piece.
+            \end{enumerate}
+            
+        \item 
+            \begin{enumerate}[ ]
+                \item Test: T-FR23-1
+                \item Result: A user has made a move and the system validated if it was legal or not.
+            \end{enumerate}
+            
+        \item 
+            \begin{enumerate}[ ]
+                \item Test: T-FR24-1
+                \item Result: A legal move updated the board state and flipped board orientation.
+            \end{enumerate}
+            
+        \item 
+            \begin{enumerate}[ ]
+                \item Test: T-FR25-1
+                \item Result: An illegal move had no effect on the board state and the board orientation remained the same.
+            \end{enumerate}
+            
+        \item 
+            \begin{enumerate}[ ]
+                \item Test: T-FR26-1
+                \item Result: Legal moves triggered a check for game termination.
+            \end{enumerate}
+            
+        \item 
+            \begin{enumerate}[ ]
+                \item Test: T-FR27-1
+                \item Result: A legal move that did not terminate the game caused the timers to swap
+            \end{enumerate}
+            
+        \item 
+            \begin{enumerate}[ ]
+                \item Test: T-FR28-1
+                \item Result: A legal move was verified as legal by the validation system.
+            \end{enumerate}
+        
+        \item 
+            \begin{enumerate}[ ]
+                \item Test: T-FR28-2
+                \item Result: An illegal move was verified as not legal by the validation system.
+            \end{enumerate}
+        
+            
+        \item 
+            \begin{enumerate}[ ]
+                \item Test: T-FR29-1
+                \item Result: A legal move updates the board state.
+            \end{enumerate}
+            
+        \item 
+            \begin{enumerate}[ ]
+                \item Test: T-FR29-2
+                \item Result: An illegal move does not update the board state.
+            \end{enumerate}
+            
+        \item 
+            \begin{enumerate}[ ]
+                \item Test: T-FR30-1
+                \item Result: Two simultaneous legal moves will only update the board state once with the player who has control.
+            \end{enumerate}
+            
+        \item 
+            \begin{enumerate}[ ]
+                \item Test: T-FR31-1
+                \item Result: Any number of users in the same chat room were able to start chat.
+            \end{enumerate}
+            
+        \item 
+            \begin{enumerate}[ ]
+                \item Test: T-FR32-1
+                \item Result: Any number of users in the same chat room could open a chat window.
+            \end{enumerate}
+            
+        \item 
+            \begin{enumerate}[ ]
+                \item Test: T-FR33-1
+                \item Result: Any number of users in the same chat room could open a chat window simultaneously.
+            \end{enumerate}
+            
+        \item 
+            \begin{enumerate}[ ]
+                \item Test: T-FR34-1
+                \item Result: Any number of users in the same chat room have the option to end chat for themselves.
+            \end{enumerate}
+            
+        \item 
+            \begin{enumerate}[ ]
+                \item Test: T-FR35-1
+                \item Result: Any number of users in the same chat room have the option to end chat for themselves.
+            \end{enumerate}
+            
+        \item 
+            \begin{enumerate}[ ]
+                \item Test: T-FR36-1
+                \item Result: A user ended the chat for themselves and can no longer see the chat window. An option appears for the user to open the chat again.
+            \end{enumerate}
+            
+        \item 
+            \begin{enumerate}[ ]
+                \item Test: T-FR37-1
+                \item Result: Two users ended the chat for themselves simultaneously and both can no longer see the chat window. An option appears for both users to open the chat again individually.
+            \end{enumerate}   
+            
+        \item 
+            \begin{enumerate}[ ]
+                \item Test: T-FR38-1
+                \item Result: A user ended the chat for themselves and then opened the chat again. All previous messages have been cleared from the chat for that user, but not for other users.
+            \end{enumerate}
+            
+        \item 
+            \begin{enumerate}[ ]
+                \item Test: T-FR39-1
+                \item Result: Two users ended the chat for themselves simultaneously and both can no longer see the chat window. An option appears for both users to open the chat again individually.
+            \end{enumerate}
+            
+        \item 
+            \begin{enumerate}[ ]
+                \item Test: T-FR40-1
+                \item Result: A game has started and both timers are initialized with 10:00 minutes of total time.
+            \end{enumerate}
+            
+        \item 
+            \begin{enumerate}[ ]
+                \item Test: T-FR41-1
+                \item Result: A game has started and a sequence of legal moves has caused the timers to pause and resume on their turns.
+            \end{enumerate}
+            
+        \item 
+            \begin{enumerate}[ ]
+                \item Test: T-FR41-2
+                \item Result: A game has started and a sequence of illegal moves has had no effect on the timers.
+            \end{enumerate}
+            
+        \item 
+            \begin{enumerate}[ ]
+                \item Test: T-FR42-1
+                \item Result: A game has started and termination conditions have been tested after every legal move.
+            \end{enumerate}
+            
+        \item 
+            \begin{enumerate}[ ]
+                \item Test: T-FR43-1
+                \item Result: A game has been played to a ``checkmate'' position and the game terminates with a checkmate.
+            \end{enumerate}
+            
+        \item 
+            \begin{enumerate}[ ]
+                \item Test: T-FR44-1
+                \item Result: A game has been played to a ``stalemate'' position and the game terminates with a draw.
+            \end{enumerate}
+            
+        \item 
+            \begin{enumerate}[ ]
+                \item Test: T-FR45-1
+                \item Result: Players have agreed to a draw and the game terminates with a draw.
+            \end{enumerate}
+            
+        \item 
+            \begin{enumerate}[ ]
+                \item Test: T-FR46-1
+                \item Result: One player has resigned the game and the game terminates with a resignation.
+            \end{enumerate}
+            
+        \item 
+            \begin{enumerate}[ ]
+                \item Test: T-FR47-1
+                \item Result: The timer for one player has reached 0:00 and the game terminates with a timeout.
+            \end{enumerate}
+    \end{enumerate}
+
+\section{Nonfunctional Requirements Evaluation}
+    \subsection{Usability}
+        \begin{enumerate}
+                \item 
+                    \begin{enumerate}[ ]
+                        \item Test: T-UH2-1
+                        \item Result: Over 90\% of the subjects were able to play a move within five minutes of starting the program.
+                    \end{enumerate}
+        \end{enumerate}
+    \subsection{Performance}
+        \begin{enumerate}
+                \item 
+                    \begin{enumerate}[ ]
+                        \item Test: T-PR1-1
+                        \item Result: The average output time was much lower than the required 0.25 seconds.
+                    \end{enumerate}
+                    
+                \item 
+                    \begin{enumerate}[ ]
+                        \item Test: T-PR2-1
+                        \item Result: The maximum response time was lower than the required 2 seconds.
+                    \end{enumerate}
+                
+                \item 
+                    \begin{enumerate}[ ]
+                        \item Test: T-PR3-1
+                        \item Result: The maximum response time between a move and the timer pausing was less than the required 0.1 seconds.
+                    \end{enumerate}
+                    
+                \item 
+                    \begin{enumerate}[ ]
+                        \item Test: T-PR8-1
+                        \item Result: The RAM usage never exceeds 2GB at a time.
+                    \end{enumerate}
+        \end{enumerate}
+	
+\section{Comparison to Existing Implementation}	
+
+    \paragraph{Board State Comparison}
+        
+        \begin{enumerate}
+            \item 
+                \begin{enumerate}[ ]
+                    \item Test: T-EI-1
+                    \item Result: The team members were able to play the same moves on both systems and the same response occurred on both systems.
+                \end{enumerate}
+        \end{enumerate}
+
+\section{Unit Testing}
+    No unit tests were required for this project as manual tests were more effective to verify overall behaviour.
+    
+\section{Changes Due to Testing}
+    \begin{enumerate}
+        \item The system interaction between game termination and functionality of individual components, like timers and buttons, was originally incorrect and found with tests T-FR42-1, T-FR43-1, T-FR44-1, T-FR45-1, T-FR46-, T-FR47-1. This lead to additions to the shared state module where more state was added.
+    \end{enumerate}
+    
+\section{Automated Testing}
+    No automated testing was required for this project as manual tests were more effective to verify overall behaviour.
+    
+\section{Trace to Requirements}
+    \begin{center}
+        \begin{longtable}{ |c|c| } 
+            \caption{\textbf{Trace to Requirements}} \label{tab:long}\\
+            \hline
+            \multicolumn{1}{|c|}{\textbf{Test ID}} & \multicolumn{1}{c|}{\textbf{Requirement ID}} \\ 
+            \hline 
+            \endfirsthead
+            
+            \hline
+            T-FR1-1     & FR1 \\ 
+            T-FR1-2     & FR1 \\ 
+            \hline
+            T-FR2-1     & FR2 \\ 
+            \hline
+            T-FR3-1     & FR3 \\ 
+            \hline
+            T-FR4-1     & FR4 \\ 
+            T-FR4-2     & FR4 \\ 
+            \hline
+            T-FR18-1    & FR18 \\ 
+            \hline
+            T-FR19-1    & FR19 \\ 
+            \hline
+            T-FR20-1    & FR20 \\ 
+            \hline
+            T-FR21-1    & FR21 \\ 
+            \hline
+            T-FR22-1    & FR22 \\ 
+            \hline
+            T-FR23-1    & FR23 \\ 
+            \hline
+            T-FR24-1    & FR24 \\ 
+            \hline
+            T-FR25-1    & FR25 \\ 
+            \hline
+            T-FR26-1    & FR26 \\ 
+            \hline
+            T-FR27-1    & FR27 \\ 
+            \hline
+            T-FR28-1    & FR28 \\
+            \hline
+            T-FR29-1    & FR29 \\ 
+            T-FR29-2    & FR29 \\ 
+            \hline
+            T-FR30-1    & FR30 \\ 
+            \hline
+            T-FR31-1    & FR31 \\ 
+            \hline
+            T-FR32-1    & FR32 \\ 
+            \hline
+            T-FR33-1    & FR33 \\ 
+            \hline
+            T-FR34-1    & FR34 \\ 
+            \hline
+            T-FR35-1    & FR35 \\ 
+            \hline
+            T-FR36-1    & FR36 \\ 
+            \hline
+            T-FR37-1    & FR37 \\ 
+            \hline
+            T-FR38-1    & FR38 \\ 
+            \hline
+            T-FR39-1    & FR39 \\ 
+            \hline
+            T-FR40-1    & FR40 \\ 
+            \hline
+            T-FR41-1    & FR41 \\
+            T-FR41-2    & FR41 \\
+            \hline
+            T-FR42-1    & FR42 \\
+            \hline
+            T-FR43-1    & FR43 \\ 
+            \hline
+            T-FR44-1    & FR44 \\
+            \hline
+            T-FR45-1    & FR45 \\
+            \hline
+            T-FR46-1    & FR46 \\
+            \hline
+            T-FR47-1    & FR47 \\
+            \hline
+            \hline
+            T-UH2-1     & UH2 \\ 
+            \hline
+            T-PR1-1     & PR1 \\ 
+            \hline
+            T-PR2-1     & PR2 \\ 
+            \hline
+            T-PR3-1     & PR3 \\ 
+            \hline
+            T-PR8-1     & PR8 \\ 
+            \hline
+        \end{longtable}
+    \end{center}
+
+\section{Trace to Modules}	
+    \begin{center}
+    \begin{longtable}{ |c|c| } 
+        \caption{\textbf{Trace to Modules}} \label{tab:long}\\
+        \hline
+        \multicolumn{1}{|c|}{\textbf{Test ID}} & \multicolumn{1}{c|}{\textbf{Module ID}} \\ 
+        \hline 
+        \endfirsthead
+        
+        \hline
+        T-FR1-1     & M5.3, M5.3.1, M5.3.3 \\ 
+        T-FR1-2     & M5.3, M5.3.1, M5.3.3 \\ 
+        \hline
+        T-FR2-1     & M5.3, M5.3.1 \\ 
+        \hline
+        T-FR3-1     & M5.2, M5.2.1, M5.2.2 \\ 
+        \hline
+        T-FR4-1     & M5.2, M5.2.1, M5.2.2, M5.2.4, M5.3, M5.3.3 \\ 
+        T-FR4-2     & M5.2, M5.2.1, M5.2.2, M5.2.4, M5.3, M5.3.3 \\ 
+        \hline
+        T-FR18-1    & M5.2, M5.2.3, M5.2.5, M5.2.6 \\ 
+        \hline
+        T-FR19-1    & M5.2, M5.2.4, M5.2.6, M5.3, M5.3.2 \\ 
+        \hline
+        T-FR20-1    & M5.2, M5.2.1, M5.2.6, M5.3, M5.3.2 \\ 
+        \hline
+        T-FR21-1    & M5.2, M5.2.1, M5.2.4, M5.2.6 \\ 
+        \hline
+        T-FR22-1    & M5.2, M5.2.1, M5.2.5, M5.2.6 \\ 
+        \hline
+        T-FR23-1    & M5.2, M5.2.5, M5.2.6 \\ 
+        \hline
+        T-FR24-1    & M5.2, M5.2.5, M5.2.6 \\ 
+        \hline
+        T-FR25-1    & M5.2, M5.2.5, M5.2.6 \\ 
+        \hline
+        T-FR26-1    & M5.2, M5.2.6 \\ 
+        \hline
+        T-FR27-1    & M5.2, M5.2.6, M5.3, M5.3.2 \\ 
+        \hline
+        T-FR28-1    & M5.2, M5.2.4, M5.2.6 \\
+        \hline
+        T-FR29-1    & M5.2, M5.2.3, M5.2.6 \\ 
+        T-FR29-2    & M5.2, M5.2.3, M5.2.6 \\ 
+        \hline
+        T-FR30-1    & M5.2, M5.2.3, M5.2.4 \\ 
+        \hline
+        T-FR31-1    & M5.3, M5.3.3 \\ 
+        \hline
+        T-FR32-1    & M5.3, M5.3.3 \\ 
+        \hline
+        T-FR33-1    & M5.2, M5.2.1, M5.3, M5.3.3 \\ 
+        \hline
+        T-FR34-1    & M5.2, M5.2.1, M5.3, M5.3.3 \\ 
+        \hline
+        T-FR35-1    & M5.2, M5.2.1, M5.3, M5.3.3 \\ 
+        \hline
+        T-FR36-1    & M5.2, M5.2.1, M5.3, M5.3.3 \\ 
+        \hline
+        T-FR37-1    & M5.2, M5.2.1, M5.3, M5.3.3 \\ 
+        \hline
+        T-FR38-1    & M5.2, M5.2.1, M5.3, M5.3.3 \\ 
+        \hline
+        T-FR39-1    & M5.2, M5.2.6, M5.3, M5.3.2 \\ 
+        \hline
+        T-FR40-1    & M5.2, M5.2.6, M5.3, M5.3.2 \\ 
+        \hline
+        T-FR41-1    & M5.2, M5.2.6, M5.3, M5.3.2 \\
+        T-FR41-2    & M5.2, M5.2.6, M5.3, M5.3.2 \\
+        \hline
+        T-FR42-1    & M5.2, M5.2.2, M5.2.3, M5.2.6 \\
+        \hline
+        T-FR43-1    & M5.2, M5.2.2, M5.2.3, M5.2.6 \\ 
+        \hline
+        T-FR44-1    & M5.2, M5.2.2, M5.2.3, M5.2.6 \\
+        \hline
+        T-FR45-1    & M5.2, M5.2.2, M5.2.3, M5.2.6 \\
+        \hline
+        T-FR46-1    & M5.2, M5.2.2, M5.2.3, M5.2.6 \\
+        \hline
+        T-FR47-1    & M5.2, M5.2.2, M5.2.3, M5.2.6 \\
+        \hline
+        T-UH2-1     & M5.2, M5.2.6 \\ 
+        \hline
+        T-PR1-1     & M5.2, M5.2.6 \\ 
+        \hline
+        T-PR2-1     & M5.2, M5.2.1, M5.2.2 \\ 
+        \hline
+        T-PR3-1     & M5.2, M5.2.1, M5.2.2 \\ 
+        \hline
+        T-PR8-1     & M5.2, M5.2.1, M5.2.2 \\ 
+        \hline
+    \end{longtable}
+\end{center}
+
+
+\section{Code Coverage Metrics}
+
+The development team has managed to reach our coverage goal, achieving 100\% statement coverage and around 50\% path coverage. For statement coverage, every line of code in the system was used. Please refer to section 7: trace to requirements, and section 8: trace to modules. This shows that every module is covered multiple times.
+
+\bibliographystyle{plainnat}
+
+\bibliography{SRS}
+
+\end{document}

@@ -1,5 +1,5 @@
 \documentclass[12pt, titlepage]{article}
-
+\usepackage[normalem]{ulem}
 \usepackage{fullpage}
 \usepackage[round]{natbib}
 \usepackage{multirow}
@@ -8,6 +8,8 @@
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage{hyperref}
+\usepackage{xcolor}
+\definecolor{darkgreen}{rgb}{0.0, 0.5, 0.0}
 \usepackage{longtable}
 \hypersetup{
     colorlinks,
@@ -30,7 +32,7 @@
 \newcommand{\mthemnum}{M\themnum}
 \newcommand{\mref}[1]{M\ref{#1}}
 
-\title{SE 3XA3: Module Guide\\SupremeChess}
+\title{SE 3XA3: Module Guide\\Supreme Chess}
 
 \author{Team \#2, The Triple Grobs
 		\\ Rupinder Nagra (nagrar5)
@@ -49,23 +51,32 @@
 \listoftables
 \listoffigures
 
-\begin{table}[bp]
-\caption{\bf Revision History}
-\begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
-\toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
-\midrule
-2021-03-13 & 1.0 & Created document, completed up to anticipated and unlikely changes\\
-2021-03-14 & 1.1 & Finished module hierarchy, connections between requirements and design, and started module decomposition\\
-2021-03-16 & 1.2 & Finished traceability matrix and the rest of the document\\
-2021-03-18 & 1.3 & Minor edits and changes\\
-\bottomrule
-\end{tabularx}
-\end{table}
-
 \newpage
+\begin{table}[bp]
+    \caption{\bf Revision History}
+    \begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
+    \toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
+    \midrule
+    2021-03-13 & 1.0 & Created document, completed up to anticipated and unlikely changes\\
+    2021-03-14 & 1.1 & Finished module hierarchy, connections between requirements and design, and started module decomposition\\
+    2021-03-16 & 1.2 & Finished traceability matrix and the rest of the document\\
+    2021-03-18 & 1.3 & Minor edits and changes\\
+    \textcolor{red}{2021-04-11} & \textcolor{red}{2.0} & \textcolor{red}{Made changes to modules to match the system, as requirements were altered during the course of the development process.}\\
+    \bottomrule
+    \end{tabularx}
+\end{table}
 
 \pagenumbering{arabic}
 
+\section*{Important Information}
+    Text that has been struck through, \sout{like this}, was in the previous revision of the document and has been removed. \\
+    
+    Text that is colored red, \textcolor{red}{like this}, is new to revision 1, and reflects the most recent information. \\
+    
+    Text that is colored green, \textcolor{darkgreen}{like this}, is a comment to the TA's/professor and should not be included as a part of the content in this document. \\
+
+\newpage
+     
 \section{Introduction}
 
 \subsection{Overview}
@@ -118,7 +129,7 @@ A high cohesion signifies that the methods and data within a module are closely 
 \item[\refstepcounter{acnum} \actheacnum \label{acInput}:] The format for inputting user moves. Currently click piece and drag to destination, likely to add click piece and click destination.
 \item[\refstepcounter{acnum} \actheacnum \label{acBoardState}:] The implementation of the data structure that stores the game board state.
 \item[\refstepcounter{acnum} \actheacnum \label{acFontAndPieces}:] User options to change the font and piece models.
-\item[\refstepcounter{acnum} \actheacnum \label{acAI}:] AI settings to select and scale difficulty.
+\item[\refstepcounter{acnum} \actheacnum \label{acAI}:] \sout{AI settings to select and scale difficulty.}
 \item[\refstepcounter{acnum} \actheacnum \label{acGUI}:] The GUI and interface design.
 \item[\refstepcounter{acnum} \actheacnum \label{acTimers}:] User options to play games with different starting timer values.
 \end{description}
@@ -160,7 +171,7 @@ A high cohesion signifies that the methods and data within a module are closely 
 & App Module\\
 & Chat Module\\
 & Timer Module\\
-& AI Module\\
+& \sout{AI Module}\\
 \bottomrule
 
 \end{tabular}
@@ -172,7 +183,7 @@ A high cohesion signifies that the methods and data within a module are closely 
 %Start section
 \section{Connection Between Requirements and Design} \label{SecConnection}
 
-The design satisfies the system requirements developed in the SRS. The app module will handle all interactions from the inputs provided by the user and the outputs the program produces. This module will cover all requirements that have a component of the user directly interacting with the system. The AI and chat modules cover the requirements of the AI player, and chat functionality. The board and game modules cover the requirements necessitated (such as checking for legal moves, and end game conditions). The timer module will contain timer classes that will provide the timer information for the game. The look and feel requirements are satisfied by the input and output modules as they define the core areas of user interaction. The usability and humanity requirements are again satisfied by the input and output modules which define the user interaction. Performance requirements are to be satisfied by the combination of all modules, but the key modules that impact performance are software decision hiding modules. The operational and environmental requirements, and the maintainability and support requirements are achieved by all modules. This is because all modules are designed to be operational for the environment (the server and client) and maintained for a set time (end of semester). Security and legal requirements are covered by the entirety of the system. This is because the accessibility of the repository and the JavaScript standard in use affects all modules.
+The design satisfies the system requirements developed in the SRS. The app module will handle all interactions from the inputs provided by the user and the outputs the program produces. This module will cover all requirements that have a component of the user directly interacting with the system. The \sout{AI and} chat module covers the requirements of the \sout{AI player, and} chat functionality. The board and game modules cover the requirements necessitated (such as checking for legal moves, and end game conditions). The timer module will contain timer classes that will provide the timer information for the game. The look and feel requirements are satisfied by the input and output modules as they define the core areas of user interaction. The usability and humanity requirements are again satisfied by the input and output modules which define the user interaction. Performance requirements are to be satisfied by the combination of all modules, but the key modules that impact performance are software decision hiding modules. The operational and environmental requirements, and the maintainability and support requirements are achieved by all modules. This is because all modules are designed to be operational for the environment (the server and client) and maintained for a set time (end of semester). Security and legal requirements are covered by the entirety of the system. This is because the accessibility of the repository and the JavaScript standard in use affects all modules.
 
 %Start section
 \section{Module Decomposition} \label{SecMD}
@@ -232,7 +243,7 @@ The design satisfies the system requirements developed in the SRS. The app modul
     
     \subsubsection{Game Module \label{mGame}}
     \begin{description}
-    \item[Secrets:] Game data.
+    \item[Secrets:] Game \textcolor{red}{logic and} data.
     \item[Services:] Handles game termination, move handling, and storing previous moves.
     \item[Implemented By:] Node.js libraries.
     \end{description}
@@ -261,17 +272,18 @@ The design satisfies the system requirements developed in the SRS. The app modul
     
     \subsubsection{Chat Module \label{mChat}}
     \begin{description}
-    \item[Secrets:] Chat data.
-    \item[Services:] Stores chat messages inputted by players.
+    \item[Secrets:] Chat data, \textcolor{red}{such as messages and room name.}
+    \item[Services:] Stores chat messages inputted by players \textcolor{red}{in specific rooms}.
     \item[Implemented By:] Node.js libraries.
     \end{description}
     
-    \subsubsection{AI Module \label{mAI}}
+    \subsubsection{\sout{AI Module} \label{mAI}}
     \begin{description}
-    \item[Secrets:] AI algorithm data.
-    \item[Services:] Outputs and performs possible moves by algorithm.
-    \item[Implemented By:] Node.js libraries.
+    \item[Secrets:] \sout{AI algorithm data.}
+    \item[Services:] \sout{Outputs and performs possible moves by algorithm.}
+    \item[Implemented By:] \sout{Node.js libraries.}
     \end{description}
+    
 \section{Traceability Matrix} \label{SecTM}
 
 This section shows two traceability matrices: between the modules and the
@@ -293,51 +305,57 @@ requirements and between the modules and the anticipated changes.
         \hline \hline
         \endlastfoot
         
-        R1 && \mref{mSH}, \mref{mApp}\\
-        R2 && \mref{mBH}, \mref{mInput}, \mref{mSH}, \mref{mAI}\\
-        R3 && \mref{mBH}, \mref{mGame}\\
-        R4 && \mref{mBH}, \mref{mGame}\\
-        R5 && \mref{mBH}, \mref{mGame}\\
-        R6 && \mref{mBH}, \mref{mGame}, \mref{mSH}, \mref{mApp}\\
-        R7 && \mref{mBH}, \mref{mInput}, \mref{mSH}, \mref{mAI}\\
-        R8 && \mref{mBH}, \mref{mBoard}, \mref{mGame}, \mref{mSH}, \mref{mApp}\\
-        R9 && \mref{mBH}, \mref{mOutput}, \mref{mSharedData}\\
-        R10 && \mref{mBH}, \mref{mGame}, \mref{mSH}, \mref{mApp}\\
-        R11 && \mref{mBH}, \mref{mGame}, \mref{mSH}, \mref{mApp}\\
-        R12 && \mref{mSH}, \mref{mChat}\\
-        R13 && \mref{mBH}, \mref{mGame}, \mref{mSH}, \mref{mApp}\\
-        R14 && \mref{mBH},  \mref{mInput}, \mref{mSH}, \mref{mAI}\\
-        R15 && \mref{mBH}, \mref{mInput} \\
-        R16 && \mref{mBH}, \mref{mBoard}, \mref{mGame}\\
-        R17 && \mref{mBH}, \mref{mGame}, \mref{mSH}, \mref{mTimer}\\
-        R18 && \mref{mBH}, \mref{mPiece}, \mref{mGame}\\
-        R19 && \mref{mBH}, \mref{mSharedData}, \mref{mGame}\\
-        R20 && \mref{mBH}, \mref{mOutput}, \mref{mPiece}, \mref{mGame}\\
-        R21 && \mref{mBH}, \mref{mPiece}, \mref{mGame}\\
-        R22 && \mref{mBH}, \mref{mPiece}, \mref{mGame}\\
+        R1 && \mref{mSH}, \mref{mApp}, \textcolor{red}{\mref{mChat}}\\
+        R2 && \sout{\mref{mBH}}, \sout{\mref{mInput}}, \mref{mSH}, \textcolor{red}{\mref{mApp}}, \sout{\mref{mAI}} \\
+        
+        \textcolor{red}{R3} && \mref{mBH}, \textcolor{red}{\mref{mInput}}, \textcolor{red}{\mref{mOutput}}, \sout{\mref{mGame}}\\
+        
+        \textcolor{red}{R4} && \mref{mBH}, \textcolor{red}{\mref{mInput}}, \textcolor{red}{\mref{mOutput}}, \textcolor{red}{\mref{mSharedData}}, \sout{\mref{mGame}}, \textcolor{red}{\mref{mSH}}, \textcolor{red}{\mref{mChat}}\\
+        
+        \sout{R5} && \mref{mBH}, \mref{mGame}\\
+        \sout{R6} && \sout{\mref{mBH}, \mref{mGame}, \mref{mSH}, \mref{mApp}}\\
+        \sout{R7} && \sout{\mref{mBH}, \mref{mInput}, \mref{mSH}, \mref{mAI}}\\
+        \sout{R8} && \sout{\mref{mBH}, \mref{mBoard}, \mref{mGame}, \mref{mSH}, \mref{mApp}}\\
+        \sout{R9} && \sout{\mref{mBH}, \mref{mOutput}, \mref{mSharedData}}\\
+        \sout{R10} && \sout{\mref{mBH}, \mref{mGame}, \mref{mSH}, \mref{mApp}}\\
+        \sout{R11} && \sout{\mref{mBH}, \mref{mGame}, \mref{mSH}, \mref{mApp}}\\
+        \sout{R12} && \sout{\mref{mSH}, \mref{mChat}}\\
+        \sout{R13} && \sout{\mref{mBH}, \mref{mGame}, \mref{mSH}, \mref{mApp}}\\
+        \sout{R14} && \sout{\mref{mBH},  \mref{mInput}, \mref{mSH}, \mref{mAI}}\\
+        \sout{R15} && \sout{\mref{mBH}, \mref{mInput}} \\
+        \sout{R16} && \sout{\mref{mBH}, \mref{mBoard}, \mref{mGame}}\\
+        \sout{R17} && \sout{\mref{mBH}, \mref{mGame}, \mref{mSH}, \mref{mTimer}}\\
+        
+        R18 && \mref{mBH}, \mref{mBoard}, \mref{mPiece}, \mref{mGame}\\
+        R19 && \mref{mBH}, \mref{mSharedData}, \mref{mGame}, \mref{mSH}, \mref{mTimer} \\
+        R20 && \mref{mBH}, \mref{mInput}, \mref{mGame}, \mref{mSH}, \mref{mTimer}\\
+        R21 && \mref{mBH}, \mref{mInput}, \mref{mSharedData}, \mref{mGame} \\
+        R22 && \mref{mBH}, \mref{mInput}, \mref{mPiece}, \mref{mGame}\\
         R23 && \mref{mBH}, \mref{mPiece}, \mref{mGame}\\
-        R24 && \mref{mBH}, \mref{mGame}\\
-        R25 && \mref{mBH}, \mref{mGame}, \mref{mSH}, \mref{mTimer}\\
-        R26 && \mref{mBH}, \mref{mSharedData}, \mref{mGame}\\
-        R27 && \mref{mBH}, \mref{mBoard}, \mref{mGame}\\
-        R28 && \mref{mBH}, \mref{mBoard}, \mref{mSharedData}\\
-        R29 && \mref{mSH}, \mref{mChat}\\
-        R30 && \mref{mSH}, \mref{mChat}\\
-        R31 && \mref{mBH}, \mref{mInput}, \mref{mSH}, \mref{mChat}\\
-        R32 && \mref{mBH}, \mref{mInput}, \mref{mSH}, \mref{mChat}\\
+        R24 && \mref{mBH}, \mref{mPiece}, \mref{mGame}\\
+        R25 && \mref{mBH}, \mref{mPiece}, \mref{mGame}\\
+        R26 && \mref{mBH}, \mref{mGame}\\
+        R27 && \mref{mBH}, \mref{mGame}, \mref{mSH}, \mref{mTimer}\\
+        R28 && \mref{mBH}, \mref{mSharedData}, \mref{mGame}\\
+        R29 && \mref{mBH}, \mref{mBoard}, \mref{mGame}\\
+        R30 && \mref{mBH}, \mref{mBoard}, \mref{mSharedData}\\
+        R31 && \mref{mSH}, \mref{mChat}\\
+        R32 && \mref{mSH}, \mref{mChat}\\
         R33 && \mref{mBH}, \mref{mInput}, \mref{mSH}, \mref{mChat}\\
         R34 && \mref{mBH}, \mref{mInput}, \mref{mSH}, \mref{mChat}\\
         R35 && \mref{mBH}, \mref{mInput}, \mref{mSH}, \mref{mChat}\\
         R36 && \mref{mBH}, \mref{mInput}, \mref{mSH}, \mref{mChat}\\
-        R37 && \mref{mBH}, \mref{mGame}, \mref{mSH}, \mref{mTimer}\\
-        R38 && \mref{mBH}, \mref{mGame}, \mref{mSH}, \mref{mTimer}\\
+        R37 && \mref{mBH}, \mref{mInput}, \mref{mSH}, \mref{mChat}\\
+        R38 && \mref{mBH}, \mref{mInput}, \mref{mSH}, \mref{mChat}\\
         R39 && \mref{mBH}, \mref{mGame}, \mref{mSH}, \mref{mTimer}\\
-        R40 && \mref{mBH}, \mref{mOutput}, \mref{mBoard}, \mref{mGame}\\
-        R41 && \mref{mBH}, \mref{mOutput}, \mref{mBoard}, \mref{mGame}\\
+        R40 && \mref{mBH}, \mref{mGame}, \mref{mSH}, \mref{mTimer}\\
+        R41 && \mref{mBH}, \mref{mGame}, \mref{mSH}, \mref{mTimer}\\
         R42 && \mref{mBH}, \mref{mOutput}, \mref{mBoard}, \mref{mGame}\\
         R43 && \mref{mBH}, \mref{mOutput}, \mref{mBoard}, \mref{mGame}\\
         R44 && \mref{mBH}, \mref{mOutput}, \mref{mBoard}, \mref{mGame}\\
         R45 && \mref{mBH}, \mref{mOutput}, \mref{mBoard}, \mref{mGame}\\
+        R46 && \mref{mBH}, \mref{mOutput}, \mref{mBoard}, \mref{mGame}\\
+        R47 && \mref{mBH}, \mref{mOutput}, \mref{mBoard}, \mref{mGame}\\
         UH2 && \mref{mBH}, \mref{mGame}\\
         UH8 && \mref{mBH}, \mref{mGame}\\
         PR1 && \mref{mBH}, \mref{mInput}, \mref{mOutput}\\
@@ -364,7 +382,7 @@ requirements and between the modules and the anticipated changes.
         \acref{acInput} && \mref{mBH}, \mref{mInput}, \mref{mPiece}\\
         \acref{acBoardState} && \mref{mBH}, \mref{mBoard}, \mref{mPiece}\\
         \acref{acFontAndPieces} && \mref{mBH}, \mref{mOutput}\\
-        \acref{acAI} && \mref{mSH}, \mref{mAI}\\
+        \sout{\acref{acAI}} && \sout{\mref{mSH}, \mref{mAI}}\\
         \acref{acGUI} && \mref{mBH}, \mref{mOutput}\\
         \acref{acTimers} && \mref{mSH}, \mref{mTimer}
     \end{longtable}
@@ -382,8 +400,9 @@ requirements and between the modules and the anticipated changes.
 
 \section{Design Schedule}
 		
-A Gantt chart detailing the project and design schedule can be found at the \href{https://gitlab.cas.mcmaster.ca/celsj/3xa3-group2-chess/-/blob/master/ProjectSchedule/3XA3_ProjectSchedule.pdf}{following link}. 
+A Gantt chart detailing the project and design schedule can be found at the \href{https://gitlab.cas.mcmaster.ca/celsj/3xa3-group2-chess/-/blob/master/ProjectSchedule/3XA3_ProjectSchedule.pdf}{following link}. \\
 
+\textcolor{darkgreen}{Many marks were lost in this section of revision 0 for a lack of Git issues being used to track modules. As we cannot go back to create these we hope that we will not lose the same marks again for revision 1. Rather than using Git issues, work was split into Git branches by functionality and assigned individually.}
 \bibliographystyle {plainnat}
 \bibliography {MG}
 

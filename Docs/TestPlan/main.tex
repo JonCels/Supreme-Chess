@@ -12,6 +12,7 @@
     urlcolor=blue
 }
 \usepackage[round]{natbib}
+\usepackage[normalem]{ulem}
 
 \title{SE 3XA3: Test Plan\\SupremeChess}
 
@@ -21,7 +22,7 @@
 		\\ Pesara Amarasekera (amarasep)
 }
 
-\date{\today}
+\date{March 5, 2021}
 
 \begin{document}
 
@@ -56,12 +57,12 @@ The purpose of testing this system is to detect and correct software failures, i
 
 \subsection{Scope}
 
-The project, SupremeChess, is a chess game played online by one player against an AI opponent, or by two players against each other. The scope of testing for this project will cover three main areas:
+The project, SupremeChess, is a chess game played \sout{online by one player against an AI opponent, or} by two players against each other. The scope of testing for this project will cover three main areas:
 
 \begin{enumerate}
     \item The implementation of the chess game logic. This includes testing moves, game states, and game termination.
-    \item Surrounding functionality such as the timers, the menu, the chat feature, and the AI opponent.
-    \item The online multiplayer functionality against an AI opponent or another user.
+    \item Surrounding functionality such as the timers, the menu, the chat feature, \sout{and the AI opponent}.
+    \item \sout{The online multiplayer functionality against an AI opponent or another user.}
 \end{enumerate}
 
 \subsection{Acronyms, Abbreviations, and Symbols}
@@ -108,7 +109,7 @@ The SupremeChess project plans to re-implement the open source project \href{htt
 	
 \subsection{Software Description}
 
-The software will allow a user to play a game of chess against either another user online, or against an AI opponent. The implementation will be completed in JavaScript using Node.js and React.
+The software will allow a user to play a game of chess against another user \sout{online, or against an AI opponent}. The implementation will be completed in JavaScript using Node.js and React.
 
 \subsection{Test Team}
 
@@ -116,14 +117,17 @@ The individuals responsible for testing the system are Jonathan Cels, Rupinder N
 
 \subsection{Automated Testing Approach}
 
-Automated testing will be done using the software testing tools specified below, Enzyme and Mocha. The team will write unit tests for React components using Enzyme, and write the test suite using Mocha. Further detail on the unit testing strategy can be found in section 6, the Unit Testing Plan. The test suite will be run after each major commit to the master branch, and will be run before and after merging any branches to ensure that nothing is broken on addition of new components.
+\sout{Automated testing will be done using the software testing tools specified below, Enzyme and Mocha. The team will write unit tests for React components using Enzyme, and write the test suite using Mocha. Further detail on the unit testing strategy can be found in section 6, the Unit Testing Plan. The test suite will be run after each major commit to the master branch, and will be run before and after merging any branches to ensure that nothing is broken on addition of new components.}
+
+\textcolor{red}{Automated testing will be done using the default jest library installed with create-react-app. However, there is no automated testing required for this system as manual testing is more effective for highly visual components.}
 
 \subsection{Testing Tools}
 \begin{enumerate}
-    \item \textbf{Enzyme}:
-        Enzyme will be the tool used to test React components.
-    \item \textbf{Mocha}:
-        Mocha will be used to write the automated test suite.
+    \item \textbf{\sout{Enzyme}}:
+        \sout{Enzyme will be the tool used to test React components.}
+    \item \textbf{\sout{Mocha}}:
+        \sout{Mocha will be used to write the automated test suite.}
+    \item \textcolor{red}{\textbf{Jest} will be the tool used to test React components and will be run using the built-in `react-test script`.}
 \end{enumerate}
 
 \subsection{Testing Schedule}
@@ -135,7 +139,7 @@ A Gantt chart detailing the project and testing schedule can be found at the \hr
 \subsection{Tests for Functional Requirements}
 
 %Select Opponent
-\subsubsection{Select Opponent}
+\subsubsection{\sout{Select Opponent} \textcolor{red}{Join Chat Room}}
 		
     \paragraph{Connection to server}
     
@@ -149,7 +153,9 @@ A Gantt chart detailing the project and testing schedule can be found at the \hr
             					
             Input: Valid connection request.
             					
-            Output: The user is presented with the options of playing against an AI or online player. A successful connection will verify that the connection was made with a console output message.
+            \sout{Output: The user is presented with the options of playing against an AI or online player. A successful connection will verify that the connection was made with a console output message.}
+            
+            \textcolor{red}{Output: A successful connection will verify that the connection was made with a console output message.}
             					
             How test will be performed: A team member will manually attempt to connect to the server and will ensure that the server verifies the connection in the console.
         
@@ -167,13 +173,13 @@ A Gantt chart detailing the project and testing schedule can be found at the \hr
         
         \end{enumerate}
     
-    \paragraph{Select AI opponent or online player}
+    \paragraph{\sout{Select AI opponent or online player} \textcolor{red}{Starting Screen}}
         
         \begin{enumerate}
         
-        \item{T-FR2-1\\}
+        \item{\sout{T-FR2-1\\}}
         
-            Type: Manual, Static, Structural.
+            \sout{Type: Manual, Static, Structural.
             					
             Initial State: A user is presented with the options of playing against an AI opponent or online player.
             					
@@ -181,11 +187,11 @@ A Gantt chart detailing the project and testing schedule can be found at the \hr
             					
             Output: An invite link visible to the player.
             					
-            How test will be performed: A team member will choose to play against an online player and verify that an invite link is generated.
+            How test will be performed: A team member will choose to play against an online player and verify that an invite link is generated.}
         
-        \item{T-FR2-2\\}
+        \item{\sout{T-FR2-2\\}}
         
-            Type: Functional, Dynamic, Manual.
+            \sout{Type: Functional, Dynamic, Manual.
             					
             Initial State: A user is presented with the options of playing against an AI opponent or online player.
             					
@@ -193,20 +199,84 @@ A Gantt chart detailing the project and testing schedule can be found at the \hr
             					
             Output: The system attempts to start a game against an AI opponent.
             					
-            How test will be performed: A team member will choose to play against an AI opponent and verify that the system attempts to start a game.
+            How test will be performed: A team member will choose to play against an AI opponent and verify that the system attempts to start a game.}
+  
+        \item{\textcolor{red}{T-FR2-3\\}}
+        
+            \textcolor{red}{Type: Manual, Dynamic, Structural.}
+            					
+            \textcolor{red}{Initial State: A user is attempting to connect to the web server.}
+            					
+            \textcolor{red}{Input: The system will run the welcome screen.}
+            					
+            \textcolor{red}{Output: The user is able to see the starting screen.}
+            					
+            \textcolor{red}{How test will be performed: A team member will manually attempt to join this page of the application.}
                 
         \end{enumerate}
-
-%Play Against Live Opponent
-\subsubsection{Play Against Live Opponent}
-
-    \paragraph{Pair with Invite Link}
+        
+        \paragraph{\textcolor{red}{Create Chat Room}}
 
         \begin{enumerate}
 
-        \item{T-FR3-1\\}
+        \item{\textcolor{red}{{T-FR3-1\\}}}
 
-            Type: Manual, Dynamic, Structural.
+            \textcolor{red}{Type: Manual, Dynamic, Structural.}
+            					
+            \textcolor{red}{Initial State: The user is presented with a welcome screen.}
+            					
+            \textcolor{red}{Input: The system shall present the user with options to input a username and room name.}
+            					
+            \textcolor{red}{Output: The user shall join the specified chat room.}
+            					
+            \textcolor{red}{How test will be performed: Members of the team will manually attempt to be granted access to join a chat room.}
+
+        \end{enumerate}
+
+    \paragraph{\textcolor{red}{Chat Room Requirements}}
+    
+        \begin{enumerate}
+            
+        \item{\textcolor{red}{T-FR4-1\\}}
+        
+            \textcolor{red}{Type: Manual, Functional, Dynamic.}
+            					
+            \textcolor{red}{Initial State: The user attempts to join a chat room after inputting a username and room name.}
+            					
+            \textcolor{red}{Input: The system shall send the user input data to the server.}
+            					
+            \textcolor{red}{Output: The system shall connect the user to the specified chat room.}
+            					
+            \textcolor{red}{How test will be performed: Two members of the team will manually attempt to join a chat room to interact with one another.}
+
+        \end{enumerate}
+        
+        \begin{enumerate}
+            
+        \item{\textcolor{red}{T-FR4-2\\}}
+        
+            \textcolor{red}{Type: Manual, Functional, Dynamic.}
+            					
+            \textcolor{red}{Initial State: The user attempts to join a chat room after inputting a username and room name.}
+            					
+            \textcolor{red}{Input: The user sends the incorrect input data to the server.}
+            					
+            \textcolor{red}{Output: The system shall not connect the user to the specified chat room.}
+            					
+            \textcolor{red}{How test will be performed: Two members of the team will manually attempt to join a chat room to interact with one another.}
+
+        \end{enumerate}
+
+%Play Against Live Opponent
+\subsubsection{\sout{Play Against Live Opponent}}
+
+    \paragraph{\sout{Pair with Invite Link}}
+
+        \begin{enumerate}
+
+        \item{\sout{T-FR5-1\\}}
+
+            \sout{Type: Manual, Dynamic, Structural.
             					
             Initial State: A user has connected to the web server.
             					
@@ -214,11 +284,11 @@ A Gantt chart detailing the project and testing schedule can be found at the \hr
             					
             Output: A successful invitation will grant access for the player to join the game and play. The system will verify that access was granted with a console output message.
             					
-            How test will be performed: Two members of the team will manually attempt to be granted access to play one another. 
+            How test will be performed: Two members of the team will manually attempt to be granted access to play one another. }
 
-        \item{T-FR3-2\\}
+        \item{\sout{T-FR5-2\\}}
 
-            Type: Manual, Dynamic, Structural.
+            \sout{Type: Manual, Dynamic, Structural.
             					
             Initial State: A user has connected to the web server.
             					
@@ -226,17 +296,19 @@ A Gantt chart detailing the project and testing schedule can be found at the \hr
             					
             Output: An unsuccessful invitation will not provide access for a player to join a game and play against another opponent. The system will show that access was not granted with an exception.
             					
-            How test will be performed: Two members of the team will manually attempt to be granted access to play with one another, but fails. 
+            How test will be performed: Two members of the team will manually attempt to be granted access to play with one another, but fails. }
 
         \end{enumerate}
+        
 
-    \paragraph{Options while Awaiting Player}
+
+    \paragraph{\sout{Options while Awaiting Player}}
 
         \begin{enumerate}
 
-        \item{T-FR4-1\\}
+        \item{\sout{T-FR6-1\\}}
 
-            Type: Manual, Functional, Dynamic.
+            \sout{Type: Manual, Functional, Dynamic.
             					
             Initial State: The user has a valid invite link and is awaiting player.
             					
@@ -244,11 +316,11 @@ A Gantt chart detailing the project and testing schedule can be found at the \hr
             					
             Output: The invite link will expire the player will no longer be awaiting a player.
             					
-            How test will be performed: Two members of the team will manually attempt to play with one another, but one member quits the game while awaiting the other player to join. 
+            How test will be performed: Two members of the team will manually attempt to play with one another, but one member quits the game while awaiting the other player to join. }
         
-        \item{T-FR4-2\\}
+        \item{\sout{T-FR6-2\\}}
             
-            Type: Manual, Functional, Dynamic.
+            \sout{Type: Manual, Functional, Dynamic.
             					
             Initial State: The user has a valid invite link and is awaiting player.
             					
@@ -256,7 +328,7 @@ A Gantt chart detailing the project and testing schedule can be found at the \hr
             					
             Output: The invite link will expire and the system will now set up the game to play against the AI.
             					
-            How test will be performed: Two members of the team will manually attempt to play with one another, but one member will choose to play against the AI while awaiting the other player to join. 
+            How test will be performed: Two members of the team will manually attempt to play with one another, but one member will choose to play against the AI while awaiting the other player to join. }
         
         \end{enumerate}
 
@@ -264,27 +336,28 @@ A Gantt chart detailing the project and testing schedule can be found at the \hr
     
         \begin{enumerate}
         
-        \item{T-FR5-1\\}
+        \item{\sout{T-FR7-1\\}}
         
-            Type: Manual, Functional, Dynamic.
+            \sout{Type: Manual, Functional, Dynamic.
             					
             Initial State: The user has a valid invite link and is awaiting player.
+            The user has input a room name and has connected to the server.
             					
             Input: The user chooses to quit the game.
             					
             Output: The current game shall be terminated.
             					
-            How test will be performed: Two members of the team will manually attempt to play with one another, but one member leaves the game while awaiting the other player to join. 
+            How test will be performed: Two members of the team will manually attempt to play with one another, but one member leaves the game. while awaiting the other player to join.} 
         
         \end{enumerate}
 
-    \paragraph{User Selects the Quit Option}
+    \paragraph{\sout{User Selects the Quit Option}}
     
         \begin{enumerate}
         
-            \item{T-FR6-1\\}
+            \item{\sout{T-FR8-1\\}}
                 
-                Type: Manual, Functional, Dynamic.
+               \sout{ Type: Manual, Functional, Dynamic.
                 					
                 Initial State: The user has a valid invite link and is awaiting player.
                 					
@@ -292,17 +365,17 @@ A Gantt chart detailing the project and testing schedule can be found at the \hr
                 					
                 Output: The current game shall be terminated.
                 					
-                How test will be performed: Two members of the team will manually attempt to play with one another, but one member leaves the game while awaiting the other player to join. 
+                How test will be performed: Two members of the team will manually attempt to play with one another, but one member leaves the game while awaiting the other player to join. }
         
         \end{enumerate}
 
-    \paragraph{User Selects the Play Against AI Option}
+    \paragraph{\sout{User Selects the Play Against AI Option}}
 
         \begin{enumerate}
 
-        \item{T-FR7-1\\}
+        \item{\sout{T-FR9-1\\}}
 
-            Type: Manual, Functional, Dynamic.
+            \sout{Type: Manual, Functional, Dynamic.
             					
             Initial State: The user has a valid invite link and is awaiting player.
             					
@@ -310,17 +383,17 @@ A Gantt chart detailing the project and testing schedule can be found at the \hr
             					
             Output: The invite link will expire and the system will now set up the game to play against the AI.
             					
-            How test will be performed: Two members of the team will manually attempt to play with one another, but one member will choose to play against the AI while awaiting the other player to join. 
+            How test will be performed: Two members of the team will manually attempt to play with one another, but one member will choose to play against the AI while awaiting the other player to join. }
 
         \end{enumerate}
             
-    \paragraph{Present Loading Screen}
+    \paragraph{\sout{Present Loading Screen}}
 
         \begin{enumerate}
 
-        \item{T-FR8-1\\}
+        \item{\sout{T-FR10-1\\}}
 
-            Type: Manual, Functional, Dynamic.
+           \sout{ Type: Manual, Functional, Dynamic.
             					
             Initial State: Both users have joined the invite link.
             					
@@ -328,7 +401,7 @@ A Gantt chart detailing the project and testing schedule can be found at the \hr
             					
             Output: The system presents the players a view of the board.
             					
-            How test will be performed: Two members of the team will join a game, and system shall check if the loading screen has been initialized.
+            How test will be performed: Two members of the team will join a game, and system shall check if the loading screen has been initialized.}
 
         \end{enumerate}
             
@@ -336,9 +409,9 @@ A Gantt chart detailing the project and testing schedule can be found at the \hr
 
         \begin{enumerate}
 
-        \item{T-FR9-1\\}
+        \item{\sout{T-FR11-1\\}}
 
-            Type: Manual, Functional, Dynamic.
+            \sout{Type: Manual, Functional, Dynamic.
             					
             Initial State: The system presents the players a view of the board.
             					
@@ -346,7 +419,7 @@ A Gantt chart detailing the project and testing schedule can be found at the \hr
             					
             Output: The system initializes the game after calling the ``Start Game'' use case, and both players may now play.
             					
-            How test will be performed: Two members of the team will join a game, and system shall check if the ``Start Game'' use case has been called.
+            How test will be performed: Two members of the team will join a game, and system shall check if the ``Start Game'' use case has been called.}
 
         \end{enumerate}
 
@@ -354,31 +427,30 @@ A Gantt chart detailing the project and testing schedule can be found at the \hr
 
         \begin{enumerate}
 
-        \item{T-FR10-1\\}
+        \item{\sout{T-FR12-1\\}}
 
-            Type: Manual, Functional, Dynamic.
+            \sout{Type: Manual, Functional, Dynamic.
             					
             Initial State: The game calls the ``Start Game'' use case.
             					
             Input: The current server information and concurrent users are checked in the ``Start Game'' use case.
             					
-            Output: The system shall reject
-            the request and return to the ``Select Opponent” use case.
+            Output: The system shall reject the request and return to the ``Select Opponent” use case.
 
-            How test will be performed: Two members of the team will join a game, and system shall check if the ``Start Game'' use case successfully completes with less and more than 15 concurrent users.
+            How test will be performed: Two members of the team will join a game, and system shall check if the ``Start Game'' use case successfully completes with less and more than 15 concurrent users.}
 
         \end{enumerate}
 
 %Play Against AI
-\subsubsection{Play Against AI}
+\subsubsection{\sout{Play Against AI}}
 
-    \paragraph{Call ``Start Game'' use case}
+    \paragraph{\sout{Call ``Start Game'' use case}}
 
         \begin{enumerate}
 
-        \item{T-FR11-1\\}
+        \item{\sout{T-FR13-1\\}}
 
-            Type: Manual, Functional, Dynamic.
+            \sout{Type: Manual, Functional, Dynamic.
             					
             Initial State: The user is faced with the option of playing a Live Opponent or an AI.
             					
@@ -386,17 +458,17 @@ A Gantt chart detailing the project and testing schedule can be found at the \hr
             					
             Output: The system initializes the game by calling the ``Start Game'' use case.
             					
-            How test will be performed: One member of the team will join a game, and system shall check if the ``Start Game'' use case has been called.
+            How test will be performed: One member of the team will join a game, and system shall check if the ``Start Game'' use case has been called.}
 
         \end{enumerate}
 
-    \paragraph{No Chat Option}
+    \paragraph{\sout{No Chat Option}}
 
         \begin{enumerate}
 
-        \item{T-FR12-1\\}
+        \item{\sout{T-FR14-1\\}}
 
-            Type: Manual, Functional, Dynamic.
+            \sout{Type: Manual, Functional, Dynamic.
             					
             Initial State: The game calls the ``Start Game'' use case.
             					
@@ -404,17 +476,17 @@ A Gantt chart detailing the project and testing schedule can be found at the \hr
             					
             Output: The system shall restrict the chat window if the player is playing against the AI.
 
-            How test will be performed: One member of the team will join a game, and system shall check if the user is able to talk to the AI player.
+            How test will be performed: One member of the team will join a game, and system shall check if the user is able to talk to the AI player.}
 
         \end{enumerate}
 
-    \paragraph{Accept or Reject Game}
+    \paragraph{\sout{Accept or Reject Game}}
 
         \begin{enumerate}
 
-        \item{T-FR13-1\\}
+        \item{\sout{T-FR15-1\\}}
 
-            Type: Manual, Functional, Dynamic.
+            \sout{Type: Manual, Functional, Dynamic.
             					
             Initial State: The game calls the ``Start Game'' use case.
             					
@@ -423,7 +495,7 @@ A Gantt chart detailing the project and testing schedule can be found at the \hr
             Output: The system shall reject
             the request and return to the “Select Opponent” use case.
 
-            How test will be performed: Two members of the team will join a game, and system shall check if the ``Start Game'' use case successfully completes with less and more than 15 concurrent users.
+            How test will be performed: Two members of the team will join a game, and system shall check if the ``Start Game'' use case successfully completes with less and more than 15 concurrent users.}
 
         \end{enumerate}
 
@@ -431,13 +503,13 @@ A Gantt chart detailing the project and testing schedule can be found at the \hr
 %Start Game
 \subsubsection{Start Game}
 
-    \paragraph{User Chooses ``AI''}
+    \paragraph{\sout{User Chooses ``AI''}}
 
         \begin{enumerate}
 
-        \item{T-FR14-1\\}
+        \item{\sout{T-FR16-1\\}}
 
-            Type: Manual, Functional, Dynamic.
+            \sout{Type: Manual, Functional, Dynamic.
             					
             Initial State: The user is faced with the option of playing a Live Opponent or an AI.
             					
@@ -446,27 +518,30 @@ A Gantt chart detailing the project and testing schedule can be found at the \hr
             Output: The server shall connect to an AI
             player and arbitrarily assign black or white to each player.
 
-            How test will be performed: One member of the team will join a game with an ``AI'' and check if a game is successfully started.
+            How test will be performed: One member of the team will join a game with an ``AI'' and check if a game is successfully started.}
 
         \end{enumerate}
 
-    \paragraph{User Chooses ``Online Player''}
+    \paragraph{\sout{User Chooses ``Online Player''} \textcolor{red}{User Starts Game}}
 
         \begin{enumerate}
 
-        \item{T-FR15-1\\}
+        \item{\sout{T-FR17-1\\}}
 
-            Type: Manual, Functional, Dynamic.
+            \sout{Type: Manual, Functional, Dynamic.
             					
             Initial State: The user is faced with the option of playing a Live Opponent or an AI.
+            The user is presented the option to input a username and room name.
             					
             Input: The user chooses ``Online Player'' from the “Select Opponent” use case.
-            					
+            The user connects to a room and starts a game.
+            
             Output: A shareable link shall be
             created with which a player can join the server. If a player joins, each player shall be arbitrarily
             assigned black or white.
+            The user shall join the room specified by the input room name and that player shall have a game started on their machine.
 
-            How test will be performed: One member of the team will join a game with a ``Online Player'' and check if a game is successfully started.
+            How test will be performed: One member of the team will join a game and check if a game is successfully started.}
 
         \end{enumerate}
             
@@ -474,13 +549,15 @@ A Gantt chart detailing the project and testing schedule can be found at the \hr
 
         \begin{enumerate}
 
-        \item{T-FR16-1\\}
+        \item{T-FR18-1\\}
 
             Type: Manual, Functional, Dynamic.
             					
-            Initial State: The user is faced with the option of playing a Live Opponent or an AI.
-            					
-            Input: The user chooses ``AI'' or ``Online Player'' from the ``Select Opponent'' use case.
+            Initial State: \sout{The user is faced with the option of playing a Live Opponent or an AI.}
+            \textcolor{red}{The user is presented the option to input a username and room name.}				
+            
+            Input: \sout{The user chooses ``AI'' or ``Online Player'' from the ``Select Opponent'' use case.}
+            \textcolor{red}{The user connects to a room and starts a game.}
             					
             Output: The board and pieces shall be initialized, and the orientation of the board will be determined
             based on the colour of the users pieces.
@@ -493,17 +570,18 @@ A Gantt chart detailing the project and testing schedule can be found at the \hr
 
         \begin{enumerate}
 
-        \item{T-FR17-1\\}
+        \item{T-FR19-1\\}
 
             Type: Manual, Functional, Dynamic.
             					
-            Initial State: The user chooses ``AI'' or ``Online Player'' from the ``Select Opponent'' use case.
-            					
+            Initial State: \sout{The user chooses ``AI'' or ``Online Player'' from the ``Select Opponent'' use case.}
+            \textcolor{red}{The user has input a username and room name.}
+            
             Input: The board and pieces have been initialized.
             					
             Output: The timer shall be initialized with a countdown of 10 minutes for each player, and the game control is dependent on the player with the white pieces.
 
-            How test will be performed: One member of the team will start a game and check to see if the timer has been appropriately initialized.
+            How test will be performed: One member of the team will start a game and check to see if the timers have been appropriately initialized.
 
         \end{enumerate}
 
@@ -511,7 +589,7 @@ A Gantt chart detailing the project and testing schedule can be found at the \hr
 
         \begin{enumerate}
 
-        \item{T-FR18-1\\}
+        \item{T-FR20-1\\}
 
             Type: Manual, Functional, Dynamic.
             					
@@ -532,7 +610,7 @@ A Gantt chart detailing the project and testing schedule can be found at the \hr
 
         \begin{enumerate}
 
-        \item{T-FR19-1\\}
+        \item{T-FR21-1\\}
 
             Type: Manual, Functional, Dynamic.
             					
@@ -551,7 +629,7 @@ A Gantt chart detailing the project and testing schedule can be found at the \hr
 
         \begin{enumerate}
 
-        \item{T-FR20-1\\}
+        \item{T-FR22-1\\}
 
             Type: Manual, Functional, Dynamic.
             					
@@ -570,7 +648,7 @@ A Gantt chart detailing the project and testing schedule can be found at the \hr
 
         \begin{enumerate}
 
-        \item{T-FR21-1\\}
+        \item{T-FR23-1\\}
 
             Type: Manual, Functional, Dynamic.
             					
@@ -580,7 +658,7 @@ A Gantt chart detailing the project and testing schedule can be found at the \hr
             					
             Output: The application shall confirm that the move is legal as defined by the rules of the game.
 
-            How test will be performed: One member of the team will start a game and check to see if they the ``Check Legal Move'' use case is triggered after moving a piece.
+            How test will be performed: One member of the team will start a game and check to see if the ``Check Legal Move'' use case is triggered after moving a piece.
 
         \end{enumerate}
 
@@ -588,7 +666,7 @@ A Gantt chart detailing the project and testing schedule can be found at the \hr
 
             \begin{enumerate}
 
-            \item{T-FR22\\}
+            \item{T-FR24-1\\}
 
                 Type: Manual, Functional, Dynamic.
                 					
@@ -598,7 +676,7 @@ A Gantt chart detailing the project and testing schedule can be found at the \hr
                 					
                 Output: If the attempted move is legal, the move shall be sent to the server and the opposite player shall be given control.
 
-                How test will be performed: One member of the team will start a game and check to see if they the ``Check Legal Move'' use case is triggered after moving a piece, and that the opposite player is given control.
+                How test will be performed: One member of the team will make a legal move and ensure that it is reflected in the board state and that they are unable to make a second move with the same pieces.
 
             \end{enumerate}
 
@@ -606,7 +684,7 @@ A Gantt chart detailing the project and testing schedule can be found at the \hr
 
         \begin{enumerate}
 
-        \item{T-FR23-1\\}
+        \item{T-FR25-1\\}
 
             Type: Manual, Functional, Dynamic.
             					
@@ -616,7 +694,7 @@ A Gantt chart detailing the project and testing schedule can be found at the \hr
             					
             Output: If the attempted move is not legal, the move shall not be sent to the server and the player shall retain control.
 
-            How test will be performed: One member of the team will start a game and check to see if they the ``Check Legal Move'' use case is triggered after moving a piece, and that the current player retains control.
+            How test will be performed: One member of the team will make an illegal move and ensure that it is not reflected in the board state and that they are able to attempt another move with the same pieces.
 
         \end{enumerate}
 
@@ -624,7 +702,7 @@ A Gantt chart detailing the project and testing schedule can be found at the \hr
 
         \begin{enumerate}
 
-        \item{T-FR24-1\\}
+        \item{T-FR26-1\\}
 
             Type: Manual, Functional, Dynamic.
             					
@@ -634,7 +712,7 @@ A Gantt chart detailing the project and testing schedule can be found at the \hr
             					
             Output: The ‘Terminate Game‘ use case shall be checked after every move is made.
 
-            How test will be performed: One member of the team will start a game and check to see if they the ``Terminate Game'' use case is triggered after moving a piece.
+            How test will be performed: One member of the team will check to see if the ``Terminate Game'' use case is triggered after moving a piece.
 
         \end{enumerate}
 
@@ -642,7 +720,7 @@ A Gantt chart detailing the project and testing schedule can be found at the \hr
 
         \begin{enumerate}
 
-        \item{T-FR25-1\\}
+        \item{T-FR27-1\\}
 
             Type: Manual, Functional, Dynamic.
             					
@@ -652,7 +730,7 @@ A Gantt chart detailing the project and testing schedule can be found at the \hr
             					
             Output: If the game is not terminated, the timer for the other player shall resume.
 
-            How test will be performed: One member of the team will start a game and check to see if they the ``Terminate Game'' use case is triggered after moving a piece. The game will resume if the game is not terminated.
+            How test will be performed: One member of the team will check to see if the timers swap successfully while the game is not terminated.
 
         \end{enumerate}
             
@@ -663,9 +741,9 @@ A Gantt chart detailing the project and testing schedule can be found at the \hr
     
         \begin{enumerate}
         
-            \item{T-FR26-1\\}
+            \item{T-FR28-1\\}
             
-                Type: Automated, Dynamic.
+                Type: Manual, Dynamic.
                 					
                 Initial State: A user has made a move.
                 					
@@ -675,9 +753,9 @@ A Gantt chart detailing the project and testing schedule can be found at the \hr
                 					
                 How test will be performed: The system will input a valid move into the check legal move module and verify that a positive signal is returned.
             
-            \item{T-FR26-2\\}
+            \item{T-FR28-2\\}
             
-                Type: Automated, Dynamic
+                Type: Manual, Dynamic
                 					
                 Initial State: A user has made a move.
                 					
@@ -693,7 +771,7 @@ A Gantt chart detailing the project and testing schedule can be found at the \hr
 
         \begin{enumerate}
 
-        \item{T-FR27-1\\}
+        \item{T-FR29-1\\}
 
             Type: Manual, Functional, Dynamic.
             					
@@ -709,7 +787,7 @@ A Gantt chart detailing the project and testing schedule can be found at the \hr
         
         \begin{enumerate}
 
-        \item{T-FR27-2\\}
+        \item{T-FR29-2\\}
 
             Type: Manual, Functional, Dynamic.
             					
@@ -727,9 +805,9 @@ A Gantt chart detailing the project and testing schedule can be found at the \hr
 
         \begin{enumerate}
 
-        \item{T-FR28-1\\}
+        \item{T-FR30-1\\}
 
-            Type: Automated, Functional, Dynamic.
+            Type: Manual, Functional, Dynamic.
             					
             Initial State: A legal move has been made and the board state has been updated.
             					
@@ -748,7 +826,7 @@ A Gantt chart detailing the project and testing schedule can be found at the \hr
     
         \begin{enumerate}
         
-            \item{T-FR29-1\\}
+            \item{T-FR31-1\\}
             
                 Type: Manual, Functional, Dynamic.
                 					
@@ -766,7 +844,7 @@ A Gantt chart detailing the project and testing schedule can be found at the \hr
 
         \begin{enumerate}
 
-        \item{T-FR30-1\\}
+        \item{T-FR32-1\\}
 
             Type: Manual, Dynamic.
             					
@@ -784,7 +862,7 @@ A Gantt chart detailing the project and testing schedule can be found at the \hr
 
         \begin{enumerate}
 
-        \item{T-FR31-1\\}
+        \item{T-FR33-1\\}
 
             Type: Manual, Dynamic.
             					
@@ -797,12 +875,12 @@ A Gantt chart detailing the project and testing schedule can be found at the \hr
             How test will be performed: Two team members will start a game with each other and verify that both of them starting the chat simultaneously opens a chat window for both players.
 
         \end{enumerate}
-    
+        
     \paragraph{Present End Chat Option}
 
         \begin{enumerate}
 
-        \item{T-FR32-1\\}
+        \item{T-FR34-1\\}
 
             Type: Manual, Functional, Dynamic.
             					
@@ -823,7 +901,7 @@ A Gantt chart detailing the project and testing schedule can be found at the \hr
 
         \begin{enumerate}
 
-        \item{T-FR33-1\\}
+        \item{T-FR35-1\\}
 
             Type: Manual, Functional, Dynamic.
             					
@@ -841,7 +919,7 @@ A Gantt chart detailing the project and testing schedule can be found at the \hr
 
         \begin{enumerate}
 
-        \item{T-FR34-1\\}
+        \item{T-FR36-1\\}
 
             Type: Manual, Functional.
             					
@@ -859,7 +937,7 @@ A Gantt chart detailing the project and testing schedule can be found at the \hr
 
         \begin{enumerate}
 
-        \item{T-FR35-1\\}
+        \item{T-FR37-1\\}
 
             Type: Manual, Functional.
             					
@@ -877,7 +955,7 @@ A Gantt chart detailing the project and testing schedule can be found at the \hr
 
         \begin{enumerate}
 
-        \item{T-FR36-1\\}
+        \item{T-FR38-1\\}
 
             Type: Manual, Functional, Dynamic.
             					
@@ -887,7 +965,7 @@ A Gantt chart detailing the project and testing schedule can be found at the \hr
             					
             Output: A new chat window will have no previous chat data.
 
-            How test will be performed: Two team members will start a chat with each other, type some message in the chat, and then end the chat. One will then start the chat again and verify that no previous messages are in the chat window for either player.
+            How test will be performed: Two team members will start a chat with each other, type some message in the chat, and then end the chat. One will then start the chat again and verify that no previous messages are in the chat window for \sout{either player.} \textcolor{red}{that player. The other team member will verify that all previous messages are still in their chat window.}
 
         \end{enumerate}
 
@@ -898,7 +976,7 @@ A Gantt chart detailing the project and testing schedule can be found at the \hr
 
         \begin{enumerate}
 
-        \item{T-FR37-1\\}
+        \item{T-FR39-1\\}
 
             Type: Manual, Functional, Dynamic, Structural.
             					
@@ -916,9 +994,9 @@ A Gantt chart detailing the project and testing schedule can be found at the \hr
 
         \begin{enumerate}
 
-        \item{T-FR38-1\\}
+        \item{T-FR40-1\\}
 
-            Type: Automated, Functional, Dynamic.
+            Type: Functional, Dynamic.
             					
             Initial State: A game has been started between two players.
             					
@@ -934,7 +1012,7 @@ A Gantt chart detailing the project and testing schedule can be found at the \hr
 
         \begin{enumerate}
 
-        \item{T-FR39-1\\}
+        \item{T-FR41-1\\}
 
             Type: Manual, Functional, Dynamic.
             					
@@ -950,7 +1028,7 @@ A Gantt chart detailing the project and testing schedule can be found at the \hr
 
         \begin{enumerate}
 
-        \item{T-FR39-2\\}
+        \item{T-FR41-2\\}
 
             Type: Manual, Functional, Dynamic.
             					
@@ -971,7 +1049,7 @@ A Gantt chart detailing the project and testing schedule can be found at the \hr
 
             \begin{enumerate}
 
-            \item{T-FR40-1\\}
+            \item{T-FR42-1\\}
 
                 Type: Manual, Functional, Dynamic.
                 					
@@ -981,7 +1059,7 @@ A Gantt chart detailing the project and testing schedule can be found at the \hr
                 					
                 Output: These checks include the Checkmate, Stalemate, Draw, Resignation, and Timeout use cases.
 
-                How test will be performed: One member of the team will start a game and check to see if they the ``Terminate Game'' use case is triggered.
+                How test will be performed: One member of the team will start a game and check to see if the ``Terminate Game'' use case is triggered.
 
             \end{enumerate}
 
@@ -992,7 +1070,7 @@ A Gantt chart detailing the project and testing schedule can be found at the \hr
 
             \begin{enumerate}
 
-            \item{T-FR41-1\\}
+            \item{T-FR43-1\\}
 
                 Type: Manual, Functional, Dynamic.
                 					
@@ -1013,7 +1091,7 @@ A Gantt chart detailing the project and testing schedule can be found at the \hr
 
             \begin{enumerate}
 
-            \item{T-FR42-1\\}
+            \item{T-FR44-1\\}
 
                 Type: Manual, Functional, Dynamic.
                 					
@@ -1034,7 +1112,7 @@ A Gantt chart detailing the project and testing schedule can be found at the \hr
 
             \begin{enumerate}
 
-            \item{T-FR43-1\\}
+            \item{T-FR45-1\\}
 
                 Type: Manual, Functional, Dynamic.
                 					
@@ -1055,7 +1133,7 @@ A Gantt chart detailing the project and testing schedule can be found at the \hr
 
             \begin{enumerate}
 
-            \item{T-FR44-1\\}
+            \item{T-FR46-1\\}
 
                 Type: Manual, Functional, Dynamic.
                 					
@@ -1076,7 +1154,7 @@ A Gantt chart detailing the project and testing schedule can be found at the \hr
 
             \begin{enumerate}
 
-            \item{T-FR45-1\\}
+            \item{T-FR47-1\\}
 
                 Type: Manual, Functional, Dynamic.
                 					
@@ -1098,7 +1176,7 @@ A Gantt chart detailing the project and testing schedule can be found at the \hr
     
         \begin{enumerate}
         
-            \item{T-UH2\\}
+            \item{T-UH2-1\\}
             
                 Type: Manual, Functional(Usability), Dynamic
                 					
@@ -1111,9 +1189,9 @@ A Gantt chart detailing the project and testing schedule can be found at the \hr
                 					
                 How test will be performed: The test will be performed by presenting the game to random 10-year-olds in the populace.
             					
-            \item{T-UH5\\}
+            \item{\sout{T-UH5\\}}
             
-                Type: Functional(Learning), Dynamic, Manual
+                \sout{Type: Functional(Learning), Dynamic, Manual
                 					
                 Initial State: The program is started and presented to a panel of 10 year old children.
                 					
@@ -1122,7 +1200,7 @@ A Gantt chart detailing the project and testing schedule can be found at the \hr
                 					
                 Output/Result: At least 90\% of the test subjects should be able to start a game and play a move within five minutes of starting the presented program without any assistance.
         
-                How test will be performed: The test will be performed by presenting the game to a selected panel of 10-year-olds in the populace. They will be presented with the system on the main page and will be asked to start playing. A team member will measure the time between each person being presented with the system and that person making their first move.
+                How test will be performed: The test will be performed by presenting the game to a selected panel of 10-year-olds in the populace. They will be presented with the system on the main page and will be asked to start playing. A team member will measure the time between each person being presented with the system and that person making their first move.}
         
         \end{enumerate}
 \subsubsection{Performance Requirements}
@@ -1133,7 +1211,7 @@ A Gantt chart detailing the project and testing schedule can be found at the \hr
     
             \item{T-PR1-1\\}
             
-                Type: Functional, Dynamic, Automated
+                Type: Functional, Dynamic
                 					
                 Initial State: A user is presented with a game that has started.
                 					
@@ -1146,7 +1224,7 @@ A Gantt chart detailing the project and testing schedule can be found at the \hr
             
             \item{T-PR2-1\\}
             
-                Type: Functional, Dynamic, Automatic
+                Type: Functional, Dynamic
                 					
                 Initial State: A user is presented with a game that has started.
                 					
@@ -1159,7 +1237,7 @@ A Gantt chart detailing the project and testing schedule can be found at the \hr
             
             \item{T-PR3-1\\}
             
-                Type: Functional, Dynamic, Automatic
+                Type: Functional, Dynamic
                 		
                 Initial State: A user is presented with a game that has started.
         
@@ -1205,102 +1283,109 @@ Requirement-driven test cases were named with the following naming convention: T
         FR1     & Server Connection                     & T-FR1-1 \\ 
         FR1     & Server Connection                     & T-FR1-2 \\ 
         \hline
-        FR2     & Select AI Opponent or Online Player   & T-FR2-1 \\ 
-        FR2     & Select AI Opponent or Online Player   & T-FR2-2 \\ 
+        FR2     & \sout{Select AI Opponent or Online Player} & T-FR2-1 \\ 
+        FR2     & \sout{Select AI Opponent or Online Player} & T-FR2-2 \\ 
+        FR2     & \textcolor{red}{Starting Screen}   & T-FR2-3 \\ 
         \hline
-        FR3     & Pair with Invite Link                 & T-FR3-1 \\ 
-        FR3     & Pair with Invite Link                 & T-FR3-2 \\ 
+        FR3     &   \textcolor{red}{Create Chat Room}                & T-FR3-1 \\ 
         \hline
-        FR4     & Options while Awaiting Player         & T-FR4-1 \\ 
-        FR4     & Options while Awaiting Player         & T-FR4-2 \\ 
+        FR4     &  \textcolor{red}{Chat Room Requirements}          & T-FR4-1 \\ 
+        FR4     &  \textcolor{red}{Chat Room Requirements}        & T-FR4-2 \\ 
         \hline
-        FR5     & Terminate Game                        & T-FR5-1 \\ 
+        FR5     & \sout{Pair with invite link}                        & T-FR5-1 \\ 
+        FR5     & \sout{Pair with invite link}                        & T-FR5-2 \\ 
         \hline
-        FR6     & Selects Quit Option                   & T-FR6-1 \\ 
+        FR6     & \sout{Options while Awaiting Player}                   & T-FR6-1 \\
+        FR6     & \sout{Options while Awaiting Player}                   & T-FR6-2 \\ 
         \hline
-        FR7     & Selects AI Option                     & T-FR7-1 \\ 
+        FR7     &  Terminate Game                     & T-FR7-1 \\ 
         \hline
-        FR8     & Present Loading Screen                & T-FR8-1 \\ 
+        FR8     & \sout{User Selects the Quit Option}                & T-FR8-1 \\ 
         \hline
-        FR9     & Call Start Game                       & T-FR9-1 \\ 
+        FR9     & \sout{User Selects the Play Against AI Option}                       & T-FR9-1 \\ 
         \hline
-        FR10    & Accept or Reject Game                 & T-FR10-1 \\ 
+        FR10    & \sout{Present Loading Screen}                 & T-FR10-1 \\ 
         \hline
         FR11    & Call Start Game                       & T-FR11-1 \\ 
         \hline
-        FR12    & No Chat Option                        & T-FR12-1 \\ 
+        FR12    & Accept or Reject Game                         & T-FR12-1 \\ 
         \hline
-        FR13    & Accept or Reject Game                 & T-FR13-1 \\ 
+        FR13    & \sout{Call Start Game}                 & T-FR13-1 \\ 
         \hline
-        FR14    & User Chooses AI Opponent              & T-FR14-1 \\ 
+        FR14    & \sout{No Chat Option}              & T-FR14-1 \\ 
         \hline
-        FR15    & User Chooses Online Player            & T-FR15-1 \\ 
+        FR15    & \sout{Accept or Reject Game}            & T-FR15-1 \\ 
         \hline
-        FR16    & Initialize Board                      & T-FR16-1 \\ 
+        FR16    & \sout{User Chooses ``AI"}                      & T-FR16-1 \\ 
         \hline
-        FR17    & Initialize Timer                      & T-FR17-1 \\ 
+        FR17    & \sout{User Chooses Online Player}                       & T-FR17-1 \\ 
         \hline
-        FR18    & Give Control to White Pieces          & T-FR18-1 \\ 
+        FR18    & Initialize Board          & T-FR18-1 \\ 
         \hline
-        FR19    & Await Opponent Move                   & T-FR19-1 \\ 
+        FR19    & Initialize Timer                   & T-FR19-1 \\ 
         \hline
-        FR20    & Move Piece                            & T-FR20-1 \\ 
+        FR20    & Give Control to White Pieces                            & T-FR20-1 \\ 
         \hline
-        FR21    & Check if Move is Legal                & T-FR21-1 \\ 
+        FR21    & Await Opponent Move                & T-FR21-1 \\ 
         \hline
-        FR22    & Move is Legal                         & T-FR22-1 \\ 
+        FR22    & Move Piece                        & T-FR22-1 \\ 
         \hline
-        FR23    & Move is Not Legal                     & T-FR23-1 \\ 
+        FR23    & Check if the Move is Legal                     & T-FR23-1 \\ 
         \hline
-        FR24    & Check terminate game                  & T-FR24-1 \\ 
+        FR24    & The Move is Legal                 & T-FR24-1 \\ 
         \hline
-        FR25    & Resume game timer                     & T-FR25-1 \\ 
+        FR25    & The Move is Not Legal                     & T-FR25-1 \\ 
         \hline
-        FR26    & Verify move                           & T-FR26-1 \\ 
+        FR26    & Check “Terminate Game” use case                         & T-FR26-1 \\ 
         \hline
-        FR27    & Update Board State                    & T-FR27-1 \\ 
-        FR27    & Update Board State                    & T-FR27-2 \\ 
+        FR27    & Resume Game Timer                    & T-FR27-1 \\ 
         \hline
-        FR28    & Lock Player Control                   & T-FR28-1 \\ 
+        FR28    & Verify move                  & T-FR28-1 \\
         \hline
-        FR29    & Present Start Chat Option             & T-FR29-1 \\ 
+        FR29    & Update Board State             & T-FR29-1 \\ 
+        FR29    & Update Board State             & T-FR29-2 \\ 
         \hline
-        FR30    & Open Chat Window                      & T-FR30-1 \\ 
+        FR30    & Lock Player Control                      & T-FR30-1 \\ 
         \hline
-        FR31    & Open Chat Window Simultaneously       & T-FR31-1 \\ 
+        FR31    & Present Start Chat Option       & T-FR31-1 \\ 
         \hline
-        FR32    & Present End Chat Option               & T-FR32-1 \\ 
+        FR32    & Open Chat Window              & T-FR32-1 \\ 
         \hline
-        FR33    & Present End Chat Option               & T-FR33-1 \\ 
+        FR33    & Open Chat Window Simultaneously               & T-FR33-1 \\ 
         \hline
-        FR34    & Close Chat Window                     & T-FR34-1 \\ 
+        FR34    & Present End Chat Option                     & T-FR34-1 \\ 
         \hline
-        FR35    & Close Chat Window Simultaneously      & T-FR35-1 \\ 
+        FR35    & Present End Chat Option      & T-FR35-1 \\ 
         \hline
-        FR36    & Clear Chat Data                       & T-FR36-1 \\ 
+        FR36    & Close Chat Window                   & T-FR36-1 \\ 
         \hline
-        FR37    & Start Timer On Game Start             & T-FR37-1 \\ 
+        FR37    & Close Chat Window Simultaneously            & T-FR37-1 \\ 
         \hline
-        FR38    & Initialize Timer Values               & T-FR38-1 \\ 
+        FR38    & Clear Chat Data              & T-FR38-1 \\ 
         \hline
-        FR39    & Pause and Resume Timers               & T-FR39-1 \\ 
-        FR39    & Pause and Resume Timers               & T-FR39-2 \\ 
+        FR39    & Start Timer On Game Start               & T-FR39-1 \\ 
         \hline
-        FR40    & Establish System Checks               & T-FR40-1 \\ 
+        FR40    & Initialize Timer Values              & T-FR40-1 \\ 
         \hline
-        FR41    & Check if a Checkmate has occurred     & T-FR41-1 \\
+        FR41    & Pause and Resume Timers    & T-FR41-1 \\
         \hline
-        FR42    & Check if a Stalemate has occurred     & T-FR42-1 \\
+        FR41    & Pause and Resume Timers    & T-FR41-2 \\
         \hline
-        FR43    & Check if a Draw has occurred          & T-FR43-1 \\ 
+        FR42    & Establish System Checks     & T-FR42-1 \\
         \hline
-        FR44    & Check if a Resignation has occurred   & T-FR44-1 \\
+        FR43    & Check if a Checkmate has occurred          & T-FR43-1 \\ 
         \hline
-        FR45    & Check if a Timeout has occurred       & T-FR45-1 \\
+        FR44    & Check if a Stalemate has occurred   & T-FR44-1 \\
+        \hline
+        FR45    & Check if a Draw has occurred      & T-FR45-1 \\
+        \hline
+        FR46    & Check if a Resignation has occurred      & T-FR46-1 \\
+        \hline
+        FR47    & Check if a Timeout has occurred   & T-FR47-1 \\
         \hline
         UH2     & Ease of Use                           & T-UH2-1 \\ 
         \hline
-        UH5     & Ease of Use                           & T-UH5-1 \\ 
+        \sout{UH5}     & \sout{Ease of Use}                           & \sout{T-UH5-1} \\ 
         \hline
         PR1     & System Response Time                  & T-PR1-1 \\ 
         \hline
@@ -1308,7 +1393,7 @@ Requirement-driven test cases were named with the following naming convention: T
         \hline
         PR3     & System Response Time                  & T-PR3-1 \\ 
         \hline
-        PR8     & Ram Usage                             & T-PR8-1 \\ 
+        PR8     & RAM Usage                             & T-PR8-1 \\ 
         \hline
     \end{longtable}
 \end{center}
@@ -1322,7 +1407,7 @@ The testing for the proof of concept will be focused around validation of game c
         
             \item{T-PC1\\}
             
-                Type: Functional, Dynamic, Automatic
+                Type: Functional, Dynamic
                 					
                 Initial State: Both player boards have been initialized and the game is in play.
                 					
@@ -1334,7 +1419,7 @@ The testing for the proof of concept will be focused around validation of game c
 
             \item{T-PC2\\}
             
-                Type: Functional, Dynamic, Automatic
+                Type: Functional, Dynamic, Manual
                 					
                 Initial State: Both player boards have been initialized and the game is in play.
                 					
@@ -1375,7 +1460,7 @@ A test that compares the system implementation against the existing implementati
     
     \begin{enumerate}
     
-        \item{T-EI1\\}
+        \item{T-EI-1\\}
         
             Type: Functional, Dynamic, Manual.
             					
@@ -1388,10 +1473,6 @@ A test that compares the system implementation against the existing implementati
             How test will be performed: Two team members will start a game on the system as well as on the existing implementation. The team members will play the same moves on both systems and ensure the same response occurs on both systems.
 			
     \end{enumerate}
-
-\begin{enumerate}
-    \item 
-\end{enumerate}
 
 \section{Unit Testing Plan}
 		
