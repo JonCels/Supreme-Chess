@@ -12,4 +12,5 @@ socket.on('createNewGame', statusUpdate => {
     mySocketId = statusUpdate.mySocketId
 })
 
+//mySocketId is not used at the moment for export
 export default { socket, mySocketId } ;

@@ -61,6 +61,7 @@ function Appmain(props){
         </div>
       </div>
       <div>
+        {/* Render Chat */}
         <React.Fragment>
       { isChatOn && (
         <div>
@@ -80,6 +81,7 @@ function Appmain(props){
 }
 
 function App() {
+  //Render the main elements 
   return (
     <Router>
       <div className="App">
