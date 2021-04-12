@@ -11,6 +11,7 @@ import DrawButton from './Components/DrawButton'
 import ResignButton from './Components/ResignButton'
 
 function Appmain(props){
+  // set necessary useState functions for important states
   const [board, setBoard] = useState([])
   const [isGameOver, setIsGameOver] = useState()
   const [result, setResult] = useState()
@@ -20,7 +21,7 @@ function Appmain(props){
   const [resetTimer, setResetTimer] = useState();
   useEffect(() => {
     initGame()
-
+    // subscribe to gameSubject observable
     const subscribe = gameSubject.subscribe((game) => {
       setBoard(game.board)
       setIsGameOver(game.isGameOver)
@@ -29,10 +30,10 @@ function Appmain(props){
       setTimerActive(game.timerActive)
       setResetTimer(game.resetTimer)
     })
-
+    // unsubscribe to observable
     return () => subscribe.unsubscribe()
   }, [])
-
+    // return main screen components
     return (
     <div className="container">
       <div>
@@ -81,6 +82,7 @@ function Appmain(props){
 
 function App() {
   return (
+    // create router and switch components
     <Router>
       <div className="App">
       <Switch>

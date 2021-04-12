@@ -6,10 +6,12 @@ export default function Timer( { player, active, gameOver }) {
     let initSeconds = 0;
     const [time, setTime] = useState({ minutes: initMinutes, seconds: initSeconds });
 
+    // reset the timer
     function reset() {
         setTime({ minutes: initMinutes, seconds: initSeconds });
     }
 
+    // triggers if the game ends, the time changes, and toggles when a turn changes
     useEffect(() => {
         let interval = null;
         if (active) {
@@ -34,10 +36,12 @@ export default function Timer( { player, active, gameOver }) {
         return () => clearInterval(interval);
     }, [active, time, gameOver]);
 
+    // resets when the game ends
     useEffect(() => {
         reset();
     }, [gameOver]);
 
+    // return the timer
     return (
         <div className="timer">
             <p>{player === 'w' ? "White: " : "Black: "}{time.minutes}:{time.seconds < 10 ? `0${time.seconds}`: time.seconds}</p>
