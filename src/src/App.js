@@ -62,6 +62,7 @@ function Appmain(props){
             </div>
         </div>
         <div>
+            {/* Chat Fragment */}
             <React.Fragment>
                 { isChatOn && (
                     <div>
