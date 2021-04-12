@@ -12,19 +12,15 @@ const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
 
-//TODO: access control headears 
+//Access control headers
 app.use(({req, res, next}) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
 });
 
 io.on('connection', (socket) => {
     console.log('a user connected');
-
-    //TODO: multiplayerLogic
-    //multiplayerLogic.initializeGame(io, socket);
-
 
     //io stuff for chat
     //Event when user joins room
