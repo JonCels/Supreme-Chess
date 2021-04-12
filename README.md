@@ -2,7 +2,7 @@
 
 Team Name: The Triple Grobs
 
-Team Members: Jonathan Cels, Rupinder Nagra, Pesera Amarasekera
+Team Members: Jonathan Cels, Rupinder Nagra, Pesara Amarasekera
 
 Refactoring of an open source chess project, Online-Chess-Game, found at https://github.com/techwithtim/Online-Chess-Game. Implemented in JavaScript using the React framework.
 
