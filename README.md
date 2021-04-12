@@ -30,6 +30,7 @@ To set up the project, follow the instructions here:
 1. Navigate to '3XA3-Group2-Chess/' and run 'npm install'.
 2. Navigate to '3XA3-Group2-Chess/src/' and run 'npm install'.
 3. Navigate to '3XA3-Group2-Chess/src/src/Backend/'. and run 'npm install'.
+4. Open Google Chrome and install 'Moesif Origin & CORS Changer', found [here](https://chrome.google.com/webstore/detail/moesif-origin-cors-change/digfbfaphojjndkpccljibejjbppifbc).
 
 This will set up the dependencies for the project. To verify the correct dependencies are installed, run npm list and compare it to each package.json file in the directories used in the instructions above.
 
